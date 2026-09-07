@@ -793,8 +793,6 @@ html {
     </footer>
 
     <script>
-const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/myeglistudios@gmail.com';
-
 const eventModal = document.getElementById('eventModal');
 const eventModalClose = document.getElementById('eventModalClose');
 const eventModalCancel = document.getElementById('eventModalCancel');
@@ -844,59 +842,25 @@ eventRegistrationForm.addEventListener('submit', (e) => {
         price: document.getElementById('selectedEventPrice').value
     };
 
-    function fallbackToWhatsAppLink() {
-        const messageLines = [
-            "Hi Besties! I'd like to register for an event.",
-            "",
-            `Event: ${formData.event}`,
-            `Fee: GHS ${formData.price}`,
-            `Name: ${formData.name}`,
-            `Email: ${formData.email}`,
-            `Phone: ${formData.phone}`,
-            `Age Group: ${formData.ageGroup}`,
-            `Parent/Guardian: ${formData.guardian || 'N/A'}`,
-            `Notes: ${formData.notes || 'N/A'}`
-        ];
-        const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
-        window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
-    }
+    const messageLines = [
+        "Hi Besties! I'd like to register for an event.",
+        "",
+        `Event: ${formData.event}`,
+        `Fee: GHS ${formData.price}`,
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Age Group: ${formData.ageGroup}`,
+        `Parent/Guardian: ${formData.guardian || 'N/A'}`,
+        `Notes: ${formData.notes || 'N/A'}`
+    ];
+    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
 
-    function showSuccess() {
-        eventSuccessName.textContent = formData.name;
-        eventRegistrationForm.style.display = 'none';
-        eventSuccessMessage.style.display = 'block';
-        eventRegistrationForm.reset();
-    }
-
-    fetch(FORMSUBMIT_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-            _subject: `New Event Booking: ${formData.event}`,
-            Event: formData.event,
-            Fee: `GHS ${formData.price}`,
-            Name: formData.name,
-            Email: formData.email,
-            Phone: formData.phone,
-            'Age Group': formData.ageGroup,
-            'Parent/Guardian': formData.guardian || 'N/A',
-            Notes: formData.notes || 'N/A'
-        })
-    })
-        .then(r => r.json())
-        .then(data => {
-            if (data.success === 'true' || data.success === true) {
-                showSuccess();
-            } else {
-                throw new Error(data.message || 'Booking submission failed');
-            }
-        })
-        .catch(() => {
-            // FormSubmit unreachable/failed - fall back to opening WhatsApp
-            // directly so the booking isn't lost.
-            fallbackToWhatsAppLink();
-            showSuccess();
-        });
+    eventSuccessName.textContent = formData.name;
+    eventRegistrationForm.style.display = 'none';
+    eventSuccessMessage.style.display = 'block';
+    eventRegistrationForm.reset();
 });
     </script>
 </body>
