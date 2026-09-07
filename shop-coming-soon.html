@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>Shop Coming Soon | Besties</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --white: #FFFFFF;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Coming Soon */
+.coming-soon {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.coming-soon-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.coming-soon h1 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+}
+
+.coming-soon p {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 500px;
+    margin: 0 auto 2rem;
+    font-weight: 300;
+}
+
+.coming-soon-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.cs-btn {
+    padding: 14px 36px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cs-btn:hover {
+    background: var(--besties-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cs-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.cs-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .coming-soon-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cs-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back</a>
+    </nav>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon">
+        <div class="coming-soon-icon">🛍️</div>
+        <h1>Coming Soon</h1>
+        <p>Our Besties merchandise shop is getting ready to launch! Check back soon, or message us on WhatsApp if you'd like to order now.</p>
+        <div class="coming-soon-buttons">
+            <a href="https://wa.me/233248051774" class="cs-btn primary" target="_blank">Message Us on WhatsApp</a>
+            <a href="index.html" class="cs-btn">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="index.html">Back to Home</a></p>
+    </footer>
+</body>
+</html>

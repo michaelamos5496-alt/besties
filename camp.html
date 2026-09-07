@@ -781,8 +781,21 @@ campBookingForm.addEventListener('submit', (e) => {
         price: document.getElementById('selectedCampPrice').value
     };
 
-    console.log('Camp booking submitted:', formData);
-    alert('Thank you for booking, ' + formData.camperName + '! We\'ll send you confirmation details soon.');
+    const messageLines = [
+        "Hi Besties! I'd like to book a camp session.",
+        "",
+        `Camp: ${formData.camp}`,
+        `Fee: GHS ${formData.price}`,
+        `Camper Name: ${formData.camperName}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Age Group: ${formData.ageGroup}`,
+        `Parent/Guardian: ${formData.guardian}`,
+        `Notes: ${formData.notes || 'N/A'}`
+    ];
+    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+
     campBookingForm.reset();
     closeCampModal();
 });

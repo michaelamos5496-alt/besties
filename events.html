@@ -824,11 +824,26 @@ eventRegistrationForm.addEventListener('submit', (e) => {
         phone: document.getElementById('eventPhone').value,
         ageGroup: document.getElementById('eventAge').value,
         guardian: document.getElementById('eventGuardian').value,
-        notes: document.getElementById('eventNotes').value
+        notes: document.getElementById('eventNotes').value,
+        event: document.getElementById('selectedEventName').value,
+        price: document.getElementById('selectedEventPrice').value
     };
 
-    console.log('Event registration submitted:', formData);
-    alert('Thank you for registering, ' + formData.name + '! We\'ll send you confirmation details soon.');
+    const messageLines = [
+        "Hi Besties! I'd like to register for an event.",
+        "",
+        `Event: ${formData.event}`,
+        `Fee: GHS ${formData.price}`,
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        `Phone: ${formData.phone}`,
+        `Age Group: ${formData.ageGroup}`,
+        `Parent/Guardian: ${formData.guardian || 'N/A'}`,
+        `Notes: ${formData.notes || 'N/A'}`
+    ];
+    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+
     eventRegistrationForm.reset();
     closeEventModal();
 });
