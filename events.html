@@ -767,6 +767,12 @@ html {
                         <button type="submit" class="modal-btn primary">Confirm Registration</button>
                     </div>
                 </form>
+                <div id="eventSuccessMessage" style="display: none; text-align: center; padding: 1rem 0 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="margin-bottom: 0.75rem;">Registration Received!</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">Thanks, <span id="eventSuccessName"></span>! We've got your registration and will be in touch soon to confirm.</p>
+                    <button type="button" class="modal-btn primary" id="eventSuccessClose">Done</button>
+                </div>
             </div>
         </div>
     </div>
@@ -787,17 +793,24 @@ html {
     </footer>
 
     <script>
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/myeglistudios@gmail.com';
+
 const eventModal = document.getElementById('eventModal');
 const eventModalClose = document.getElementById('eventModalClose');
 const eventModalCancel = document.getElementById('eventModalCancel');
 const eventRegistrationForm = document.getElementById('eventRegistrationForm');
 const eventModalTitle = document.getElementById('eventModalTitle');
+const eventSuccessMessage = document.getElementById('eventSuccessMessage');
+const eventSuccessName = document.getElementById('eventSuccessName');
+const eventSuccessClose = document.getElementById('eventSuccessClose');
 
 function openEventModal(eventName, price) {
     eventModalTitle.textContent = eventName + ' - Registration';
     document.getElementById('eventPrice').textContent = price === 0 ? 'FREE' : 'GHS ' + price;
     document.getElementById('selectedEventPrice').value = price;
     document.getElementById('selectedEventName').value = eventName;
+    eventRegistrationForm.style.display = 'block';
+    eventSuccessMessage.style.display = 'none';
     eventModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -806,6 +819,8 @@ function closeEventModal() {
     eventModal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
+eventSuccessClose.addEventListener('click', closeEventModal);
 
 eventModalClose.addEventListener('click', closeEventModal);
 eventModalCancel.addEventListener('click', closeEventModal);
@@ -829,23 +844,59 @@ eventRegistrationForm.addEventListener('submit', (e) => {
         price: document.getElementById('selectedEventPrice').value
     };
 
-    const messageLines = [
-        "Hi Besties! I'd like to register for an event.",
-        "",
-        `Event: ${formData.event}`,
-        `Fee: GHS ${formData.price}`,
-        `Name: ${formData.name}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone}`,
-        `Age Group: ${formData.ageGroup}`,
-        `Parent/Guardian: ${formData.guardian || 'N/A'}`,
-        `Notes: ${formData.notes || 'N/A'}`
-    ];
-    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
-    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+    function fallbackToWhatsAppLink() {
+        const messageLines = [
+            "Hi Besties! I'd like to register for an event.",
+            "",
+            `Event: ${formData.event}`,
+            `Fee: GHS ${formData.price}`,
+            `Name: ${formData.name}`,
+            `Email: ${formData.email}`,
+            `Phone: ${formData.phone}`,
+            `Age Group: ${formData.ageGroup}`,
+            `Parent/Guardian: ${formData.guardian || 'N/A'}`,
+            `Notes: ${formData.notes || 'N/A'}`
+        ];
+        const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+        window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+    }
 
-    eventRegistrationForm.reset();
-    closeEventModal();
+    function showSuccess() {
+        eventSuccessName.textContent = formData.name;
+        eventRegistrationForm.style.display = 'none';
+        eventSuccessMessage.style.display = 'block';
+        eventRegistrationForm.reset();
+    }
+
+    fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            _subject: `New Event Booking: ${formData.event}`,
+            Event: formData.event,
+            Fee: `GHS ${formData.price}`,
+            Name: formData.name,
+            Email: formData.email,
+            Phone: formData.phone,
+            'Age Group': formData.ageGroup,
+            'Parent/Guardian': formData.guardian || 'N/A',
+            Notes: formData.notes || 'N/A'
+        })
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success === 'true' || data.success === true) {
+                showSuccess();
+            } else {
+                throw new Error(data.message || 'Booking submission failed');
+            }
+        })
+        .catch(() => {
+            // FormSubmit unreachable/failed - fall back to opening WhatsApp
+            // directly so the booking isn't lost.
+            fallbackToWhatsAppLink();
+            showSuccess();
+        });
 });
     </script>
 </body>

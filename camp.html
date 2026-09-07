@@ -719,6 +719,12 @@ html {
                         <button type="submit" class="modal-btn primary">Confirm Booking</button>
                     </div>
                 </form>
+                <div id="campSuccessMessage" style="display: none; text-align: center; padding: 1rem 0 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
+                    <h3 style="margin-bottom: 0.75rem;">Booking Received!</h3>
+                    <p style="color: #666; margin-bottom: 2rem;">Thanks, <span id="campSuccessName"></span>! We've got the booking and will be in touch soon to confirm.</p>
+                    <button type="button" class="modal-btn primary" id="campSuccessClose">Done</button>
+                </div>
             </div>
         </div>
     </div>
@@ -739,17 +745,24 @@ html {
     </footer>
 
     <script>
+const FORMSUBMIT_ENDPOINT = 'https://formsubmit.co/ajax/myeglistudios@gmail.com';
+
 const campModal = document.getElementById('campModal');
 const campModalClose = document.getElementById('campModalClose');
 const campModalCancel = document.getElementById('campModalCancel');
 const campBookingForm = document.getElementById('campBookingForm');
 const campModalTitle = document.getElementById('campModalTitle');
+const campSuccessMessage = document.getElementById('campSuccessMessage');
+const campSuccessName = document.getElementById('campSuccessName');
+const campSuccessClose = document.getElementById('campSuccessClose');
 
 function openCampModal(campName, price) {
     campModalTitle.textContent = campName + ' - Booking';
     document.getElementById('campPrice').textContent = price === 0 ? 'FREE' : 'GHS ' + price;
     document.getElementById('selectedCampPrice').value = price;
     document.getElementById('selectedCampName').value = campName;
+    campBookingForm.style.display = 'block';
+    campSuccessMessage.style.display = 'none';
     campModal.classList.add('active');
     document.body.style.overflow = 'hidden';
 }
@@ -758,6 +771,8 @@ function closeCampModal() {
     campModal.classList.remove('active');
     document.body.style.overflow = '';
 }
+
+campSuccessClose.addEventListener('click', closeCampModal);
 
 campModalClose.addEventListener('click', closeCampModal);
 campModalCancel.addEventListener('click', closeCampModal);
@@ -781,23 +796,59 @@ campBookingForm.addEventListener('submit', (e) => {
         price: document.getElementById('selectedCampPrice').value
     };
 
-    const messageLines = [
-        "Hi Besties! I'd like to book a camp session.",
-        "",
-        `Camp: ${formData.camp}`,
-        `Fee: GHS ${formData.price}`,
-        `Camper Name: ${formData.camperName}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone}`,
-        `Age Group: ${formData.ageGroup}`,
-        `Parent/Guardian: ${formData.guardian}`,
-        `Notes: ${formData.notes || 'N/A'}`
-    ];
-    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
-    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+    function fallbackToWhatsAppLink() {
+        const messageLines = [
+            "Hi Besties! I'd like to book a camp session.",
+            "",
+            `Camp: ${formData.camp}`,
+            `Fee: GHS ${formData.price}`,
+            `Camper Name: ${formData.camperName}`,
+            `Email: ${formData.email}`,
+            `Phone: ${formData.phone}`,
+            `Age Group: ${formData.ageGroup}`,
+            `Parent/Guardian: ${formData.guardian}`,
+            `Notes: ${formData.notes || 'N/A'}`
+        ];
+        const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
+        window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
+    }
 
-    campBookingForm.reset();
-    closeCampModal();
+    function showSuccess() {
+        campSuccessName.textContent = formData.camperName;
+        campBookingForm.style.display = 'none';
+        campSuccessMessage.style.display = 'block';
+        campBookingForm.reset();
+    }
+
+    fetch(FORMSUBMIT_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            _subject: `New Camp Booking: ${formData.camp}`,
+            Camp: formData.camp,
+            Fee: `GHS ${formData.price}`,
+            'Camper Name': formData.camperName,
+            Email: formData.email,
+            Phone: formData.phone,
+            'Age Group': formData.ageGroup,
+            'Parent/Guardian': formData.guardian,
+            Notes: formData.notes || 'N/A'
+        })
+    })
+        .then(r => r.json())
+        .then(data => {
+            if (data.success === 'true' || data.success === true) {
+                showSuccess();
+            } else {
+                throw new Error(data.message || 'Booking submission failed');
+            }
+        })
+        .catch(() => {
+            // FormSubmit unreachable/failed - fall back to opening WhatsApp
+            // directly so the booking isn't lost.
+            fallbackToWhatsAppLink();
+            showSuccess();
+        });
 });
     </script>
 </body>
