@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>Support Besties - Make a Donation</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero {
+    padding: 100px 40px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.05) 0%, rgba(213, 166, 224, 0.05) 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 3.5rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Donation Section */
+.donation-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 40px;
+}
+
+.why-donate {
+    margin-bottom: 4rem;
+}
+
+.why-donate h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.why-donate p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.9;
+    margin-bottom: 1rem;
+}
+
+/* Impact */
+.impact {
+    background: var(--light-gray);
+    padding: 3rem;
+    border-radius: 12px;
+    margin-bottom: 4rem;
+}
+
+.impact h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--besties-pink);
+}
+
+.impact-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.impact-item {
+    text-align: center;
+}
+
+.impact-number {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.impact-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Donation Tiers */
+.donation-tiers {
+    margin-bottom: 4rem;
+}
+
+.donation-tiers h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+}
+
+.tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.tier-card {
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.tier-card:hover {
+    border-color: var(--besties-pink);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
+    transform: translateY(-4px);
+}
+
+.tier-card.featured {
+    border-color: var(--besties-pink);
+    box-shadow: 0 8px 25px rgba(255, 107, 157, 0.15);
+}
+
+.tier-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+}
+
+.tier-label {
+    font-size: 0.9rem;
+    color: #999;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tier-impact {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.tier-btn {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.tier-card.featured .tier-btn {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.tier-btn:hover {
+    transform: translateY(-2px);
+}
+
+.tier-card.featured .tier-btn:hover {
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Testimonial */
+.testimonial-box {
+    background: white;
+    border: 1px solid #f0f0f0;
+    padding: 2.5rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+}
+
+.testimonial-quote {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+.testimonial-author {
+    color: #999;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.testimonial-text {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.testimonial-impact {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.testimonial-mission {
+    color: var(--besties-pink);
+    margin: 0;
+}
+
+/* Donation Form */
+.donation-form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.form-section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.form-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.form-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+}
+
+.form-section h4 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+/* Toggle Buttons */
+.donation-type-toggle {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.toggle-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--dark-gray);
+}
+
+.toggle-btn.active {
+    background: var(--dark-gray);
+    color: white;
+    border-color: var(--dark-gray);
+}
+
+/* Amount Buttons */
+.amount-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.amount-btn {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--dark-gray);
+}
+
+.amount-btn.active,
+.amount-btn:hover {
+    border-color: var(--besties-pink);
+    color: var(--besties-pink);
+    background: rgba(255, 107, 157, 0.05);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--dark-gray);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--besties-pink);
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #bbb;
+}
+
+/* Form Row */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+/* Dedication Box */
+.dedication-box {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.dedication-box h4 {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+}
+
+/* Checkboxes & Radios */
+.checkbox-group,
+.radio-group,
+.donor-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.checkbox-group label,
+.radio-group label,
+.donor-type label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-weight: 400;
+    color: var(--dark-gray);
+}
+
+.checkbox-group input,
+.radio-group input,
+.donor-type input {
+    cursor: pointer;
+}
+
+.donor-type {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+}
+
+/* Summary */
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.summary-item:last-of-type {
+    border-bottom: none;
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+
+.summary-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--besties-pink);
+}
+
+.summary-total {
+    padding-top: 1.5rem;
+    border-top: 2px solid #f0f0f0;
+    font-size: 1.1rem;
+}
+
+.summary-fees {
+    padding: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.summary-fees label {
+    color: #666;
+}
+
+/* Payment Methods */
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.payment-method {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    color: var(--dark-gray);
+}
+
+.payment-method.active,
+.payment-method:hover {
+    border-color: var(--besties-pink);
+    background: rgba(255, 107, 157, 0.05);
+}
+
+/* Payment Details */
+.payment-details {
+    background: var(--light-gray);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+}
+
+.payment-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.security-note {
+    background: rgba(255, 107, 157, 0.1);
+    border-left: 4px solid var(--besties-pink);
+    padding: 1rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.security-note p {
+    margin: 0;
+    color: var(--besties-pink);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.paypal-btn,
+.googlepay-btn {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.paypal-btn {
+    background: #0070ba;
+}
+
+.paypal-btn:hover {
+    background: #005087;
+    transform: translateY(-2px);
+}
+
+.googlepay-btn {
+    background: #5f6368;
+}
+
+.googlepay-btn:hover {
+    background: #4b4f55;
+    transform: translateY(-2px);
+}
+
+/* Donate Button */
+.donate-btn {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.donate-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .donation-container {
+        padding: 40px 20px;
+    }
+
+    .impact,
+    .other-ways {
+        padding: 2rem;
+    }
+
+    .tiers-grid {
+        gap: 1rem;
+    }
+
+    .tier-card {
+        padding: 1.5rem;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Support Besties</h1>
+        <p>Help us empower more girls worldwide. Your donation makes a real difference.</p>
+    </section>
+
+    <!-- Donation Content -->
+    <div class="donation-container">
+        <!-- Testimonial -->
+        <section class="testimonial-box">
+            <p class="testimonial-quote">"Besties gave me the confidence to step outside my comfort zone, develop new skills and build lifelong friendships."</p>
+            <p class="testimonial-author">— Maya S., Community Member</p>
+            <p class="testimonial-text">In Besties, girls try new things, find their voices and support one another. With caring mentors, they grow in confidence, courage and leadership. These skills last a lifetime.</p>
+            <p class="testimonial-impact">Today, your donation will help give girls in our community a lifelong advantage.</p>
+            <p class="testimonial-mission"><strong>This is how we shine.</strong></p>
+        </section>
+
+        <!-- Donation Form -->
+        <section class="donation-form-section">
+            <form id="donationForm">
+                <!-- Donation Type -->
+                <div class="form-section">
+                    <h3>Your Donation</h3>
+
+                    <div class="donation-type-toggle">
+                        <button type="button" class="toggle-btn active" data-type="once">Donate once</button>
+                        <button type="button" class="toggle-btn" data-type="monthly">💖 Donate monthly</button>
+                    </div>
+
+                    <div class="amount-buttons">
+                        <button type="button" class="amount-btn" data-amount="50">$50</button>
+                        <button type="button" class="amount-btn" data-amount="100">$100</button>
+                        <button type="button" class="amount-btn" data-amount="200">$200</button>
+                        <button type="button" class="amount-btn" data-amount="500">$500</button>
+                        <button type="button" class="amount-btn" data-amount="other">Other</button>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Fund*</label>
+                        <select id="fund" required>
+                            <option value="">Choose a fund to direct your donation</option>
+                            <option value="general">General Fund - Support all programs</option>
+                            <option value="programs">Programs - Sparks, Guides, Rangers</option>
+                            <option value="mentorship">Mentorship - Support girl mentors</option>
+                            <option value="chapters">Local Chapters - Build community hubs</option>
+                            <option value="scholarships">Scholarships - Remove barriers to entry</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><a href="#" style="color: var(--besties-pink);">Write a private message to us (optional)</a></label>
+                    </div>
+
+                    <div class="dedication-box">
+                        <h4>🎁 Want to dedicate your gift to someone special?</h4>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="dedicate" name="dedicate">
+                            <label for="dedicate">Yes, I want to dedicate my donation</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Your Details -->
+                <div class="form-section">
+                    <h3>Your Details</h3>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 1rem;">Tell us a bit about yourself so we can send your tax receipt.</p>
+
+                    <div class="donor-type">
+                        <label><input type="radio" name="donorType" value="personal" checked> Personal</label>
+                        <label><input type="radio" name="donorType" value="corporate"> Corporate</label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address*</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name*</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name*</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address Line 1*</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address2">Address Line 2 (optional)</label>
+                        <input type="text" id="address2" name="address2" placeholder="Apartment, suite, etc.">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City*</label>
+                            <input type="text" id="city" name="city" placeholder="Enter your city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country*</label>
+                            <select id="country" required>
+                                <option value="">Select your country</option>
+                                <option value="canada">Canada</option>
+                                <option value="usa">United States</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="province">Province/State*</label>
+                            <select id="province" required>
+                                <option value="">Select province/state</option>
+                                <option value="on">Ontario</option>
+                                <option value="bc">British Columbia</option>
+                                <option value="qc">Quebec</option>
+                                <option value="ab">Alberta</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="postal">Postal Code*</label>
+                            <input type="text" id="postal" name="postal" placeholder="Enter your postal code" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+1">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="anonymous" name="anonymous">
+                        <label for="anonymous">I wish to remain anonymous</label>
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="communications" name="communications">
+                        <label for="communications">Yes, I'd like to receive email communications from Besties</label>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="form-section">
+                    <h3>Summary</h3>
+
+                    <div class="summary-item">
+                        <div class="summary-label">Your donation</div>
+                        <div class="summary-value" id="donationAmount">$0.00</div>
+                    </div>
+
+                    <div class="summary-item">
+                        <div class="summary-label">Your gift to Besties</div>
+                        <div class="summary-value" id="giftAmount">$0.00</div>
+                    </div>
+
+                    <div class="summary-fees">
+                        <input type="checkbox" id="coverFees" name="coverFees">
+                        <label for="coverFees">I'd like to cover the transaction fees so that 100% of my donation supports Besties</label>
+                    </div>
+
+                    <div class="summary-item summary-total">
+                        <div class="summary-label">Total</div>
+                        <div class="summary-value" id="totalAmount">$0.00</div>
+                    </div>
+                </div>
+
+                <!-- Payment -->
+                <div class="form-section">
+                    <h3>Your Payment Information</h3>
+                    <p style="color: #666; font-size: 0.95rem; margin-bottom: 1.5rem;">Donate with any of these secure payment methods.</p>
+
+                    <div class="payment-methods">
+                        <button type="button" class="payment-method active" data-method="card">💳 Card</button>
+                        <button type="button" class="payment-method" data-method="paypal">PayPal</button>
+                        <button type="button" class="payment-method" data-method="google">Google Pay</button>
+                    </div>
+
+                    <!-- Card Details Section -->
+                    <div id="cardSection" class="payment-details">
+                        <h4>Card Details</h4>
+
+                        <div class="form-group">
+                            <label for="cardName">Name on Card*</label>
+                            <input type="text" id="cardName" name="cardName" placeholder="Enter name on card" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number*</label>
+                            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiry">Expiry Date*</label>
+                                <input type="text" id="expiry" name="expiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">CVV*</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="billingAddress" name="billingAddress">
+                            <label for="billingAddress">Billing address is different from above</label>
+                        </div>
+
+                        <div id="billingAddressSection" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid #f0f0f0;">
+                            <h4>Billing Address</h4>
+
+                            <div class="form-group">
+                                <label for="billingAddressLine">Address*</label>
+                                <input type="text" id="billingAddressLine" name="billingAddressLine" placeholder="Enter billing address">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="billingCity">City*</label>
+                                    <input type="text" id="billingCity" name="billingCity" placeholder="Enter city">
+                                </div>
+                                <div class="form-group">
+                                    <label for="billingCountry">Country*</label>
+                                    <select id="billingCountry">
+                                        <option value="">Select country</option>
+                                        <option value="canada">Canada</option>
+                                        <option value="usa">United States</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="billingProvince">Province/State*</label>
+                                    <select id="billingProvince">
+                                        <option value="">Select province/state</option>
+                                        <option value="on">Ontario</option>
+                                        <option value="bc">British Columbia</option>
+                                        <option value="qc">Quebec</option>
+                                        <option value="ab">Alberta</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="billingPostal">Postal Code*</label>
+                                    <input type="text" id="billingPostal" name="billingPostal" placeholder="Enter postal code">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="security-note">
+                            <p>🔒 Your payment information is secure and encrypted. We never store your full card details.</p>
+                        </div>
+                    </div>
+
+                    <!-- PayPal Section -->
+                    <div id="paypalSection" class="payment-details" style="display: none;">
+                        <p style="color: #666; margin-bottom: 1rem;">You will be redirected to PayPal to complete your donation securely.</p>
+                        <button type="button" class="paypal-btn">Continue with PayPal</button>
+                    </div>
+
+                    <!-- Google Pay Section -->
+                    <div id="googleSection" class="payment-details" style="display: none;">
+                        <p style="color: #666; margin-bottom: 1rem;">You will be redirected to Google Pay to complete your donation securely.</p>
+                        <button type="button" class="googlepay-btn">Continue with Google Pay</button>
+                    </div>
+                </div>
+
+                <!-- Alumni Question -->
+                <div class="form-section">
+                    <h4>Are you a Besties alumna?</h4>
+                    <div class="radio-group">
+                        <label><input type="radio" name="alumni" value="yes"> Yes</label>
+                        <label><input type="radio" name="alumni" value="no"> No</label>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="donate-btn">Donate</button>
+                <p style="color: #999; font-size: 0.85rem; text-align: center; margin-top: 1rem;">A secure payment window will open.</p>
+            </form>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+// Toggle donation type
+document.querySelectorAll('.toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+    });
+});
+
+// Amount button selection
+let selectedAmount = 0;
+document.querySelectorAll('.amount-btn').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.amount-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        selectedAmount = this.dataset.amount === 'other' ? 0 : parseFloat(this.dataset.amount);
+        updateSummary();
+    });
+});
+
+// Custom amount input
+const customAmountInput = document.createElement('input');
+customAmountInput.type = 'number';
+customAmountInput.id = 'customAmount';
+customAmountInput.style.display = 'none';
+customAmountInput.placeholder = 'Enter amount';
+
+// Update summary
+function updateSummary() {
+    const donationAmount = selectedAmount || 0;
+    const fees = donationAmount * 0.03; // Assume 3% fees
+    const coverFees = document.getElementById('coverFees')?.checked;
+    const total = coverFees ? donationAmount + fees : donationAmount;
+
+    document.getElementById('donationAmount').textContent = '$' + donationAmount.toFixed(2);
+    document.getElementById('giftAmount').textContent = '$' + donationAmount.toFixed(2);
+    document.getElementById('totalAmount').textContent = '$' + total.toFixed(2);
+}
+
+// Payment method selection
+document.querySelectorAll('.payment-method').forEach(btn => {
+    btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.payment-method').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        const method = this.dataset.method;
+        document.getElementById('cardSection').style.display = 'none';
+        document.getElementById('paypalSection').style.display = 'none';
+        document.getElementById('googleSection').style.display = 'none';
+
+        if (method === 'card') {
+            document.getElementById('cardSection').style.display = 'block';
+        } else if (method === 'paypal') {
+            document.getElementById('paypalSection').style.display = 'block';
+        } else if (method === 'google') {
+            document.getElementById('googleSection').style.display = 'block';
+        }
+    });
+});
+
+// Billing address toggle
+document.getElementById('billingAddress')?.addEventListener('change', function() {
+    document.getElementById('billingAddressSection').style.display = this.checked ? 'block' : 'none';
+});
+
+// Card number formatting
+document.getElementById('cardNumber')?.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    e.target.value = formattedValue;
+});
+
+// Expiry date formatting
+document.getElementById('expiry')?.addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    e.target.value = value;
+});
+
+// CVV validation (numbers only)
+document.getElementById('cvv')?.addEventListener('input', function(e) {
+    e.target.value = e.target.value.replace(/\D/g, '');
+});
+
+// Cover fees checkbox
+document.getElementById('coverFees')?.addEventListener('change', updateSummary);
+
+// Form submission
+document.getElementById('donationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = {
+        amount: selectedAmount,
+        firstName: document.getElementById('firstName').value,
+        email: document.getElementById('email').value,
+        anonymous: document.getElementById('anonymous').checked
+    };
+
+    alert('Thank you for your donation of $' + selectedAmount + ', ' + formData.firstName + '! A secure payment window will open shortly.');
+    console.log('Donation submitted:', formData);
+});
+
+// Initialize
+updateSummary();
+    </script>
+</body>
+</html>

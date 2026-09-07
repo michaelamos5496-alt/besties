@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>Besties Events</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero {
+    padding: 120px 40px;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Hero with Video Background */
+.hero-video {
+    position: relative;
+    min-height: 60vh;
+    overflow: hidden;
+}
+
+.hero-video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.6) 0%, rgba(213, 166, 224, 0.6) 100%);
+    z-index: 2;
+}
+
+.hero-content-wrapper {
+    position: relative;
+    z-index: 3;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+.hero-video h1 {
+    color: white;
+    -webkit-text-fill-color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-video p {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Events Section */
+.events-section {
+    padding: 80px 40px;
+}
+
+.events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.event-card {
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.event-card:hover {
+    border-color: var(--besties-pink);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.1);
+    transform: translateY(-5px);
+}
+
+.event-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.event-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+}
+
+.event-date {
+    font-size: 0.85rem;
+    color: var(--besties-pink);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.event-card h3 {
+    font-size: 1.4rem;
+    font-family: 'Fredoka', sans-serif;
+    color: var(--dark-gray);
+    font-weight: 600;
+    margin: 0;
+}
+
+.event-location {
+    font-size: 0.9rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+.event-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.event-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.event-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.event-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.event-btn:hover {
+    background: var(--besties-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.event-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.event-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 2.5rem 2rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--besties-pink);
+}
+
+.modal-content {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--dark-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--besties-pink);
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #bbb;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.modal-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.modal-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+.modal-btn.secondary {
+    color: var(--dark-gray);
+}
+
+.modal-btn.secondary:hover {
+    background: #f9f9f9;
+    border-color: var(--besties-pink);
+    color: var(--besties-pink);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 14px 40px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background: var(--besties-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        margin-bottom: 1rem;
+    }
+
+    .events-section,
+    .cta-section {
+        padding: 60px 20px;
+    }
+
+    .events-grid {
+        gap: 2rem;
+    }
+
+    .event-card {
+        padding: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .event-buttons {
+        flex-direction: column;
+    }
+
+    .event-btn {
+        width: 100%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back</a>
+    </nav>
+
+    <!-- Hero with Video Background -->
+    <section class="hero hero-video">
+        <video autoplay muted loop class="hero-video-bg">
+            <source src="assets/events-bg.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-video-overlay"></div>
+        <div class="hero-content-wrapper">
+            <h1>Upcoming Events</h1>
+            <p>Join us for amazing events where Besties come together to connect, learn, and grow!</p>
+        </div>
+    </section>
+
+    <!-- Events -->
+    <section class="events-section">
+        <div class="events-grid">
+            <!-- Event 1 -->
+            <div class="event-card">
+                <img src="assets/image_1.jpg" alt="Summer Camp" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">June 15-20, 2026</div>
+                    <h3>Summer Camp Adventure</h3>
+                    <div class="event-location">📍 Mountain Resort, Colorado</div>
+                    <p class="event-description">Join us for an unforgettable summer camp experience! Build lasting friendships, participate in outdoor activities, and discover new talents.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 Ages 8-17</div>
+                        <div class="event-detail-item">⏱️ 6 Days / 5 Nights</div>
+                        <div class="event-detail-item">🎯 Limited Spots Available</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 1,800</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Summer Camp Adventure', 1800)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 2 -->
+            <div class="event-card">
+                <img src="assets/image_2.jpg" alt="Leadership Workshop" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">July 8-10, 2026</div>
+                    <h3>Leadership Workshop</h3>
+                    <div class="event-location">📍 Virtual</div>
+                    <p class="event-description">Develop your leadership skills with industry experts. Learn public speaking, project management, and how to inspire others.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 Ages 12-17</div>
+                        <div class="event-detail-item">⏱️ 3 Days</div>
+                        <div class="event-detail-item">🎯 50 Spots Available</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 450</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Leadership Workshop', 450)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 3 -->
+            <div class="event-card">
+                <img src="assets/image_3.jpg" alt="Art & Creative Expression" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">July 22-23, 2026</div>
+                    <h3>Art & Creative Expression</h3>
+                    <div class="event-location">📍 NYC Art Studio</div>
+                    <p class="event-description">Express yourself through art! Join workshops on painting, digital art, crafting, and music with renowned artists and creatives.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 Ages 8-16</div>
+                        <div class="event-detail-item">⏱️ 2 Days</div>
+                        <div class="event-detail-item">🎯 75 Spots Available</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 700</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Art & Creative Expression', 700)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 4 -->
+            <div class="event-card">
+                <img src="assets/image_4.png" alt="Tech & Innovation Summit" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">August 5-6, 2026</div>
+                    <h3>Tech & Innovation Summit</h3>
+                    <div class="event-location">📍 San Francisco, CA</div>
+                    <p class="event-description">Explore coding, AI, robotics, and tech innovation. Meet female tech leaders and build projects with peers.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 Ages 11-17</div>
+                        <div class="event-detail-item">⏱️ 2 Days</div>
+                        <div class="event-detail-item">🎯 100 Spots Available</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 850</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Tech & Innovation Summit', 850)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 5 -->
+            <div class="event-card">
+                <img src="assets/image_5.jpg" alt="Wellness & Confidence Retreat" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">August 12-14, 2026</div>
+                    <h3>Wellness & Confidence Retreat</h3>
+                    <div class="event-location">📍 Wellness Center, California</div>
+                    <p class="event-description">Focus on mental health, self-care, and building confidence. Yoga, meditation, journaling, and meaningful connections.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 Ages 10-17</div>
+                        <div class="event-detail-item">⏱️ 3 Days / 2 Nights</div>
+                        <div class="event-detail-item">🎯 60 Spots Available</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 1,200</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Wellness & Confidence Retreat', 1200)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event 6 -->
+            <div class="event-card">
+                <img src="assets/image_1.jpg" alt="Community Giving Day" class="event-image">
+                <div class="event-content">
+                    <div class="event-date">August 30, 2026</div>
+                    <h3>Community Giving Day</h3>
+                    <div class="event-location">📍 Various Locations</div>
+                    <p class="event-description">Make a difference! Join local community service projects and learn about the impact Besties are making worldwide.</p>
+                    <div class="event-details">
+                        <div class="event-detail-item">👥 All Ages Welcome</div>
+                        <div class="event-detail-item">⏱️ 1 Day</div>
+                        <div class="event-detail-item">🎯 Unlimited</div>
+                    </div>
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
+                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
+                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">FREE</div>
+                    </div>
+                    <div class="event-buttons">
+                        <button class="event-btn primary" onclick="openEventModal('Community Giving Day', 0)">Register Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Registration Modal -->
+    <div class="modal-overlay" id="eventModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 id="eventModalTitle">Event Registration</h2>
+                <button class="modal-close" id="eventModalClose">×</button>
+            </div>
+            <div class="modal-content">
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center;">
+                    <div style="color: #666; font-size: 0.95rem; margin-bottom: 0.5rem;">Registration Fee</div>
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--besties-pink);" id="eventPrice">GHS 0</div>
+                </div>
+                <form id="eventRegistrationForm">
+                    <input type="hidden" id="selectedEventPrice" value="0" required>
+                    <input type="hidden" id="selectedEventName" value="" required>
+                    <div class="form-group">
+                        <label for="eventName">Full Name</label>
+                        <input type="text" id="eventName" name="eventName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventEmail">Email Address</label>
+                        <input type="email" id="eventEmail" name="eventEmail" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventPhone">Phone Number</label>
+                        <input type="tel" id="eventPhone" name="eventPhone" placeholder="Enter your phone number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventAge">Age Group</label>
+                        <select id="eventAge" name="eventAge" style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem;" required>
+                            <option value="">Select your age group</option>
+                            <option value="6-8">6-8 years</option>
+                            <option value="9-12">9-12 years</option>
+                            <option value="13-15">13-15 years</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventGuardian">Parent/Guardian Name (if under 18)</label>
+                        <input type="text" id="eventGuardian" name="eventGuardian" placeholder="Enter parent/guardian name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="eventNotes">Special Requests or Notes</label>
+                        <textarea id="eventNotes" name="eventNotes" placeholder="Share any dietary restrictions, accessibility needs, etc..." style="resize: vertical; min-height: 100px;"></textarea>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-btn secondary" id="eventModalCancel">Cancel</button>
+                        <button type="submit" class="modal-btn primary">Confirm Registration</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Can't Find Your Event?</h2>
+        <p>Check back soon for more amazing Besties events. Have an event idea? We'd love to hear from you!</p>
+        <div class="cta-buttons">
+            <a href="index.html" class="cta-btn">Back to Home</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <script>
+const eventModal = document.getElementById('eventModal');
+const eventModalClose = document.getElementById('eventModalClose');
+const eventModalCancel = document.getElementById('eventModalCancel');
+const eventRegistrationForm = document.getElementById('eventRegistrationForm');
+const eventModalTitle = document.getElementById('eventModalTitle');
+
+function openEventModal(eventName, price) {
+    eventModalTitle.textContent = eventName + ' - Registration';
+    document.getElementById('eventPrice').textContent = price === 0 ? 'FREE' : 'GHS ' + price;
+    document.getElementById('selectedEventPrice').value = price;
+    document.getElementById('selectedEventName').value = eventName;
+    eventModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeEventModal() {
+    eventModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+eventModalClose.addEventListener('click', closeEventModal);
+eventModalCancel.addEventListener('click', closeEventModal);
+
+eventModal.addEventListener('click', (e) => {
+    if (e.target === eventModal) {
+        closeEventModal();
+    }
+});
+
+eventRegistrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = {
+        name: document.getElementById('eventName').value,
+        email: document.getElementById('eventEmail').value,
+        phone: document.getElementById('eventPhone').value,
+        ageGroup: document.getElementById('eventAge').value,
+        guardian: document.getElementById('eventGuardian').value,
+        notes: document.getElementById('eventNotes').value
+    };
+
+    console.log('Event registration submitted:', formData);
+    alert('Thank you for registering, ' + formData.name + '! We\'ll send you confirmation details soon.');
+    eventRegistrationForm.reset();
+    closeEventModal();
+});
+    </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "server.js"
+    }
+  ],
+  "env": {
+    "MTN_CONSUMER_KEY": "@mtn_consumer_key",
+    "MTN_CONSUMER_SECRET": "@mtn_consumer_secret",
+    "MTN_MERCHANT_ID": "@mtn_merchant_id",
+    "MTN_MERCHANT_PHONE": "@mtn_merchant_phone",
+    "MTN_API_URL": "@mtn_api_url",
+    "CALLBACK_URL": "@callback_url",
+    "NODE_ENV": "production"
+  }
+}

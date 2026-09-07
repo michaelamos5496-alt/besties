@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>Besties Core Programming</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero {
+    padding: 120px 40px;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #777;
+    max-width: 500px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Programs Grid */
+.programs-section {
+    padding: 80px 40px;
+}
+
+.programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.program-card {
+    padding: 3rem;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.4s ease;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.program-card:hover {
+    border-color: var(--besties-pink);
+    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.1);
+}
+
+.program-icon {
+    font-size: 3.5rem;
+}
+
+.program-card h3 {
+    font-size: 1.5rem;
+    font-family: 'Fredoka', sans-serif;
+    color: var(--besties-pink);
+    font-weight: 600;
+    margin: 0;
+}
+
+.program-age {
+    font-size: 0.9rem;
+    color: #999;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.program-description {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* Features Section */
+.features-section {
+    padding: 80px 40px;
+    background: var(--light-gray);
+}
+
+.features-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.feature {
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature h4 {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.feature p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 14px 40px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background: var(--besties-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+
+    .hero h1 {
+        margin-bottom: 1rem;
+    }
+
+    .programs-section,
+    .features-section,
+    .cta-section {
+        padding: 60px 20px;
+    }
+
+    .programs-grid,
+    .features-grid {
+        gap: 2rem;
+    }
+
+    .program-card {
+        padding: 2rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Core Programming</h1>
+        <p>Discover what we offer. Programs designed for every stage of girlhood.</p>
+    </section>
+
+    <!-- Programs -->
+    <section class="programs-section">
+        <div class="programs-grid">
+            <div class="program-card">
+                <div class="program-icon">💜</div>
+                <h3>Sparks</h3>
+                <p class="program-age">Ages 8–10</p>
+                <p class="program-description">Discover your passions. Build friendships. Explore who you are through hands-on activities and creative projects.</p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-icon">✨</div>
+                <h3>Guides</h3>
+                <p class="program-age">Ages 11–13</p>
+                <p class="program-description">Level up your skills. Take on challenges. Develop leadership and confidence in a supportive community.</p>
+            </div>
+
+            <div class="program-card">
+                <div class="program-icon">🚀</div>
+                <h3>Rangers</h3>
+                <p class="program-age">Ages 14–17</p>
+                <p class="program-description">Lead projects. Mentor younger girls. Make real change and chase your biggest dreams.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <h2 class="features-title">What We Offer</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h4>Skill Building</h4>
+                <p>Develop skills across art, tech, leadership, wellness, and more.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🏆</div>
+                <h4>Badges & Recognition</h4>
+                <p>Earn badges and celebrate your achievements as you grow.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🤝</div>
+                <h4>Real Community</h4>
+                <p>Connect with girls who understand you. Build lasting friendships.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🌍</div>
+                <h4>Global Network</h4>
+                <p>Be part of a worldwide movement of girls supporting each other.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💪</div>
+                <h4>Leadership</h4>
+                <p>Lead projects, mentor peers, and make a real difference.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">✨</div>
+                <h4>Your Voice Matters</h4>
+                <p>Share your ideas, stories, and perspectives. Shape our community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of girls who are already discovering their unique shine and building unshakeable confidence.</p>
+        <div class="cta-buttons">
+            <button class="cta-btn primary" onclick="window.location.href='index.html#registrationModal'; document.getElementById('registrationModal').classList.add('active'); document.body.style.overflow = 'hidden';">Register Now</button>
+            <a href="index.html" class="cta-btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="index.html">Back to Home</a></p>
+    </footer>
+</body>
+</html>

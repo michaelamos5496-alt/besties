@@ -1,0 +1,1885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#FF6B9D">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Besties - A Global Movement for Girls</title>
+    <style>
+/* Besties Website - Main Stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Childlike&display=swap');
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --besties-lavender: #E8D4F8;
+    --sky-blue: #87CEEB;
+    --soft-peach: #FFCBA4;
+    --white: #FFFFFF;
+    --dark-gray: #333333;
+    --light-gray: #F5F5F5;
+    --accent-yellow: #FFD700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333333;
+    background-color: #FFFFFF;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(15px, 5vw, 20px);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Childlike', 'Fredoka', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: clamp(1.3rem, 6vw, 2.5rem);
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    color: var(--besties-pink);
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+/* Buttons */
+.btn {
+    padding: clamp(10px, 2vw, 12px) clamp(18px, 4vw, 24px);
+    border: none;
+    border-radius: 4px;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+    pointer-events: auto;
+}
+
+.btn-primary {
+    background: var(--besties-pink);
+    color: var(--white);
+    border: 2px solid var(--besties-pink);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: white;
+    color: var(--besties-pink);
+    border: 2px solid var(--besties-pink);
+}
+
+.btn-secondary:hover {
+    background: #f9f9f9;
+    transform: translateY(-2px);
+}
+
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.navbar.hidden {
+    transform: translateX(-50%) translateY(-120px);
+}
+
+.nav-pill {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 12px 20px;
+    display: flex;
+    gap: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(20px);
+    pointer-events: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 18px;
+    text-decoration: none;
+    color: #000000;
+    border-radius: 40px;
+    transition: color 0.3s ease;
+    cursor: pointer;
+    font-weight: 500;
+    position: relative;
+    pointer-events: auto;
+    z-index: 50;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-item.active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+    stroke: #000000;
+}
+
+/* Hamburger Menu */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px 18px;
+    z-index: 1001;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+}
+
+.hamburger-menu span {
+    width: 24px;
+    height: 3px;
+    background: #000;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.hamburger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger-menu.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
+}
+
+/* Mobile Menu Drawer */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    z-index: 999;
+    pointer-events: none;
+    transition: background 0.3s ease;
+}
+
+.mobile-menu.active {
+    background: rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+}
+
+.mobile-menu-content {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 80vw;
+    max-width: 300px;
+    height: 100%;
+    background: white;
+    transition: left 0.3s ease;
+    padding: 20px;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-menu.active .mobile-menu-content {
+    left: 0;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    margin: -12px 0 20px -12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mobile-menu-close svg {
+    width: 24px;
+    height: 24px;
+    color: var(--besties-pink);
+}
+
+.mobile-menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.mobile-menu-item {
+    padding: 16px 12px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.mobile-menu-item:hover {
+    background: rgba(255, 107, 157, 0.1);
+    color: var(--besties-pink);
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    padding-top: clamp(80px, 15vw, 200px);
+    padding-left: clamp(15px, 5vw, 20px);
+    padding-right: clamp(15px, 5vw, 20px);
+    padding-bottom: 0;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/image_0.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
+    z-index: 1;
+    pointer-events: none;
+    transform: translateZ(0);
+    filter: blur(8px);
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.5) 100%);
+    z-index: 2;
+    pointer-events: none;
+}
+
+.hero-content {
+    text-align: center;
+    max-width: 800px;
+    z-index: 20;
+    flex-grow: 0;
+    position: relative;
+}
+
+.hero-image-bottom {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-shrink: 0;
+    margin: 0 calc(-50vw + 50%);
+    margin-top: -80px;
+    z-index: 15;
+    overflow: hidden;
+    position: relative;
+}
+
+.besties-characters {
+    width: auto;
+    height: clamp(45vh, 75vh, 85vh);
+    max-height: 85vh;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.1));
+    animation: fadeInUp 1s ease;
+}
+
+.hero-title {
+    color: var(--besties-pink);
+    font-family: 'Childlike', 'Fredoka', sans-serif;
+    font-size: clamp(2rem, 12vw, 4rem);
+    margin-bottom: clamp(0.8rem, 2vw, 1rem);
+    animation: fadeInDown 0.8s ease;
+    font-weight: 700;
+    -webkit-text-stroke: clamp(1.5px, 0.6vw, 5px) white;
+    text-stroke: clamp(1.5px, 0.6vw, 5px) white;
+    paint-order: stroke fill;
+    letter-spacing: 0.5px;
+}
+
+.hero-subtitle {
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
+    color: white;
+    margin-bottom: clamp(1rem, 2.5vw, 2rem);
+    animation: fadeInUp 0.8s ease;
+    font-weight: 400;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-ctas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (min-width: 768px) {
+    .hero-ctas {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+/* Featured & Action Cards Section */
+.featured-actions-section {
+    background: white;
+    padding: 60px 20px 80px;
+}
+
+.featured-actions-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.featured-banner {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+    border-radius: 15px;
+    overflow: hidden;
+    margin-bottom: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    min-height: 350px;
+}
+
+.featured-content {
+    padding: clamp(2rem, 5vw, 3.5rem);
+    color: white;
+    z-index: 10;
+    position: relative;
+}
+
+.featured-content h2 {
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
+    background-clip: unset;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.featured-tagline {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+.featured-btn {
+    background: var(--besties-pink);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 4px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.featured-btn:hover {
+    opacity: 0.95;
+    transform: translateY(-2px);
+}
+
+.featured-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.action-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+}
+
+.action-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    min-height: 220px;
+}
+
+.action-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.action-card-image {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+}
+
+.action-card-header {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+}
+
+.action-card:nth-child(1) .action-card-header {
+    background: linear-gradient(135deg, #6BCB77 0%, #3FA34D 100%);
+}
+
+.action-card:nth-child(2) .action-card-header {
+    background: linear-gradient(135deg, #FF9F43 0%, #E67E22 100%);
+}
+
+.action-card:nth-child(3) .action-card-header {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #E85B8A 100%);
+}
+
+.action-card:nth-child(4) .action-card-header {
+    background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
+}
+
+/* Registration Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: white;
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    padding: 2.5rem 2rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--besties-pink);
+}
+
+.modal-content {
+    padding: 2rem;
+}
+
+.registration-intro {
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.08) 0%, rgba(213, 166, 224, 0.08) 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--besties-pink);
+}
+
+.registration-intro p {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+    font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+    color: var(--dark-gray);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--besties-pink);
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #bbb;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    background: white;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.modal-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.modal-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+.modal-btn.secondary {
+    color: var(--dark-gray);
+}
+
+.modal-btn.secondary:hover {
+    background: #f9f9f9;
+    border-color: var(--besties-pink);
+    color: var(--besties-pink);
+}
+
+@media (max-width: 768px) {
+    .featured-banner {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .featured-image {
+        display: none;
+    }
+
+    .action-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .action-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Movement Section */
+.movement-section {
+    background: white;
+    padding: 80px 20px;
+}
+
+.movement-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.movement-title {
+    text-align: center;
+    font-size: clamp(2rem, 6vw, 3rem);
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+}
+
+.movement-subtitle {
+    text-align: center;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    color: var(--besties-purple);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movement-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.movement-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 15px;
+    border: 2px solid var(--besties-lavender);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.movement-card:hover {
+    border-color: var(--besties-pink);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.15);
+}
+
+.movement-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.movement-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.movement-card p {
+    color: #666;
+    margin: 0;
+}
+
+/* Why Join Section */
+.why-join {
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.08) 0%, rgba(213, 166, 224, 0.08) 100%);
+    padding: 80px 20px;
+}
+
+.why-join-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-join-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.why-join-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.why-join-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--besties-pink);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.why-join-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.15);
+}
+
+.why-join-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--besties-pink);
+}
+
+.why-join-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 0;
+}
+
+/* How to Join Section */
+.how-to-join {
+    background: white;
+    padding: 80px 20px;
+}
+
+.how-to-join-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.how-to-join-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 4rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.join-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.join-step {
+    text-align: center;
+    position: relative;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 auto 1rem;
+}
+
+.join-step h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.join-step p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+.join-cta-section {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    border-radius: 15px;
+    color: white;
+}
+
+.join-cta-section h3 {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.join-cta-section p {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.join-cta-btn {
+    background: white;
+    color: var(--besties-pink);
+    border: 2px solid white;
+    font-weight: 700;
+    padding: 15px 40px;
+    font-size: 1.05rem;
+}
+
+.join-cta-btn:hover {
+    background: rgba(255, 255, 255, 0.95);
+    transform: translateY(-2px);
+}
+
+/* Franchise Section */
+.franchise-section {
+    background: #FAFAFA;
+    padding: 80px 20px;
+}
+
+.franchise-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.franchise-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.franchise-subtitle {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.franchise-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.franchise-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.franchise-text p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.franchise-benefits {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.benefit-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.benefit-icon {
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.benefit-text h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+}
+
+.benefit-text p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0;
+}
+
+.franchise-cta {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 12px;
+    border: 2px solid var(--besties-pink);
+}
+
+.franchise-cta h4 {
+    margin-bottom: 1rem;
+}
+
+.franchise-cta p {
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+/* About Section */
+.about {
+    background: white;
+    padding: 80px 20px;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 3rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-text p {
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+}
+
+.mission-box {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    padding: 2.5rem;
+    border-radius: 15px;
+    color: white;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
+.mission-box h3 {
+    color: white;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.mission-box p {
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Contact Section */
+.contact {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+.contact-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%);
+    z-index: 0;
+}
+
+.contact-container {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    padding: 50px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.contact-card h2 {
+    font-size: 2.5rem;
+    color: var(--besties-pink);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.contact-subtitle {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #333333;
+    transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.9);
+    border-color: var(--besties-pink);
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.3);
+}
+
+.contact-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+}
+
+/* Footer */
+.footer {
+    background: #2d3561;
+    color: white;
+    padding: 60px 20px 20px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 2rem;
+}
+
+.footer-column h4 {
+    color: var(--besties-pink);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--besties-pink);
+}
+
+.footer-divider {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .franchise-content {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-ctas {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-card {
+        padding: 30px;
+    }
+
+    .contact-card h2 {
+        font-size: 1.8rem;
+    }
+
+    .nav-label {
+        display: none;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav-pill {
+        display: none;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-pill" id="navPill">
+            <a href="#home" class="nav-item active" title="Home">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <button class="mobile-menu-close" id="mobileMenuClose">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="mobile-menu-items">
+                <a href="#home" class="mobile-menu-item">Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to Besties</h1>
+            <p class="hero-subtitle">EMPOWERING GIRLS TO SHINE</p>
+        </div>
+        <div class="hero-image-bottom">
+            <img src="assets/image_4.png" alt="The Four Besties" class="besties-characters">
+        </div>
+    </section>
+
+    <!-- Mission Statement Section -->
+    <section style="background: white; padding: 80px 20px; text-align: center;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="font-size: clamp(1.8rem, 5vw, 2.8rem); color: var(--besties-pink); margin-bottom: 1.5rem; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">We are building the next generation of girls who believe in themselves!</h2>
+            <p style="font-size: clamp(0.95rem, 2vw, 1.05rem); color: #555; line-height: 1.8; margin: 0;">Besties is a community where girls build confidence, form lasting friendships, and discover who they are through learning, creativity, and meaningful experiences.</p>
+        </div>
+    </section>
+
+    <!-- Featured & Action Cards Section -->
+    <section class="featured-actions-section">
+        <div class="featured-actions-container">
+            <!-- Featured Banner -->
+            <div class="featured-banner">
+                <div class="featured-content">
+                    <h2>BECOME A BESTIE!</h2>
+                    <p class="featured-tagline">You're one step away from joining a community where girls build confidence, make lasting friendships, and grow together.</p>
+                    <button class="featured-btn" onclick="openMembershipModal()">Learn More →</button>
+                </div>
+                <img src="assets/image_4.png" alt="Besties Community" class="featured-image">
+            </div>
+
+            <!-- Action Cards -->
+            <div class="action-cards">
+                <a href="camp.html" class="action-card" style="text-decoration: none;">
+                    <img src="assets/image_5.jpg" alt="Besties Camp" class="action-card-image">
+                    <div class="action-card-header">BESTIES CAMP</div>
+                </a>
+                <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" class="action-card" style="text-decoration: none;" target="_blank">
+                    <img src="assets/image_1.jpg" alt="Besties Podcast" class="action-card-image">
+                    <div class="action-card-header">BESTIES PODCAST</div>
+                </a>
+                <a href="events.html" class="action-card" style="text-decoration: none;">
+                    <img src="assets/image_3.jpg" alt="Upcoming Events" class="action-card-image">
+                    <div class="action-card-header">UPCOMING EVENTS</div>
+                </a>
+                <a href="shop.html" class="action-card" style="text-decoration: none;">
+                    <img src="assets/image_2.jpg" alt="Shop Merchandise" class="action-card-image">
+                    <div class="action-card-header">SHOP MERCHANDISE</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Learn More CTA Section -->
+    <section style="background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); padding: 80px 20px; text-align: center;">
+        <div style="max-width: 700px; margin: 0 auto;">
+            <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem); color: white; margin-bottom: 1.5rem; background: none; -webkit-text-fill-color: unset; text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">Ready to Join the Movement?</h2>
+            <p style="font-size: 1.05rem; color: rgba(255, 255, 255, 0.95); margin-bottom: 2rem; line-height: 1.8;">Discover how Besties is empowering girls worldwide. Connect with our community, share your story, and find your tribe of supportive friends.</p>
+            <a href="programs.html" class="btn" style="background: white; color: var(--besties-pink); border: 2px solid white; font-weight: 700; padding: 14px 40px; text-decoration: none;">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Membership Information Modal -->
+    <div class="modal-overlay" id="membershipModal">
+        <div class="modal" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2>Besties Annual Membership</h2>
+                <button class="modal-close" id="membershipModalClose">×</button>
+            </div>
+            <div class="modal-content">
+
+                <h3 style="color: var(--besties-pink); font-size: 1.2rem; margin-bottom: 1.5rem;">Your Membership Includes</h3>
+                <ul style="list-style: none; padding: 0; margin-bottom: 2rem;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #555;">
+                        <span style="position: absolute; left: 0; color: var(--besties-pink); font-weight: 700;">✓</span>
+                        <span>Bestie pin/badge</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #555;">
+                        <span style="position: absolute; left: 0; color: var(--besties-pink); font-weight: 700;">✓</span>
+                        <span>Access to members-only activities and experiences</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #555;">
+                        <span style="position: absolute; left: 0; color: var(--besties-pink); font-weight: 700;">✓</span>
+                        <span>Priority access and exclusive discounts on Besties events and merchandise</span>
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative; color: #555;">
+                        <span style="position: absolute; left: 0; color: var(--besties-pink); font-weight: 700;">✓</span>
+                        <span>Opportunities to be featured in Besties content for social media and TV</span>
+                    </li>
+                    <li style="padding-left: 1.5rem; position: relative; color: #555;">
+                        <span style="position: absolute; left: 0; color: var(--besties-pink); font-weight: 700;">✓</span>
+                        <span>Be part of a growing community of girls learning, growing, and shining together</span>
+                    </li>
+                </ul>
+
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.08) 0%, rgba(213, 166, 224, 0.08) 100%); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--besties-pink); margin-bottom: 2rem;">
+                    <h4 style="color: var(--besties-pink); font-size: 1rem; margin-bottom: 0.8rem; font-weight: 600;">Membership Note</h4>
+                    <p style="color: #555; font-size: 0.95rem; line-height: 1.7; margin: 0;">Some events, workshops, experiences, and merchandise require separate registration or purchase. As a Besties Member, you'll enjoy exclusive discounts, priority access, and opportunities available only to members.</p>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn secondary" id="membershipModalClose2">Close</button>
+                    <button type="button" class="modal-btn primary" onclick="closeMembershipModal(); openRegistrationModal({preventDefault: function(){}})">Become a Bestie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div class="modal-overlay" id="registrationModal">
+        <div class="modal" style="max-width: 600px;">
+            <div class="modal-header">
+                <h2>Become a Bestie!</h2>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-content">
+                <form id="registrationForm">
+                    <!-- Membership Fee -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center;">
+                        <div style="color: #666; font-size: 0.95rem; margin-bottom: 0.5rem;">Membership</div>
+                        <div style="font-size: 2rem; font-weight: 700; color: var(--besties-pink);">GHS 200</div>
+                    </div>
+                    <input type="hidden" id="selectedPrice" value="200" required>
+
+                    <!-- Personal Information -->
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="age">Age Group *</label>
+                        <select id="age" name="age" style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem;" required>
+                            <option value="">Select your age group</option>
+                            <option value="6-8">6-8 years</option>
+                            <option value="9-12">9-12 years</option>
+                            <option value="13-15">13-15 years</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="story">Tell Your Story</label>
+                        <textarea id="story" name="story" placeholder="Share why you want to join Besties..." required></textarea>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; text-align: center;">
+                        <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Payment via</div>
+                        <div style="font-size: 1.3rem; font-weight: 600; color: var(--besties-pink);">📱 Mobile Money</div>
+                    </div>
+
+                    <input type="hidden" id="selectedPaymentMethod" value="mobilemoney" required>
+
+                    <!-- Order Summary -->
+                    <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span>Membership:</span>
+                            <span style="font-weight: 600;">Annual - GHS 200</span>
+                        </div>
+                        <div style="border-top: 1px solid #e0e0e0; padding-top: 0.5rem; display: flex; justify-content: space-between;">
+                            <span style="font-weight: 600;">Total:</span>
+                            <span style="font-weight: 700; color: var(--besties-pink); font-size: 1.1rem;">GHS 200</span>
+                        </div>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-btn secondary" id="modalCancel">Cancel</button>
+                        <button type="submit" class="modal-btn primary">Pay & Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Paystack Payment Modal -->
+    <div class="modal-overlay" id="momoPaymentModal">
+        <div class="modal" style="max-width: 500px;">
+            <div class="modal-header">
+                <h2>Secure Payment</h2>
+                <button class="modal-close" id="momoModalClose">×</button>
+            </div>
+            <div class="modal-content">
+                <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem; text-align: center;">
+                    <div style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">Amount to Pay</div>
+                    <div style="font-size: 2.5rem; font-weight: 700; color: var(--besties-pink);" id="paymentAmount">GHS 200</div>
+                    <div style="color: #999; font-size: 0.85rem; margin-top: 0.5rem;">Besties Annual Membership</div>
+                </div>
+
+                <form id="momoPaymentForm">
+                    <div class="form-group">
+                        <label>Select Your Mobile Money Network *</label>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem;">
+                            <button type="button" class="network-option active" onclick="selectNetwork(this, 'mtn')" style="padding: 1rem; border: 2px solid var(--besties-pink); background: white; color: var(--besties-pink); border-radius: 8px; cursor: pointer; font-weight: 600; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+                                <div>MTN</div>
+                            </button>
+                            <button type="button" class="network-option" onclick="selectNetwork(this, 'vodafone')" style="padding: 1rem; border: 2px solid #e0e0e0; background: white; color: #666; border-radius: 8px; cursor: pointer; font-weight: 600; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+                                <div>Vodafone</div>
+                            </button>
+                            <button type="button" class="network-option" onclick="selectNetwork(this, 'airtel')" style="padding: 1rem; border: 2px solid #e0e0e0; background: white; color: #666; border-radius: 8px; cursor: pointer; font-weight: 600; text-align: center;">
+                                <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
+                                <div>Airtel</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="momoPhone">Mobile Money Phone Number *</label>
+                        <input type="tel" id="momoPhone" name="momoPhone" placeholder="0XXXXXXXXX" required style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem;">
+                    </div>
+
+                    <div style="background: #f9f9f9; padding: 1rem; border-radius: 8px; margin-bottom: 1.5rem; font-size: 0.9rem; color: #666;">
+                        <p style="margin: 0; line-height: 1.6;">📱 A prompt will be sent to your phone. Check your phone and follow the instructions to confirm the payment.</p>
+                    </div>
+
+                    <div class="modal-buttons">
+                        <button type="button" class="modal-btn secondary" id="momoCancel">Cancel</button>
+                        <button type="submit" class="modal-btn primary">Send Payment Request</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h4>About</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                        <li><a href="#">TikTok</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Podcast</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Join Now</a></li>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Partnership</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Besties. A Global Movement for Girls. Made to Shine ✨</p>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem;">Created by <a href="https://wa.me/233246381172" target="_blank" style="color: var(--besties-pink); text-decoration: none; font-weight: 600;">Mickey D</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Paystack Script -->
+    <script src="https://js.paystack.co/v1/inline.js"></script>
+
+    <script>
+// Mobile Money Configuration
+let selectedNetwork = 'mtn';
+
+function selectNetwork(element, network) {
+    document.querySelectorAll('.network-option').forEach(btn => {
+        btn.style.borderColor = '#e0e0e0';
+        btn.style.color = '#666';
+    });
+    element.style.borderColor = 'var(--besties-pink)';
+    element.style.color = 'var(--besties-pink)';
+    selectedNetwork = network;
+}
+
+// Handle Mobile Money Payment
+document.getElementById('momoPaymentForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const phone = document.getElementById('momoPhone').value;
+
+    if (!phone) {
+        alert('Please enter your phone number');
+        return;
+    }
+
+    registrationData.selectedNetwork = selectedNetwork;
+    registrationData.momoPhone = phone;
+
+    // Network names
+    const networkNames = {
+        'mtn': 'MTN Mobile Money',
+        'vodafone': 'Vodafone Cash',
+        'airtel': 'Airtel Money'
+    };
+
+    console.log('Mobile Money Payment:', registrationData);
+
+    // Show processing message
+    const processingMsg = document.createElement('div');
+    processingMsg.style.cssText = 'position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.2); z-index: 9999; text-align: center; min-width: 300px;';
+    processingMsg.innerHTML = `
+        <div style="font-size: 3rem; margin-bottom: 1rem;">📱</div>
+        <div style="font-size: 1.2rem; font-weight: 600; color: var(--besties-pink); margin-bottom: 1rem;">Processing Payment</div>
+        <div style="color: #666; margin-bottom: 1.5rem;">Sending prompt to ${phone}<br>via ${networkNames[selectedNetwork]}</div>
+        <div style="font-size: 2rem;">⏳</div>
+    `;
+    document.body.appendChild(processingMsg);
+
+    // Simulate payment processing
+    setTimeout(() => {
+        processingMsg.remove();
+
+        // Success message
+        alert('✅ DEMO MODE\n\n' +
+            'Welcome to Besties, ' + registrationData.fullName + '! 🎉\n\n' +
+            'Network: ' + networkNames[selectedNetwork] + '\n' +
+            'Phone: ' + phone + '\n' +
+            'Amount: GHS ' + registrationData.price + '\n\n' +
+            'In production, a payment prompt would be sent to your phone.\n' +
+            'Your registration is complete!');
+
+        closeMomoModal();
+        registrationForm.reset();
+        closeRegistrationModal();
+    }, 2000);
+});
+
+// Navigation
+
+const hamburgerMenu = document.getElementById('hamburgerMenu');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
+
+if (hamburgerMenu) {
+    hamburgerMenu.onclick = function() {
+        hamburgerMenu.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    };
+}
+
+if (mobileMenuClose) {
+    mobileMenuClose.onclick = function() {
+        hamburgerMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+}
+
+mobileMenuItems.forEach(item => {
+    item.onclick = function() {
+        hamburgerMenu.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+});
+
+// Navbar scroll handler
+const navbar = document.querySelector('.navbar');
+let lastScrollY = 0;
+if (navbar) {
+    window.addEventListener('scroll', function() {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            navbar.classList.add('hidden');
+        } else {
+            navbar.classList.remove('hidden');
+        }
+        lastScrollY = currentScrollY;
+    }, { passive: true });
+}
+
+// Active nav item
+const navItems = document.querySelectorAll('.nav-item');
+const sections = document.querySelectorAll('section');
+
+window.addEventListener('scroll', () => {
+    let currentSection = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 200) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${currentSection}`) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// Membership Modal
+const membershipModal = document.getElementById('membershipModal');
+const membershipModalClose = document.getElementById('membershipModalClose');
+const membershipModalClose2 = document.getElementById('membershipModalClose2');
+
+function openMembershipModal() {
+    membershipModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMembershipModal() {
+    membershipModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+membershipModalClose.addEventListener('click', closeMembershipModal);
+membershipModalClose2.addEventListener('click', closeMembershipModal);
+
+membershipModal.addEventListener('click', (e) => {
+    if (e.target === membershipModal) {
+        closeMembershipModal();
+    }
+});
+
+// Registration Modal
+const registrationModal = document.getElementById('registrationModal');
+const modalClose = document.getElementById('modalClose');
+const modalCancel = document.getElementById('modalCancel');
+const registrationForm = document.getElementById('registrationForm');
+const registerButtons = document.querySelectorAll('[data-register-btn]');
+
+// Get all register buttons (including primary button and featured button)
+document.querySelectorAll('.btn-primary, .featured-btn').forEach(btn => {
+    if (btn.textContent.includes('Register')) {
+        btn.addEventListener('click', openRegistrationModal);
+    }
+});
+
+function openRegistrationModal(e) {
+    e.preventDefault();
+    registrationModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeRegistrationModal() {
+    registrationModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeRegistrationModal);
+modalCancel.addEventListener('click', closeRegistrationModal);
+
+registrationModal.addEventListener('click', (e) => {
+    if (e.target === registrationModal) {
+        closeRegistrationModal();
+    }
+});
+
+// Payment Method Selection
+window.selectPaymentMethod = function(element, method) {
+    document.querySelectorAll('.payment-option-btn').forEach(btn => {
+        btn.style.borderColor = '#e0e0e0';
+        btn.style.color = '#666';
+    });
+    element.style.borderColor = 'var(--besties-pink)';
+    element.style.color = 'var(--besties-pink)';
+
+    document.getElementById('selectedPaymentMethod').value = method;
+
+    const cardDetails = document.getElementById('cardDetails');
+    if (method === 'card') {
+        cardDetails.style.display = 'block';
+    } else {
+        cardDetails.style.display = 'none';
+    }
+};
+
+// Form submission
+// Store registration data
+let registrationData = {};
+
+registrationForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const price = document.getElementById('selectedPrice').value;
+    const paymentMethod = document.getElementById('selectedPaymentMethod').value;
+
+    registrationData = {
+        fullName: document.getElementById('fullName').value,
+        email: document.getElementById('email').value,
+        ageGroup: document.getElementById('age').value,
+        story: document.getElementById('story').value,
+        price: price,
+        paymentMethod: paymentMethod
+    };
+
+    // Open MoMo payment modal
+    document.getElementById('paymentAmount').textContent = 'GHS ' + price;
+    document.getElementById('momoPaymentModal').classList.add('active');
+});
+
+// MoMo Payment Modal
+const momoPaymentModal = document.getElementById('momoPaymentModal');
+const momoModalClose = document.getElementById('momoModalClose');
+const momoCancel = document.getElementById('momoCancel');
+const momoPaymentForm = document.getElementById('momoPaymentForm');
+
+function closeMomoModal() {
+    momoPaymentModal.classList.remove('active');
+    momoPaymentForm.reset();
+}
+
+momoModalClose.addEventListener('click', closeMomoModal);
+momoCancel.addEventListener('click', closeMomoModal);
+
+momoPaymentModal.addEventListener('click', (e) => {
+    if (e.target === momoPaymentModal) {
+        closeMomoModal();
+    }
+});
+
+    </script>
+</body>
+</html>
