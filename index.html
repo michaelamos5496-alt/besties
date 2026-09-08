@@ -392,6 +392,68 @@ p {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.hero-countdown-pill {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 12px 22px;
+    text-decoration: none;
+    position: relative;
+    z-index: 20;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    animation: fadeInUp 1s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-countdown-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero-countdown-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--dark-gray);
+    opacity: 0.75;
+}
+
+.hero-countdown-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.hero-countdown-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.1;
+}
+
+.hero-countdown-stat span {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 700;
+    color: var(--besties-pink);
+}
+
+.hero-countdown-stat small {
+    font-size: 0.6rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--dark-gray);
+    opacity: 0.7;
+    margin-top: 2px;
+}
+
 .hero-ctas {
     display: flex;
     flex-direction: column;
@@ -1323,6 +1385,11 @@ p {
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
             </a>
+            <a href="our-story.html" class="nav-item" title="Our Story">
+                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            </a>
         </div>
     </nav>
 
@@ -1337,6 +1404,7 @@ p {
             </button>
             <div class="mobile-menu-items">
                 <a href="#home" class="mobile-menu-item">Home</a>
+                <a href="our-story.html" class="mobile-menu-item">Our Story</a>
             </div>
         </div>
     </div>
@@ -1346,6 +1414,14 @@ p {
         <div class="hero-content">
             <h1 class="hero-title">Welcome to Besties</h1>
             <p class="hero-subtitle">EMPOWERING GIRLS TO SHINE</p>
+            <a href="camp.html" class="hero-countdown-pill" id="heroCountdownPill">
+                <div class="hero-countdown-label">Next Besties Camp</div>
+                <div class="hero-countdown-row">
+                    <div class="hero-countdown-stat"><span id="heroCdDays">00</span><small>Days</small></div>
+                    <div class="hero-countdown-stat"><span id="heroCdHours">00</span><small>Hrs</small></div>
+                    <div class="hero-countdown-stat"><span id="heroCdMins">00</span><small>Min</small></div>
+                </div>
+            </a>
         </div>
         <div class="hero-image-bottom">
             <img src="assets/image_4.png" alt="The Four Besties" class="besties-characters">
@@ -1391,6 +1467,18 @@ p {
                     <img src="assets/image_2.jpg" alt="Shop Merchandise" class="action-card-image">
                     <div class="action-card-header">SHOP MERCHANDISE</div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Teaser -->
+    <section style="padding: 80px 40px; background: var(--light-gray);">
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
+            <img src="assets/image_1.jpg" alt="Our Story" style="flex: 1 1 360px; width: 100%; max-width: 480px; height: 320px; border-radius: 16px; object-fit: cover; display: block; margin: 0 auto;">
+            <div style="flex: 1 1 360px;">
+                <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 1.25rem; color: var(--dark-gray); background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">How It All Started</h2>
+                <p style="font-size: 1.05rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">Besties began with a phone call and a WhatsApp voice note between four girls that grew into a podcast, then a community, and now camps and experiences reaching girls everywhere. Hear it straight from our founder, Aggor Yorm.</p>
+                <a href="our-story.html" style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); color: white; border-radius: 6px; font-weight: 700; text-decoration: none;">Read Our Story →</a>
             </div>
         </div>
     </section>
@@ -1581,6 +1669,7 @@ p {
                     <h4>About</h4>
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
+                        <li><a href="our-story.html">Our Story</a></li>
                     </ul>
                 </div>
 
@@ -1880,6 +1969,36 @@ momoPaymentModal.addEventListener('click', (e) => {
         closeMomoModal();
     }
 });
+
+// Hero countdown stats to next camp
+(function initHeroCountdown() {
+    const pill = document.getElementById('heroCountdownPill');
+    const cdDays = document.getElementById('heroCdDays');
+    const cdHours = document.getElementById('heroCdHours');
+    const cdMins = document.getElementById('heroCdMins');
+    if (!pill || !cdDays || !cdHours || !cdMins) return;
+
+    const nextCampDate = new Date('2026-10-10T00:00:00');
+
+    function tick() {
+        const diff = nextCampDate - new Date();
+        if (diff <= 0) {
+            pill.style.display = 'none';
+            clearInterval(timerId);
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+
+        cdDays.textContent = String(days).padStart(2, '0');
+        cdHours.textContent = String(hours).padStart(2, '0');
+        cdMins.textContent = String(mins).padStart(2, '0');
+    }
+
+    tick();
+    const timerId = setInterval(tick, 60000);
+})();
 
     </script>
 </body>

@@ -253,6 +253,14 @@ html {
     line-height: 1.8;
 }
 
+.about-camp-intro p {
+    margin-bottom: 1rem;
+}
+
+.about-camp-intro p:last-child {
+    margin-bottom: 0;
+}
+
 .about-camp-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -374,37 +382,38 @@ html {
     margin: 0 auto 3rem;
 }
 
-.stories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.story-card {
-    display: block;
+.featured-story {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
     text-decoration: none;
     color: inherit;
+    transition: all 0.3s ease;
 }
 
-.story-card:hover {
+.featured-story:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 30px rgba(63, 163, 77, 0.12);
 }
 
-.story-image {
-    width: 100%;
-    height: 180px;
+.featured-story-image {
+    flex: 1 1 360px;
+    height: 320px;
     object-fit: cover;
     display: block;
 }
 
-.story-content {
-    padding: 1.5rem;
+.featured-story-content {
+    flex: 1 1 360px;
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .story-date {
@@ -416,18 +425,28 @@ html {
     margin-bottom: 0.5rem;
 }
 
-.story-card h4 {
+.featured-story-content h3 {
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.15rem;
-    margin-bottom: 0.75rem;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--dark-gray);
 }
 
-.story-card p {
-    font-size: 0.9rem;
+.featured-story-content p {
+    font-size: 0.95rem;
     color: #666;
-    line-height: 1.6;
-    margin: 0;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.featured-story-link {
+    font-weight: 700;
+    color: var(--besties-green);
+    transition: color 0.3s ease;
+}
+
+.featured-story:hover .featured-story-link {
+    color: var(--besties-pink);
 }
 
 /* CTA Section */
@@ -522,6 +541,10 @@ html {
         margin-bottom: 1rem;
     }
 
+    .featured-story-image {
+        height: 220px;
+    }
+
     .cta-section {
         padding: 60px 20px;
     }
@@ -586,7 +609,10 @@ html {
     <section class="about-camp-section">
         <div class="about-camp-container">
             <h2>What Besties Camp Is All About</h2>
-            <p class="about-camp-intro">Besties Camp is where girls disconnect from screens and reconnect with themselves — trying new things, making mistakes safely, and finding out just how capable they are. Every session blends outdoor adventure with the same confidence-building spirit at the heart of everything Besties does, all under the care of trained, background-checked staff.</p>
+            <div class="about-camp-intro">
+                <p>Besties Camp is an immersive residential experience where girls come together to make new friends, discover new interests, learn new skills and create unforgettable memories.</p>
+                <p>Each camp brings a new theme, adventure and experience, with every edition thoughtfully designed to blend friendship, creativity, learning, confidence and lots of fun in an environment where girls can be themselves, try new things and build meaningful connections within the Besties community.</p>
+            </div>
             <div class="about-camp-grid">
                 <div class="about-camp-feature">
                     <div class="icon">🏕️</div>
@@ -636,37 +662,20 @@ html {
         </div>
     </section>
 
-    <!-- Camp Stories -->
+    <!-- Camp Story -->
     <section class="stories-section">
         <div class="stories-container">
-            <h2>Stories From Past Camps</h2>
-            <p class="stories-subtitle">Recaps from previous Besties Camp sessions — a look back at what campers got up to.</p>
-            <div class="stories-grid">
-                <a class="story-card" href="camp-story-summer.html">
-                    <img src="assets/image_5.jpg" alt="Summer Besties Camp recap" class="story-image">
-                    <div class="story-content">
-                        <div class="story-date">June 2026</div>
-                        <h4>Summer Besties Camp: A Week of Firsts</h4>
-                        <p>60 girls spent six days hiking Aburi's trails, sleeping under the stars, and cheering each other through a ropes course most had never attempted. By the closing campfire, cabins that started as strangers were trading contact info and planning reunions.</p>
-                    </div>
-                </a>
-                <a class="story-card" href="camp-story-easter.html">
-                    <img src="assets/image_10.jpg" alt="Easter Camp Getaway recap" class="story-image">
-                    <div class="story-content">
-                        <div class="story-date">April 2026</div>
-                        <h4>Easter Camp Getaway Recap</h4>
-                        <p>A long-weekend camp packed with egg-hunt challenges, team relays, and a talent night that ran an hour past schedule because nobody wanted it to end. Campers left with new best friends and a few new songs stuck in their heads.</p>
-                    </div>
-                </a>
-                <a class="story-card" href="camp-story-newyear.html">
-                    <img src="assets/image_15.jpg" alt="New Year Kickoff Camp recap" class="story-image">
-                    <div class="story-content">
-                        <div class="story-date">January 2026</div>
-                        <h4>New Year Kickoff Camp</h4>
-                        <p>Our first camp of the year focused on goal-setting and teamwork, with campers building vision boards by day and roasting marshmallows by night. A great reminder that big dreams are easier to chase with Besties by your side.</p>
-                    </div>
-                </a>
-            </div>
+            <h2>The Besties Camp Story So Far</h2>
+            <p class="stories-subtitle">A recap of our very first Besties Camp — and just the beginning.</p>
+            <a class="featured-story" href="camp-story-summer.html">
+                <img src="gallery-images/montage-1.jpg" alt="Besties Summer Camp recap" class="featured-story-image">
+                <div class="featured-story-content">
+                    <div class="story-date">Our First Camp</div>
+                    <h3>Besties Summer Camp: 60 Hours of Friendship, Fun &amp; Unforgettable Moments</h3>
+                    <p>12 girls, including the four original Besties from the Best Girlfriends podcast, came together for three days and two nights of friendship, creativity, learning and plenty of fun — the very first Besties Camp, now officially in the books.</p>
+                    <span class="featured-story-link">Read the Full Story →</span>
+                </div>
+            </a>
         </div>
     </section>
 

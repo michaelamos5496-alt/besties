@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>How It All Started: A Note From the Founder | Besties</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --besties-green: #3FA34D;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero-image {
+    position: relative;
+    min-height: 55vh;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+}
+
+.hero-image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.7) 0%, rgba(213, 166, 224, 0.7) 100%);
+    z-index: 2;
+}
+
+.hero-content-wrapper {
+    position: relative;
+    z-index: 3;
+    max-width: 800px;
+}
+
+.story-detail-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.4rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.25rem;
+}
+
+.hero-image h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    margin-bottom: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.hero-byline {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Story Detail */
+.story-detail-section {
+    padding: 80px 40px;
+}
+
+.story-detail-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.story-detail-container p {
+    font-size: 1.08rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.story-detail-container p.story-emphasis {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--besties-pink);
+}
+
+.story-detail-container p.story-signoff {
+    margin-top: 2.5rem;
+}
+
+.story-detail-container p.story-signature {
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    color: var(--dark-gray);
+}
+
+.story-detail-container p.story-signature-title {
+    color: #888;
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 40px;
+    text-align: center;
+    background: var(--light-gray);
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 14px 40px;
+    border: 2px solid var(--besties-pink);
+    background: white;
+    color: var(--besties-pink);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background: var(--besties-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, var(--besties-pink) 0%, #FF8FB3 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero-image {
+        min-height: 45vh;
+        padding: 40px 20px;
+    }
+
+    .story-detail-section {
+        padding: 60px 20px;
+    }
+
+    .cta-section {
+        padding: 60px 20px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-image">
+        <img src="assets/image_1.jpg" alt="Besties Founder Story" class="hero-image-bg">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-content-wrapper">
+            <div class="story-detail-badge">Our Story</div>
+            <h1>How It All Started: A Note From the Founder</h1>
+            <p class="hero-byline">By Aggor Yorm, Founder of Egli Studios and Besties</p>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story-detail-section">
+        <div class="story-detail-container">
+            <p>Every now and then, an idea arrives in the most unexpected way.</p>
+
+            <p class="story-emphasis">For me, Besties began with a phone call.</p>
+
+            <p>I was speaking with Ola, the mother of Kelly, one of the girls who would eventually become one of the original Besties. During our conversation, I heard her listening to a voice note and asked, "Who are those speaking?"</p>
+
+            <p>She told me it was Kelly and her friends having a conversation in a WhatsApp group chat.</p>
+
+            <p>I listened, and something immediately clicked. These 9 year old girls were funny, expressive, curious and completely themselves. I remember thinking, there is a show here.</p>
+
+            <p>That simple conversation became Best Girlfriends, a podcast featuring four girls and created to give young girls a space to talk, share, learn and be heard.</p>
+
+            <p>But somewhere along the way, we realised we were building something bigger than a podcast.</p>
+
+            <p>The show grew into a community. We took the Best Girlfriends experience from YouTube to traditional television, celebrated the end of our first season with a live party, and continued to watch more girls connect with the world of Besties. As we prepared for Season 2, it became increasingly clear that the girls didn't just want to watch Besties. They wanted to be part of it.</p>
+
+            <p class="story-emphasis">And that is how Besties was born.</p>
+
+            <p>Besties is our growing community for girls, currently creating experiences for girls aged 8–12, with plans to grow alongside them and welcome even more girls into the community. Through camps, events, content, mentorship and carefully curated experiences, we want to give girls things they may not always learn in a classroom or even at home: confidence, communication, creativity, independence, collaboration, self-expression and the courage to navigate the world around them.</p>
+
+            <p>Our first Besties Summer Camp was our first big step in bringing that vision to life.</p>
+
+            <p>For 60 hours, 12 girls lived, learned, created, competed, laughed and made memories together. And as I watched them experience the camp, I was reminded of why we started this journey in the first place.</p>
+
+            <p class="story-emphasis">We are not simply creating content for girls. We are creating a world they can grow with.</p>
+
+            <p>A world filled with friendship, learning, creativity, adventure and experiences that stay with them long after the cameras stop rolling.</p>
+
+            <p>Behind Besties is also a carefully selected team of women who share that vision. Producers, teachers, creatives, chaperones, mentors and women who are building meaningful things of their own. Because if we are asking these girls to dream, to lead and to become confident young women, we also want them surrounded by women who embody those possibilities.</p>
+
+            <p class="story-emphasis">We are only getting started.</p>
+
+            <p>The Besties community will continue to grow, evolve and create new experiences for girls at different stages of their journey.</p>
+
+            <p>And perhaps one day, we will look back at that little WhatsApp voice note and realise that four girls simply having a conversation started something far bigger than any of us imagined.</p>
+
+            <p class="story-signoff">Welcome to Besties. 💕</p>
+            <p class="story-signature">Aggor Yorm</p>
+            <p class="story-signature-title">Founder, Egli Studios</p>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Be Part of the Next Chapter</h2>
+        <p>From camps to community events, there are plenty of ways to grow with Besties. Reach out and let's talk.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/233248051774" class="cta-btn primary" target="_blank">Message Us on WhatsApp</a>
+            <a href="camp.html" class="cta-btn">Explore Besties Camp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
+    </footer>
+</body>
+</html>
