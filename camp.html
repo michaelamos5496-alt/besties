@@ -269,6 +269,294 @@ html {
     box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
 }
 
+/* Countdown / Registration Banner */
+.countdown-banner {
+    background: linear-gradient(135deg, var(--besties-green) 0%, #2d7a3a 100%);
+    padding: 3rem 40px;
+    text-align: center;
+    color: white;
+}
+
+.registration-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+}
+
+.registration-badge .dot {
+    width: 8px;
+    height: 8px;
+    background: #7CFC00;
+    border-radius: 50%;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+.countdown-banner h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    margin-bottom: 0.5rem;
+}
+
+.countdown-banner .next-camp-name {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.countdown-unit {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    min-width: 80px;
+}
+
+.countdown-unit .value {
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    font-weight: 700;
+    font-family: 'Fredoka', sans-serif;
+    line-height: 1;
+}
+
+.countdown-unit .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.85;
+    margin-top: 0.35rem;
+}
+
+.countdown-banner .cta-btn {
+    background: white;
+    color: var(--besties-green);
+    border-color: white;
+}
+
+.countdown-banner .cta-btn:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* About Camp Section */
+.about-camp-section {
+    padding: 80px 40px;
+    background: var(--light-gray);
+}
+
+.about-camp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-camp-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+}
+
+.about-camp-intro {
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    color: #666;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.about-camp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.about-camp-feature {
+    background: white;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.about-camp-feature .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.about-camp-feature h4 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--besties-green);
+}
+
+.about-camp-feature p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 0;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 80px 40px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.gallery-subtitle {
+    text-align: center;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.gallery-video-wrapper {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-video-wrapper video {
+    width: 100%;
+    display: block;
+    background: #000;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: block;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* Camp Stories Section */
+.stories-section {
+    padding: 80px 40px;
+    background: var(--light-gray);
+}
+
+.stories-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.stories-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.stories-subtitle {
+    text-align: center;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.story-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.story-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(63, 163, 77, 0.12);
+}
+
+.story-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.story-content {
+    padding: 1.5rem;
+}
+
+.story-date {
+    font-size: 0.8rem;
+    color: var(--besties-green);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+}
+
+.story-card h4 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    color: var(--dark-gray);
+}
+
+.story-card p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+}
+
 /* Modal */
 .modal-overlay {
     display: none;
@@ -546,6 +834,18 @@ html {
     .camp-btn {
         width: 100%;
     }
+
+    .countdown-banner,
+    .about-camp-section,
+    .gallery-section,
+    .stories-section {
+        padding: 60px 20px;
+    }
+
+    .countdown-unit {
+        min-width: 65px;
+        padding: 0.75rem 0.85rem;
+    }
 }
 
     </style>
@@ -567,38 +867,59 @@ html {
         </div>
     </section>
 
-    <!-- Camp Sessions -->
-    <section class="camp-section">
-        <div class="camp-grid">
-            <!-- Camp 1 -->
-            <div class="camp-card">
-                <img src="assets/image_5.jpg" alt="Summer Besties Camp" class="camp-image">
-                <div class="camp-content">
-                    <div class="camp-date">June 15-20, 2026</div>
-                    <h3>Summer Besties Camp</h3>
-                    <div class="camp-location">📍 Aburi Hills Campground</div>
-                    <p class="camp-description">A week of hiking, campfires, and cabin bonding. Girls build lifelong friendships while trying new outdoor skills together.</p>
-                    <div class="camp-details">
-                        <div class="camp-detail-item">👥 Ages 8-15</div>
-                        <div class="camp-detail-item">⏱️ 6 Days / 5 Nights</div>
-                        <div class="camp-detail-item">🎯 Limited Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(63, 163, 77, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Camp Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-green);">GHS 1,500</div>
-                    </div>
-                    <div class="camp-buttons">
-                        <button class="camp-btn primary" onclick="openCampModal('Summer Besties Camp', 1500)">Book Now</button>
-                    </div>
+    <!-- Countdown / Registration Banner -->
+    <section class="countdown-banner" id="countdownBanner">
+        <div class="registration-badge"><span class="dot"></span> Registration Open</div>
+        <h2>Countdown to Our Next Camp</h2>
+        <p class="next-camp-name"></p>
+        <div class="countdown-timer">
+            <div class="countdown-unit"><div class="value" id="cdDays">00</div><div class="label">Days</div></div>
+            <div class="countdown-unit"><div class="value" id="cdHours">00</div><div class="label">Hours</div></div>
+            <div class="countdown-unit"><div class="value" id="cdMins">00</div><div class="label">Mins</div></div>
+            <div class="countdown-unit"><div class="value" id="cdSecs">00</div><div class="label">Secs</div></div>
+        </div>
+        <a href="#camp-sessions" class="cta-btn primary">Reserve Your Spot</a>
+    </section>
+
+    <!-- About Camp -->
+    <section class="about-camp-section">
+        <div class="about-camp-container">
+            <h2>What Besties Camp Is All About</h2>
+            <p class="about-camp-intro">Besties Camp is where girls disconnect from screens and reconnect with themselves — trying new things, making mistakes safely, and finding out just how capable they are. Every session blends outdoor adventure with the same confidence-building spirit at the heart of everything Besties does, all under the care of trained, background-checked staff.</p>
+            <div class="about-camp-grid">
+                <div class="about-camp-feature">
+                    <div class="icon">🏕️</div>
+                    <h4>Outdoor Adventure</h4>
+                    <p>Hiking, campfires, team games, and hands-on outdoor skills in a safe, supervised environment.</p>
+                </div>
+                <div class="about-camp-feature">
+                    <div class="icon">💪</div>
+                    <h4>Confidence Building</h4>
+                    <p>Every activity is designed to help campers try new things and discover what they're capable of.</p>
+                </div>
+                <div class="about-camp-feature">
+                    <div class="icon">🤝</div>
+                    <h4>Lifelong Friendships</h4>
+                    <p>Cabin bonding, group challenges, and shared campfire nights turn strangers into Besties for life.</p>
+                </div>
+                <div class="about-camp-feature">
+                    <div class="icon">🛡️</div>
+                    <h4>Safe &amp; Supervised</h4>
+                    <p>Trained, background-checked staff and small group ratios keep every camper safe and cared for.</p>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Camp 2 -->
-            <div class="camp-card">
-                <img src="assets/image_5.jpg" alt="Weekend Adventure Camp" class="camp-image">
+    <!-- Camp Sessions -->
+    <section class="camp-section" id="camp-sessions">
+        <div class="camp-grid">
+            <!-- Camp 1 -->
+            <div class="camp-card" data-camp-name="Fall Adventure Camp" data-camp-date="2026-10-10">
+                <img src="assets/image_5.jpg" alt="Fall Adventure Camp" class="camp-image">
                 <div class="camp-content">
-                    <div class="camp-date">July 4-6, 2026</div>
-                    <h3>Weekend Adventure Camp</h3>
+                    <div class="camp-date">October 10-12, 2026</div>
+                    <h3>Fall Adventure Camp</h3>
                     <div class="camp-location">📍 Shai Hills Camp Grounds</div>
                     <p class="camp-description">A short, action-packed weekend away — rope courses, team games, and starlit campfire circles for new and returning campers.</p>
                     <div class="camp-details">
@@ -611,16 +932,16 @@ html {
                         <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-green);">GHS 650</div>
                     </div>
                     <div class="camp-buttons">
-                        <button class="camp-btn primary" onclick="openCampModal('Weekend Adventure Camp', 650)">Book Now</button>
+                        <button class="camp-btn primary" onclick="openCampModal('Fall Adventure Camp', 650)">Book Now</button>
                     </div>
                 </div>
             </div>
 
-            <!-- Camp 3 -->
-            <div class="camp-card">
+            <!-- Camp 2 -->
+            <div class="camp-card" data-camp-name="Day Camp Week" data-camp-date="2026-11-02">
                 <img src="assets/image_5.jpg" alt="Day Camp Week" class="camp-image">
                 <div class="camp-content">
-                    <div class="camp-date">August 3-7, 2026</div>
+                    <div class="camp-date">November 2-6, 2026</div>
                     <h3>Day Camp Week</h3>
                     <div class="camp-location">📍 Besties Community Center</div>
                     <p class="camp-description">A fun-filled week of games, crafts, and team activities — campers head home each evening. Perfect for first-time campers.</p>
@@ -639,8 +960,8 @@ html {
                 </div>
             </div>
 
-            <!-- Camp 4 -->
-            <div class="camp-card">
+            <!-- Camp 3 -->
+            <div class="camp-card" data-camp-name="Holiday Besties Camp" data-camp-date="2026-12-20">
                 <img src="assets/image_5.jpg" alt="Holiday Besties Camp" class="camp-image">
                 <div class="camp-content">
                     <div class="camp-date">December 20-24, 2026</div>
@@ -658,6 +979,64 @@ html {
                     </div>
                     <div class="camp-buttons">
                         <button class="camp-btn primary" onclick="openCampModal('Holiday Besties Camp', 1300)">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <h2>Camp Moments</h2>
+            <p class="gallery-subtitle">A peek at the adventures, friendships, and campfire memories from past Besties Camp sessions.</p>
+            <div class="gallery-video-wrapper">
+                <video controls preload="none" poster="assets/image_5.jpg">
+                    <source src="assets/events-bg.mp4" type="video/mp4">
+                    Your browser does not support HTML5 video.
+                </video>
+            </div>
+            <div class="gallery-grid">
+                <a href="gallery-images/montage-1.jpg" class="gallery-item" target="_blank"><img src="gallery-images/montage-1.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/montage-2.jpg" class="gallery-item" target="_blank"><img src="gallery-images/montage-2.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/montage-3.jpg" class="gallery-item" target="_blank"><img src="gallery-images/montage-3.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/montage-4.jpg" class="gallery-item" target="_blank"><img src="gallery-images/montage-4.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/others-1.jpg" class="gallery-item" target="_blank"><img src="gallery-images/others-1.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/others-2.jpg" class="gallery-item" target="_blank"><img src="gallery-images/others-2.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/others-3.jpg" class="gallery-item" target="_blank"><img src="gallery-images/others-3.jpg" alt="Besties Camp moment"></a>
+                <a href="gallery-images/montage-5.jpg" class="gallery-item" target="_blank"><img src="gallery-images/montage-5.jpg" alt="Besties Camp moment"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Camp Stories -->
+    <section class="stories-section">
+        <div class="stories-container">
+            <h2>Stories From Past Camps</h2>
+            <p class="stories-subtitle">Recaps from previous Besties Camp sessions — a look back at what campers got up to.</p>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <img src="assets/image_5.jpg" alt="Summer Besties Camp recap" class="story-image">
+                    <div class="story-content">
+                        <div class="story-date">June 2026</div>
+                        <h4>Summer Besties Camp: A Week of Firsts</h4>
+                        <p>60 girls spent six days hiking Aburi's trails, sleeping under the stars, and cheering each other through a ropes course most had never attempted. By the closing campfire, cabins that started as strangers were trading contact info and planning reunions.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <img src="assets/image_5.jpg" alt="Easter Camp Getaway recap" class="story-image">
+                    <div class="story-content">
+                        <div class="story-date">April 2026</div>
+                        <h4>Easter Camp Getaway Recap</h4>
+                        <p>A long-weekend camp packed with egg-hunt challenges, team relays, and a talent night that ran an hour past schedule because nobody wanted it to end. Campers left with new best friends and a few new songs stuck in their heads.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <img src="assets/image_5.jpg" alt="New Year Kickoff Camp recap" class="story-image">
+                    <div class="story-content">
+                        <div class="story-date">January 2026</div>
+                        <h4>New Year Kickoff Camp</h4>
+                        <p>Our first camp of the year focused on goal-setting and teamwork, with campers building vision boards by day and roasting marshmallows by night. A great reminder that big dreams are easier to chase with Besties by your side.</p>
                     </div>
                 </div>
             </div>
@@ -745,6 +1124,58 @@ html {
     </footer>
 
     <script>
+// Countdown to next upcoming camp session
+function initCampCountdown() {
+    const banner = document.getElementById('countdownBanner');
+    const nameEl = banner.querySelector('.next-camp-name');
+    const timerEl = banner.querySelector('.countdown-timer');
+    const cards = document.querySelectorAll('.camp-card[data-camp-date]');
+
+    let next = null;
+    cards.forEach(card => {
+        const date = new Date(card.dataset.campDate + 'T00:00:00');
+        if (date > new Date() && (!next || date < next.date)) {
+            next = { date, name: card.dataset.campName };
+        }
+    });
+
+    if (!next) {
+        nameEl.textContent = 'Stay tuned for our next camp announcement!';
+        timerEl.style.display = 'none';
+        return;
+    }
+
+    nameEl.textContent = `Next up: ${next.name}`;
+
+    const cdDays = document.getElementById('cdDays');
+    const cdHours = document.getElementById('cdHours');
+    const cdMins = document.getElementById('cdMins');
+    const cdSecs = document.getElementById('cdSecs');
+
+    function tick() {
+        const diff = next.date - new Date();
+        if (diff <= 0) {
+            clearInterval(timerId);
+            timerEl.innerHTML = '<div style="font-size: 1.2rem;">Camp is happening now! 🎉</div>';
+            return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        cdDays.textContent = String(days).padStart(2, '0');
+        cdHours.textContent = String(hours).padStart(2, '0');
+        cdMins.textContent = String(mins).padStart(2, '0');
+        cdSecs.textContent = String(secs).padStart(2, '0');
+    }
+
+    tick();
+    const timerId = setInterval(tick, 1000);
+}
+
+initCampCountdown();
+
 const campModal = document.getElementById('campModal');
 const campModalClose = document.getElementById('campModalClose');
 const campModalCancel = document.getElementById('campModalCancel');
