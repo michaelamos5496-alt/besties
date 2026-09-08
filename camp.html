@@ -139,130 +139,6 @@ html {
     max-width: 600px;
 }
 
-/* Camp Section */
-.camp-section {
-    padding: 80px 40px;
-}
-
-.camp-card {
-    max-width: 500px;
-    margin: 0 auto;
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    background: white;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-}
-
-.camp-card:hover {
-    border-color: var(--besties-green);
-    box-shadow: 0 8px 30px rgba(63, 163, 77, 0.12);
-    transform: translateY(-5px);
-}
-
-.camp-image {
-    width: 100%;
-    height: 240px;
-    object-fit: cover;
-    display: block;
-}
-
-.camp-content {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    flex-grow: 1;
-}
-
-.camp-date {
-    font-size: 0.85rem;
-    color: var(--besties-green);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.camp-card h3 {
-    font-size: 1.4rem;
-    font-family: 'Fredoka', sans-serif;
-    color: var(--dark-gray);
-    font-weight: 600;
-    margin: 0;
-}
-
-.camp-location {
-    font-size: 0.9rem;
-    color: #999;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.camp-description {
-    font-size: 0.95rem;
-    color: #666;
-    line-height: 1.6;
-    flex-grow: 1;
-}
-
-.camp-details {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: #777;
-}
-
-.camp-detail-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.camp-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-
-.camp-btn {
-    flex: 1;
-    padding: 12px 20px;
-    border: 2px solid var(--besties-green);
-    background: white;
-    color: var(--besties-green);
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.camp-btn:hover {
-    background: var(--besties-green);
-    color: white;
-    transform: translateY(-2px);
-}
-
-.camp-btn.primary {
-    background: linear-gradient(135deg, var(--besties-green) 0%, #6BCB77 100%);
-    color: white;
-    border-color: transparent;
-}
-
-.camp-btn.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
-}
-
 /* Countdown / Registration Banner */
 .countdown-banner {
     background: linear-gradient(135deg, var(--besties-green) 0%, #2d7a3a 100%);
@@ -551,160 +427,6 @@ html {
     margin: 0;
 }
 
-/* Modal */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 2000;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(4px);
-}
-
-.modal-overlay.active {
-    display: flex;
-}
-
-.modal {
-    background: white;
-    border-radius: 15px;
-    max-width: 500px;
-    width: 90%;
-    max-height: 90vh;
-    overflow-y: auto;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    animation: slideIn 0.3s ease;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-50px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.modal-header {
-    padding: 2.5rem 2rem 1.5rem;
-    border-bottom: 1px solid #f0f0f0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
-.modal-header h2 {
-    font-size: 1.8rem;
-    color: var(--dark-gray);
-    font-family: 'Fredoka', sans-serif;
-    margin: 0;
-}
-
-.modal-close {
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: #999;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s ease;
-}
-
-.modal-close:hover {
-    color: var(--besties-green);
-}
-
-.modal-content {
-    padding: 2rem;
-}
-
-.form-group {
-    margin-bottom: 1.5rem;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: var(--dark-gray);
-    font-size: 0.95rem;
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    font-family: inherit;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    background: white;
-    color: var(--dark-gray);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--besties-green);
-    box-shadow: 0 0 0 3px rgba(63, 163, 77, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #bbb;
-}
-
-.modal-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-}
-
-.modal-btn {
-    flex: 1;
-    padding: 12px 24px;
-    border: 2px solid #e0e0e0;
-    background: white;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-}
-
-.modal-btn.primary {
-    background: linear-gradient(135deg, var(--besties-green) 0%, #6BCB77 100%);
-    color: white;
-    border-color: transparent;
-}
-
-.modal-btn.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
-}
-
-.modal-btn.secondary {
-    color: var(--dark-gray);
-}
-
-.modal-btn.secondary:hover {
-    background: #f9f9f9;
-    border-color: var(--besties-green);
-    color: var(--besties-green);
-}
 
 /* CTA Section */
 .cta-section {
@@ -798,7 +520,6 @@ html {
         margin-bottom: 1rem;
     }
 
-    .camp-section,
     .cta-section {
         padding: 60px 20px;
     }
@@ -811,14 +532,6 @@ html {
     .cta-btn {
         width: 100%;
         max-width: 300px;
-    }
-
-    .camp-buttons {
-        flex-direction: column;
-    }
-
-    .camp-btn {
-        width: 100%;
     }
 
     .countdown-banner,
@@ -864,7 +577,7 @@ html {
             <div class="countdown-unit"><div class="value" id="cdMins">00</div><div class="label">Mins</div></div>
             <div class="countdown-unit"><div class="value" id="cdSecs">00</div><div class="label">Secs</div></div>
         </div>
-        <a href="#camp-sessions" class="cta-btn primary">Reserve Your Spot</a>
+        <a href="https://wa.me/233248051774" class="cta-btn primary" target="_blank">Message Us on WhatsApp</a>
     </section>
 
     <!-- About Camp -->
@@ -892,31 +605,6 @@ html {
                     <div class="icon">🛡️</div>
                     <h4>Safe &amp; Supervised</h4>
                     <p>Trained, background-checked staff and small group ratios keep every camper safe and cared for.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Camp Session -->
-    <section class="camp-section" id="camp-sessions">
-        <div class="camp-card" data-camp-name="Fall Adventure Camp" data-camp-date="2026-10-10">
-            <img src="assets/image_5.jpg" alt="Fall Adventure Camp" class="camp-image">
-            <div class="camp-content">
-                <div class="camp-date">October 10-12, 2026</div>
-                <h3>Fall Adventure Camp</h3>
-                <div class="camp-location">📍 Shai Hills Camp Grounds</div>
-                <p class="camp-description">A short, action-packed weekend away — rope courses, team games, and starlit campfire circles for new and returning campers.</p>
-                <div class="camp-details">
-                    <div class="camp-detail-item">👥 Ages 9-15</div>
-                    <div class="camp-detail-item">⏱️ 3 Days / 2 Nights</div>
-                    <div class="camp-detail-item">🎯 60 Spots Available</div>
-                </div>
-                <div style="background: linear-gradient(135deg, rgba(63, 163, 77, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                    <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Camp Fee</div>
-                    <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-green);">GHS 650</div>
-                </div>
-                <div class="camp-buttons">
-                    <button class="camp-btn primary" onclick="openCampModal('Fall Adventure Camp', 650)">Book Now</button>
                 </div>
             </div>
         </div>
@@ -979,71 +667,6 @@ html {
             </div>
         </div>
     </section>
-
-    <!-- Camp Booking Modal -->
-    <div class="modal-overlay" id="campModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2 id="campModalTitle">Camp Booking</h2>
-                <button class="modal-close" id="campModalClose">×</button>
-            </div>
-            <div class="modal-content">
-                <div style="background: linear-gradient(135deg, rgba(63, 163, 77, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; text-align: center;">
-                    <div style="color: #666; font-size: 0.95rem; margin-bottom: 0.5rem;">Camp Fee</div>
-                    <div style="font-size: 2rem; font-weight: 700; color: var(--besties-green);" id="campPrice">GHS 0</div>
-                </div>
-                <form id="campBookingForm">
-                    <input type="hidden" id="selectedCampPrice" value="0" required>
-                    <input type="hidden" id="selectedCampName" value="" required>
-                    <div class="form-group">
-                        <label for="camperName">Camper's Full Name</label>
-                        <input type="text" id="camperName" name="camperName" placeholder="Enter camper's full name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="campEmail">Email Address</label>
-                        <input type="email" id="campEmail" name="campEmail" placeholder="Enter your email" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="campPhone">Phone Number</label>
-                        <input type="tel" id="campPhone" name="campPhone" placeholder="Enter your phone number" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="campAge">Age Group</label>
-                        <select id="campAge" name="campAge" style="width: 100%; padding: 12px 15px; border: 1px solid #e0e0e0; border-radius: 8px; font-family: inherit; font-size: 0.95rem;" required>
-                            <option value="">Select age group</option>
-                            <option value="6-8">6-8 years</option>
-                            <option value="9-12">9-12 years</option>
-                            <option value="13-15">13-15 years</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="campGuardian">Parent/Guardian Name</label>
-                        <input type="text" id="campGuardian" name="campGuardian" placeholder="Enter parent/guardian name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="campNotes">Allergies, Medical Notes or Special Requests</label>
-                        <textarea id="campNotes" name="campNotes" placeholder="Share any allergies, medical needs, dietary restrictions, etc..." style="resize: vertical; min-height: 100px;"></textarea>
-                    </div>
-
-                    <div class="modal-buttons">
-                        <button type="button" class="modal-btn secondary" id="campModalCancel">Cancel</button>
-                        <button type="submit" class="modal-btn primary">Confirm Booking</button>
-                    </div>
-                </form>
-                <div id="campSuccessMessage" style="display: none; text-align: center; padding: 1rem 0 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                    <h3 style="margin-bottom: 0.75rem;">Booking Received!</h3>
-                    <p style="color: #666; margin-bottom: 2rem;">Thanks, <span id="campSuccessName"></span>! We've got the booking and will be in touch soon to confirm.</p>
-                    <button type="button" class="modal-btn primary" id="campSuccessClose">Done</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- CTA -->
     <section class="cta-section">
@@ -1112,76 +735,6 @@ function initCampCountdown() {
 }
 
 initCampCountdown();
-
-const campModal = document.getElementById('campModal');
-const campModalClose = document.getElementById('campModalClose');
-const campModalCancel = document.getElementById('campModalCancel');
-const campBookingForm = document.getElementById('campBookingForm');
-const campModalTitle = document.getElementById('campModalTitle');
-const campSuccessMessage = document.getElementById('campSuccessMessage');
-const campSuccessName = document.getElementById('campSuccessName');
-const campSuccessClose = document.getElementById('campSuccessClose');
-
-function openCampModal(campName, price) {
-    campModalTitle.textContent = campName + ' - Booking';
-    document.getElementById('campPrice').textContent = price === 0 ? 'FREE' : 'GHS ' + price;
-    document.getElementById('selectedCampPrice').value = price;
-    document.getElementById('selectedCampName').value = campName;
-    campBookingForm.style.display = 'block';
-    campSuccessMessage.style.display = 'none';
-    campModal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeCampModal() {
-    campModal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-campSuccessClose.addEventListener('click', closeCampModal);
-
-campModalClose.addEventListener('click', closeCampModal);
-campModalCancel.addEventListener('click', closeCampModal);
-
-campModal.addEventListener('click', (e) => {
-    if (e.target === campModal) {
-        closeCampModal();
-    }
-});
-
-campBookingForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const formData = {
-        camperName: document.getElementById('camperName').value,
-        email: document.getElementById('campEmail').value,
-        phone: document.getElementById('campPhone').value,
-        ageGroup: document.getElementById('campAge').value,
-        guardian: document.getElementById('campGuardian').value,
-        notes: document.getElementById('campNotes').value,
-        camp: document.getElementById('selectedCampName').value,
-        price: document.getElementById('selectedCampPrice').value
-    };
-
-    const messageLines = [
-        "Hi Besties! I'd like to book a camp session.",
-        "",
-        `Camp: ${formData.camp}`,
-        `Fee: GHS ${formData.price}`,
-        `Camper Name: ${formData.camperName}`,
-        `Email: ${formData.email}`,
-        `Phone: ${formData.phone}`,
-        `Age Group: ${formData.ageGroup}`,
-        `Parent/Guardian: ${formData.guardian}`,
-        `Notes: ${formData.notes || 'N/A'}`
-    ];
-    const whatsappMessage = encodeURIComponent(messageLines.join('\n'));
-    window.open(`https://wa.me/233248051774?text=${whatsappMessage}`, '_blank');
-
-    campSuccessName.textContent = formData.camperName;
-    campBookingForm.style.display = 'none';
-    campSuccessMessage.style.display = 'block';
-    campBookingForm.reset();
-});
     </script>
 </body>
 </html>
