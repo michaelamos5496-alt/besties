@@ -12,6 +12,7 @@ backend/.env.*.local
 # Unused/large legacy files
 index.html.backup
 bestgurlies-photo-download-1of1/
+images/BESTIES 26 camp/
 
 # Logs
 npm-debug.log
