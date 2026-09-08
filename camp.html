@@ -381,11 +381,14 @@ html {
 }
 
 .story-card {
+    display: block;
     background: white;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    text-decoration: none;
+    color: inherit;
 }
 
 .story-card:hover {
@@ -426,7 +429,6 @@ html {
     line-height: 1.6;
     margin: 0;
 }
-
 
 /* CTA Section */
 .cta-section {
@@ -640,30 +642,30 @@ html {
             <h2>Stories From Past Camps</h2>
             <p class="stories-subtitle">Recaps from previous Besties Camp sessions — a look back at what campers got up to.</p>
             <div class="stories-grid">
-                <div class="story-card">
+                <a class="story-card" href="camp-story-summer.html">
                     <img src="assets/image_5.jpg" alt="Summer Besties Camp recap" class="story-image">
                     <div class="story-content">
                         <div class="story-date">June 2026</div>
                         <h4>Summer Besties Camp: A Week of Firsts</h4>
                         <p>60 girls spent six days hiking Aburi's trails, sleeping under the stars, and cheering each other through a ropes course most had never attempted. By the closing campfire, cabins that started as strangers were trading contact info and planning reunions.</p>
                     </div>
-                </div>
-                <div class="story-card">
-                    <img src="assets/image_5.jpg" alt="Easter Camp Getaway recap" class="story-image">
+                </a>
+                <a class="story-card" href="camp-story-easter.html">
+                    <img src="assets/image_10.jpg" alt="Easter Camp Getaway recap" class="story-image">
                     <div class="story-content">
                         <div class="story-date">April 2026</div>
                         <h4>Easter Camp Getaway Recap</h4>
                         <p>A long-weekend camp packed with egg-hunt challenges, team relays, and a talent night that ran an hour past schedule because nobody wanted it to end. Campers left with new best friends and a few new songs stuck in their heads.</p>
                     </div>
-                </div>
-                <div class="story-card">
-                    <img src="assets/image_5.jpg" alt="New Year Kickoff Camp recap" class="story-image">
+                </a>
+                <a class="story-card" href="camp-story-newyear.html">
+                    <img src="assets/image_15.jpg" alt="New Year Kickoff Camp recap" class="story-image">
                     <div class="story-content">
                         <div class="story-date">January 2026</div>
                         <h4>New Year Kickoff Camp</h4>
                         <p>Our first camp of the year focused on goal-setting and teamwork, with campers building vision boards by day and roasting marshmallows by night. A great reminder that big dreams are easier to chase with Besties by your side.</p>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -689,15 +691,10 @@ function initCampCountdown() {
     const banner = document.getElementById('countdownBanner');
     const nameEl = banner.querySelector('.next-camp-name');
     const timerEl = banner.querySelector('.countdown-timer');
-    const cards = document.querySelectorAll('.camp-card[data-camp-date]');
 
-    let next = null;
-    cards.forEach(card => {
-        const date = new Date(card.dataset.campDate + 'T00:00:00');
-        if (date > new Date() && (!next || date < next.date)) {
-            next = { date, name: card.dataset.campName };
-        }
-    });
+    const nextCampDate = new Date('2026-10-10T00:00:00');
+    const nextCampName = 'Fall Adventure Camp';
+    const next = nextCampDate > new Date() ? { date: nextCampDate, name: nextCampName } : null;
 
     if (!next) {
         nameEl.textContent = 'Stay tuned for our next camp announcement!';

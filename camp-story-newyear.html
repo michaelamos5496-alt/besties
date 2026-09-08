@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <title>New Year Kickoff Camp | Besties Camp</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --besties-green: #3FA34D;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero {
+    padding: 120px 40px;
+    text-align: center;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-image {
+    position: relative;
+    min-height: 55vh;
+    overflow: hidden;
+}
+
+.hero-image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-image-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(63, 163, 77, 0.6) 0%, rgba(213, 166, 224, 0.6) 100%);
+    z-index: 2;
+}
+
+.hero-content-wrapper {
+    position: relative;
+    z-index: 3;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    margin-bottom: 1rem;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    max-width: 800px;
+}
+
+.hero-image h1 {
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.story-detail-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 0.4rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1.25rem;
+}
+
+/* Story Detail */
+.story-detail-section {
+    padding: 80px 40px;
+}
+
+.story-detail-container {
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.story-detail-container p {
+    font-size: 1.08rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.story-detail-container p:last-child {
+    margin-bottom: 0;
+}
+
+/* Gallery Section */
+.gallery-section {
+    padding: 0 40px 80px;
+    background: var(--light-gray);
+    padding-top: 80px;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.gallery-subtitle {
+    text-align: center;
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.gallery-item {
+    border-radius: 10px;
+    overflow: hidden;
+    aspect-ratio: 1;
+    display: block;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+    display: block;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.08);
+}
+
+/* CTA Section */
+.cta-section {
+    padding: 100px 40px;
+    text-align: center;
+}
+
+.cta-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+}
+
+.cta-section p {
+    font-size: 1.1rem;
+    color: #777;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-btn {
+    padding: 14px 40px;
+    border: 2px solid var(--besties-green);
+    background: white;
+    color: var(--besties-green);
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background: var(--besties-green);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.cta-btn.primary {
+    background: linear-gradient(135deg, var(--besties-green) 0%, #6BCB77 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.cta-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-green);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero-image {
+        min-height: 40vh;
+    }
+
+    .story-detail-section,
+    .gallery-section {
+        padding: 60px 20px;
+    }
+
+    .cta-section {
+        padding: 60px 20px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="camp.html" class="nav-back">← Back to Camp</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero hero-image">
+        <img src="assets/image_15.jpg" alt="New Year Kickoff Camp" class="hero-image-bg">
+        <div class="hero-image-overlay"></div>
+        <div class="hero-content-wrapper">
+            <div class="story-detail-badge">January 2026</div>
+            <h1>New Year Kickoff Camp</h1>
+        </div>
+    </section>
+
+    <!-- Story -->
+    <section class="story-detail-section">
+        <div class="story-detail-container">
+            <p>Our first camp of the year focused on goal-setting and teamwork, with campers building vision boards by day and roasting marshmallows by night. A great reminder that big dreams are easier to chase with Besties by your side.</p>
+            <p>Each cabin kicked off the year with a goal-setting workshop, turning big dreams into vision boards covered in cutouts, quotes, and hand-drawn doodles. Team challenges throughout the day built the kind of trust that made the nightly marshmallow roasts feel like family time rather than just a camp activity. Campers headed into the new year with a board to hang at home and a cabin's worth of new best friends cheering them on.</p>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery-section">
+        <div class="gallery-container">
+            <h2>Photos From This Camp</h2>
+            <p class="gallery-subtitle">A closer look at the vision boards, team challenges, and campfire nights.</p>
+            <div class="gallery-grid">
+                <a href="assets/image_15.jpg" class="gallery-item" target="_blank"><img src="assets/image_15.jpg" alt="New Year Kickoff Camp moment"></a>
+                <a href="assets/image_16.jpg" class="gallery-item" target="_blank"><img src="assets/image_16.jpg" alt="New Year Kickoff Camp moment"></a>
+                <a href="assets/image_17.jpg" class="gallery-item" target="_blank"><img src="assets/image_17.jpg" alt="New Year Kickoff Camp moment"></a>
+                <a href="assets/image_18.jpg" class="gallery-item" target="_blank"><img src="assets/image_18.jpg" alt="New Year Kickoff Camp moment"></a>
+                <a href="assets/image_19.jpg" class="gallery-item" target="_blank"><img src="assets/image_19.jpg" alt="New Year Kickoff Camp moment"></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Want In On the Next One?</h2>
+        <p>Reach out and we'll help you find the perfect Besties Camp session for your camper.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/233248051774" class="cta-btn primary" target="_blank">Message Us on WhatsApp</a>
+            <a href="camp.html" class="cta-btn">Back to Camp</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
+    </footer>
+</body>
+</html>
