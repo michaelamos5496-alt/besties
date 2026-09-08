@@ -357,6 +357,19 @@ html {
     transform: scale(1.08);
 }
 
+.gallery-item-extra {
+    display: none;
+}
+
+.gallery-item-extra.show {
+    display: block;
+}
+
+.gallery-view-more-wrapper {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 /* Camp Stories Section */
 .stories-section {
     padding: 80px 40px;
@@ -650,7 +663,7 @@ html {
                     Your browser does not support HTML5 video.
                 </video>
             </div>
-            <div class="gallery-grid">
+            <div class="gallery-grid" id="campGalleryGrid">
                 <a href="gallery-images/camp-02.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-02.webp" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-03.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-03.webp" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-04.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-04.webp" alt="Besties Camp moment"></a>
@@ -659,6 +672,21 @@ html {
                 <a href="gallery-images/camp-08.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-08.webp" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-10.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-10.webp" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-12.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-12.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-01.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-01.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-07.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-07.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-09.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-09.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-11.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-11.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-13.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-13.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-14.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-14.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-15.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-15.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-16.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-16.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-17.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-17.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-18.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-18.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-19.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-19.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-20.webp" class="gallery-item gallery-item-extra" target="_blank"><img src="gallery-images/camp-20.webp" alt="Besties Camp moment"></a>
+            </div>
+            <div class="gallery-view-more-wrapper">
+                <button class="cta-btn" id="galleryViewMoreBtn" onclick="toggleGalleryPhotos()">View More Photos</button>
             </div>
         </div>
     </section>
@@ -742,6 +770,21 @@ function initCampCountdown() {
 }
 
 initCampCountdown();
+
+// Gallery view more/less toggle
+function toggleGalleryPhotos() {
+    const grid = document.getElementById('campGalleryGrid');
+    const btn = document.getElementById('galleryViewMoreBtn');
+    const extras = grid.querySelectorAll('.gallery-item-extra');
+    const expanded = extras[0] && extras[0].classList.contains('show');
+
+    extras.forEach(item => item.classList.toggle('show', !expanded));
+    btn.textContent = expanded ? 'View More Photos' : 'View Fewer Photos';
+
+    if (expanded) {
+        grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
     </script>
 </body>
 </html>
