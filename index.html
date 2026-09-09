@@ -383,10 +383,11 @@ p {
 }
 
 .hero-logo {
-    position: relative;
+    position: absolute;
+    top: clamp(90px, 10vw, 130px);
+    right: clamp(20px, 5vw, 60px);
     z-index: 20;
     width: clamp(220px, 45vw, 420px);
-    margin-bottom: clamp(0.8rem, 2vw, 1rem);
     animation: fadeInDown 0.8s ease;
     filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
 }
@@ -1400,7 +1401,10 @@ p {
     }
 
     .hero-logo {
-        margin-bottom: 0;
+        position: relative;
+        top: auto;
+        right: auto;
+        margin-bottom: clamp(0.8rem, 2vw, 1rem);
     }
 }
 
