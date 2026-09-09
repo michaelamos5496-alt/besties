@@ -325,7 +325,6 @@ p {
     z-index: 1;
     pointer-events: none;
     transform: translateZ(0);
-    filter: blur(8px);
 }
 
 .hero::after {
@@ -381,6 +380,13 @@ p {
     text-stroke: clamp(1.5px, 0.6vw, 5px) white;
     paint-order: stroke fill;
     letter-spacing: 0.5px;
+}
+
+.hero-logo {
+    width: clamp(220px, 45vw, 420px);
+    margin-bottom: clamp(0.8rem, 2vw, 1rem);
+    animation: fadeInDown 0.8s ease;
+    filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.2));
 }
 
 .hero-subtitle {
@@ -1412,7 +1418,7 @@ p {
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 class="hero-title">Welcome to Besties</h1>
+            <img src="assets/besties-logo.webp" alt="Besties" class="hero-logo">
             <p class="hero-subtitle">EMPOWERING GIRLS TO SHINE</p>
             <a href="camp.html" class="hero-countdown-pill" id="heroCountdownPill">
                 <div class="hero-countdown-label">Next Besties Camp</div>
@@ -1454,7 +1460,7 @@ p {
                     <div class="action-card-header">BESTIES CAMP</div>
                 </a>
                 <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" class="action-card" style="text-decoration: none;" target="_blank">
-                    <img src="assets/image_1.webp" alt="Besties Podcast" class="action-card-image">
+                    <img src="assets/image_2.webp" alt="Besties Podcast" class="action-card-image">
                     <div class="action-card-header">BESTIES PODCAST</div>
                 </a>
                 <a href="events.html" class="action-card" style="text-decoration: none;">
