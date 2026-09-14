@@ -1439,6 +1439,38 @@ p {
     }
 }
 
+/* FAQ */
+.faq-section {
+    padding: 80px 20px;
+    background: #fff8fb;
+}
+
+.faq-intro {
+    max-width: 680px;
+    margin: 0 auto 2rem;
+    text-align: center;
+    color: #555;
+}
+
+.faq-list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    gap: 12px;
+}
+
+.faq-question {
+    padding: 18px 22px;
+    background: var(--white);
+    border: 1px solid rgba(255, 107, 157, 0.22);
+    border-radius: 14px;
+    color: var(--dark-gray);
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 600;
+    box-shadow: 0 6px 18px rgba(255, 107, 157, 0.07);
+}
+
     </style>
 </head>
 <body>
@@ -1559,6 +1591,22 @@ p {
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+        <div class="container">
+            <h2 id="faq-heading">Frequently Asked Questions</h2>
+            <p class="faq-intro">Everything you may want to know about becoming a Bestie.</p>
+            <div class="faq-list">
+                <div class="faq-question">What is the Besties Club?</div>
+                <div class="faq-question">How can my child join?</div>
+                <div class="faq-question">Do I have to pay money?</div>
+                <div class="faq-question">What do we do?</div>
+                <div class="faq-question">What do I get as a member?</div>
+                <div class="faq-question">If I am 7 or 16, can I join?</div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- Contact CTA Section -->
     <section style="background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); padding: 80px 20px; text-align: center;">
@@ -1578,6 +1626,7 @@ p {
                     <ul class="footer-links">
                         <li><a href="#home">Home</a></li>
                         <li><a href="our-story.html">Our Story</a></li>
+                        <li><a href="#faq">FAQ</a></li>
                     </ul>
                 </div>
 
