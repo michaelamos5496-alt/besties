@@ -1558,11 +1558,36 @@ p {
     color: #555;
 }
 
+.faq-toggle-btn {
+    display: block;
+    margin: 0 auto 2rem;
+    padding: 14px 36px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+}
+
+.faq-toggle-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 107, 157, 0.4);
+}
+
 .faq-list {
     max-width: 760px;
     margin: 0 auto;
     display: grid;
     gap: 12px;
+}
+
+.faq-list[hidden] {
+    display: none;
 }
 
 .faq-question {
@@ -1768,7 +1793,8 @@ p {
         <div class="container">
             <h2 id="faq-heading">Frequently Asked Questions</h2>
             <p class="faq-intro">Everything you may want to know about becoming a Bestie.</p>
-            <div class="faq-list">
+            <button type="button" class="faq-toggle-btn" id="faqToggleBtn" aria-expanded="false" aria-controls="faqList">View FAQs ▾</button>
+            <div class="faq-list" id="faqList" hidden>
                 <details class="faq-question">
                     <summary>What is the Besties Club?</summary>
                     <p class="faq-answer">Besties is a growing community where girls build confidence, make real friendships and discover who they are through creativity, learning and meaningful experiences.</p>
@@ -1861,6 +1887,20 @@ p {
     </footer>
 
     <script>
+// FAQ toggle
+
+const faqToggleBtn = document.getElementById('faqToggleBtn');
+const faqList = document.getElementById('faqList');
+
+if (faqToggleBtn && faqList) {
+    faqToggleBtn.addEventListener('click', function() {
+        const willShow = faqList.hidden;
+        faqList.hidden = !willShow;
+        faqToggleBtn.setAttribute('aria-expanded', String(willShow));
+        faqToggleBtn.textContent = willShow ? 'Hide FAQs ▴' : 'View FAQs ▾';
+    });
+}
+
 // Navigation
 
 const hamburgerMenu = document.getElementById('hamburgerMenu');
