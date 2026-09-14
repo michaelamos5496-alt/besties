@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FF6B9D">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <title>Apply to Become a Bestie | Besties</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --besties-pink: #FF6B9D;
+    --besties-purple: #D5A6E0;
+    --besties-green: #3FA34D;
+    --white: #FFFFFF;
+    --light-gray: #FAFAFA;
+    --dark-gray: #333333;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: var(--white);
+    color: var(--dark-gray);
+    line-height: 1.8;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Navigation */
+.nav-bar {
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-back {
+    text-decoration: none;
+    color: var(--dark-gray);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-back:hover {
+    color: var(--besties-pink);
+}
+
+/* Hero */
+.hero {
+    padding: 100px 40px 60px;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.08) 0%, rgba(213, 166, 224, 0.08) 100%);
+}
+
+.hero h1 {
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: #666;
+    max-width: 560px;
+    margin: 0 auto;
+    font-weight: 300;
+}
+
+/* Shared section wrapper */
+.section {
+    padding: 70px 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.5rem, 4vw, 2.1rem);
+    color: var(--dark-gray);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Steps */
+.steps-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.step-item {
+    background: var(--light-gray);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    position: relative;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.step-item h3 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--dark-gray);
+}
+
+.step-item p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+}
+
+/* Requirements */
+.requirements-section {
+    background: var(--light-gray);
+}
+
+.requirements-list {
+    list-style: none;
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.requirements-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1rem;
+    color: #444;
+}
+
+.requirements-list li:last-child {
+    border-bottom: none;
+}
+
+.requirements-list li::before {
+    content: "✓";
+    color: var(--besties-green);
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Fee callout */
+.fee-callout {
+    background: rgba(255, 107, 157, 0.08);
+    border: 1px solid rgba(255, 107, 157, 0.25);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    text-align: center;
+    font-size: 0.98rem;
+    color: #555;
+    max-width: 620px;
+    margin: 2.5rem auto 0;
+}
+
+.fee-callout strong {
+    color: var(--dark-gray);
+}
+
+/* Form */
+.apply-form {
+    background: var(--light-gray);
+    border-radius: 20px;
+    padding: clamp(1.75rem, 5vw, 3rem);
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.form-row {
+    margin-bottom: 1.25rem;
+    text-align: left;
+}
+
+.form-row label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.4rem;
+}
+
+.form-row input {
+    width: 100%;
+    padding: 13px 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    background: white;
+    transition: border-color 0.2s ease;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: var(--besties-pink);
+}
+
+.apply-submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.apply-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(255, 107, 157, 0.35);
+}
+
+.apply-form-note {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 1rem;
+}
+
+/* Video section */
+.video-card {
+    background: white;
+    border: 2px dashed rgba(213, 166, 224, 0.5);
+    border-radius: 20px;
+    padding: clamp(1.75rem, 5vw, 2.75rem);
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.video-card p {
+    color: #666;
+    margin-bottom: 1.75rem;
+}
+
+.video-btn-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.video-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.98rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.video-btn.primary {
+    background: linear-gradient(135deg, var(--besties-green) 0%, #6BCB77 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
+}
+
+.video-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(63, 163, 77, 0.4);
+}
+
+.video-btn.secondary {
+    background: white;
+    color: var(--dark-gray);
+    border: 1px solid #ddd;
+}
+
+.video-btn.secondary:hover {
+    border-color: var(--besties-pink);
+    color: var(--besties-pink);
+}
+
+/* Final WhatsApp CTA */
+.help-section {
+    text-align: center;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.08) 0%, rgba(213, 166, 224, 0.08) 100%);
+}
+
+.help-section p {
+    color: #666;
+    max-width: 480px;
+    margin: 0 auto 1.75rem;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 44px;
+    background: linear-gradient(135deg, var(--besties-green) 0%, #6BCB77 100%);
+    color: white;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(63, 163, 77, 0.3);
+}
+
+.contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(63, 163, 77, 0.4);
+}
+
+/* Footer */
+.footer {
+    padding: 40px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer a {
+    color: var(--dark-gray);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--besties-pink);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-bar {
+        padding: 15px 20px;
+    }
+
+    .hero {
+        padding: 60px 20px 40px;
+    }
+
+    .section {
+        padding: 50px 20px;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-back">← Back to Home</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1>Apply to Become a Bestie</h1>
+        <p>Follow the steps below to start your journey — we can't wait to meet you.</p>
+    </section>
+
+    <!-- Steps -->
+    <section class="section" id="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps-list">
+            <div class="step-item">
+                <div class="step-number">1</div>
+                <h3>Fill Out the Application</h3>
+                <p>Share your name, phone number, age and email below.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">2</div>
+                <h3>Submit a Video</h3>
+                <p>Send us a short video about yourself, through this page or on WhatsApp.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">3</div>
+                <h3>Wait to Be Selected</h3>
+                <p>If you're chosen, we'll reach out to you directly. A program fee applies for selected Besties.</p>
+            </div>
+            <div class="step-item">
+                <div class="step-number">4</div>
+                <h3>Finish Up on WhatsApp</h3>
+                <p>The rest of the process, including payment and next steps, continues on WhatsApp.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements -->
+    <section class="section requirements-section">
+        <h2>Requirements</h2>
+        <ul class="requirements-list">
+            <li>Girls aged 8–12</li>
+            <li>A parent or guardian aware of and supporting the application</li>
+            <li>A short video introducing yourself</li>
+            <li>Access to WhatsApp for updates and next steps</li>
+        </ul>
+        <div class="fee-callout">
+            <strong>Please note:</strong> a program fee applies if you're selected. We'll share the exact amount and payment details with you directly before anything is due.
+        </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="section" id="application-form">
+        <h2>Application Form</h2>
+        <form class="apply-form" id="applyForm">
+            <div class="form-row">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="fullName" placeholder="e.g. Ama Mensah" required>
+            </div>
+            <div class="form-row">
+                <label for="phone">Phone Number *</label>
+                <input type="tel" id="phone" name="phone" placeholder="e.g. 024 805 1774" required>
+            </div>
+            <div class="form-row">
+                <label for="age">Age *</label>
+                <input type="number" id="age" name="age" min="1" max="99" placeholder="e.g. 10" required>
+            </div>
+            <div class="form-row">
+                <label for="email">Email (optional)</label>
+                <input type="email" id="email" name="email" placeholder="e.g. ama@email.com">
+            </div>
+            <button type="submit" class="apply-submit-btn">Continue on WhatsApp →</button>
+            <p class="apply-form-note">We'll open WhatsApp with your details filled in — just hit send.</p>
+        </form>
+    </section>
+
+    <!-- Video Submission -->
+    <section class="section" id="video-submission">
+        <h2>Submit Your Video</h2>
+        <div class="video-card">
+            <p>Record a short video telling us your name, age, and why you'd love to be a Bestie. Send it to us however works best for you.</p>
+            <div class="video-btn-row">
+                <a href="#" id="videoWhatsappBtn" class="video-btn primary" target="_blank">💬 Send on WhatsApp</a>
+                <a href="mailto:hello@bestiesgh.com?subject=Besties%20Application%20Video" class="video-btn secondary">📧 Email It to Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help / WhatsApp -->
+    <section class="section help-section">
+        <h2>Need Further Understanding?</h2>
+        <p>If anything about the process isn't clear, message us on WhatsApp and we'll walk you through it.</p>
+        <a href="https://wa.me/233248051774" class="contact-btn" target="_blank">Message Us on WhatsApp →</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
+    </footer>
+
+    <!-- GSAP scroll animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+    <script>
+(function () {
+    if (typeof gsap === 'undefined') return;
+    gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+    const gridSelector = '.steps-list';
+
+    function revealStagger(targets, trigger, distance, duration, stagger) {
+        if (!targets.length) return;
+        gsap.set(targets, { transition: 'none' });
+        gsap.from(targets, {
+            y: distance,
+            opacity: 0,
+            duration: duration,
+            ease: 'power2.out',
+            stagger: stagger,
+            scrollTrigger: {
+                trigger: trigger,
+                start: 'top 88%',
+                toggleActions: 'play none none reverse'
+            },
+            onComplete: () => gsap.set(targets, { clearProps: 'transition' }),
+            onReverseComplete: () => gsap.set(targets, { clearProps: 'transition' })
+        });
+    }
+
+    document.querySelectorAll(gridSelector).forEach((grid) => {
+        revealStagger(grid.children, grid, 30, 0.7, 0.1);
+    });
+
+    document.querySelectorAll('section').forEach((section, i) => {
+        if (i === 0) return;
+        if (section.querySelector(gridSelector)) return;
+        revealStagger(section.children, section, 40, 0.8, 0.12);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', function (e) {
+            const id = this.getAttribute('href');
+            if (!id || id.length < 2) return;
+            const target = document.querySelector(id);
+            if (!target) return;
+            e.preventDefault();
+            gsap.to(window, {
+                duration: 1,
+                scrollTo: { y: target, offsetY: 90 },
+                ease: 'power2.inOut'
+            });
+        });
+    });
+
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+})();
+    </script>
+
+    <!-- Application form → WhatsApp handoff -->
+    <script>
+(function () {
+    const WHATSAPP_NUMBER = '233248051774';
+    const form = document.getElementById('applyForm');
+    const videoBtn = document.getElementById('videoWhatsappBtn');
+
+    if (videoBtn) {
+        const videoMessage = "Hi Besties! I'd like to submit my video for my Bestie application. I'll send it here.";
+        videoBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(videoMessage)}`;
+    }
+
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const age = document.getElementById('age').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            let message = "Hi Besties! I'd like to apply to become a Bestie.\n\n";
+            message += `Name: ${fullName}\n`;
+            message += `Age: ${age}\n`;
+            message += `Phone: ${phone}\n`;
+            if (email) message += `Email: ${email}\n`;
+            message += "\nI'll send my video introduction next.";
+
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            window.open(waUrl, '_blank');
+        });
+    }
+})();
+    </script>
+</body>
+</html>
