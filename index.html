@@ -1460,15 +1460,46 @@ p {
 }
 
 .faq-question {
-    padding: 18px 22px;
     background: var(--white);
     border: 1px solid rgba(255, 107, 157, 0.22);
     border-radius: 14px;
     color: var(--dark-gray);
+    box-shadow: 0 6px 18px rgba(255, 107, 157, 0.07);
+    overflow: hidden;
+}
+
+.faq-question summary {
+    padding: 18px 52px 18px 22px;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
     font-family: 'Fredoka', sans-serif;
     font-size: clamp(1rem, 2.5vw, 1.2rem);
     font-weight: 600;
-    box-shadow: 0 6px 18px rgba(255, 107, 157, 0.07);
+}
+
+.faq-question summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-question summary::after {
+    content: '+';
+    position: absolute;
+    right: 22px;
+    color: var(--besties-pink);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.faq-question[open] summary::after {
+    content: '−';
+}
+
+.faq-answer {
+    padding: 0 22px 20px;
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
 }
 
     </style>
@@ -1597,12 +1628,30 @@ p {
             <h2 id="faq-heading">Frequently Asked Questions</h2>
             <p class="faq-intro">Everything you may want to know about becoming a Bestie.</p>
             <div class="faq-list">
-                <div class="faq-question">What is the Besties Club?</div>
-                <div class="faq-question">How can my child join?</div>
-                <div class="faq-question">Do I have to pay money?</div>
-                <div class="faq-question">What do we do?</div>
-                <div class="faq-question">What do I get as a member?</div>
-                <div class="faq-question">If I am 7 or 16, can I join?</div>
+                <details class="faq-question">
+                    <summary>What is the Besties Club?</summary>
+                    <p class="faq-answer">Besties is a growing community where girls build confidence, make real friendships and discover who they are through creativity, learning and meaningful experiences.</p>
+                </details>
+                <details class="faq-question">
+                    <summary>How can my child join?</summary>
+                    <p class="faq-answer">Send us a message on <a href="https://wa.me/233248051774" target="_blank">WhatsApp</a>. We will share the latest opportunities and help you find the right Besties experience for your child.</p>
+                </details>
+                <details class="faq-question">
+                    <summary>Do I have to pay money?</summary>
+                    <p class="faq-answer">Some Besties experiences may have a registration fee. We will always share the cost and all the details with you before you register.</p>
+                </details>
+                <details class="faq-question">
+                    <summary>What do we do?</summary>
+                    <p class="faq-answer">We create camps, events, content, mentorship and carefully curated experiences that help girls grow in confidence, communication, creativity, independence, collaboration and self-expression.</p>
+                </details>
+                <details class="faq-question">
+                    <summary>What do I get as a member?</summary>
+                    <p class="faq-answer">You become part of a supportive community and get opportunities to make friends, try new things, learn new skills and create memories with other Besties.</p>
+                </details>
+                <details class="faq-question">
+                    <summary>If I am 7 or 16, can I join?</summary>
+                    <p class="faq-answer">Right now, our experiences are created for girls aged 8–12. We are growing with our Besties and plan to welcome more age groups as the community grows.</p>
+                </details>
             </div>
         </div>
     </section>
