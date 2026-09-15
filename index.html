@@ -1456,6 +1456,35 @@ p {
     gap: 1rem;
 }
 
+.footer-partners-groups {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.footer-partners-group {
+    flex: 1 1 auto;
+}
+
+.footer-partners-divider {
+    width: 1px;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media (max-width: 700px) {
+    .footer-partners-groups {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.75rem;
+    }
+
+    .footer-partners-divider {
+        display: none;
+    }
+}
+
 .partner-logo {
     display: flex;
     align-items: center;
@@ -1935,28 +1964,35 @@ p {
             </div>
 
             <div class="footer-partners">
-                <p class="footer-partners-label">Sponsors</p>
-                <div class="footer-partners-row">
-                    <div class="partner-logo partner-logo-image">
-                        <img src="assets/indomie-logo.png" alt="Indomie" class="partner-logo-img">
+                <div class="footer-partners-groups">
+                    <div class="footer-partners-group">
+                        <p class="footer-partners-label">Sponsors</p>
+                        <div class="footer-partners-row">
+                            <div class="partner-logo partner-logo-image">
+                                <img src="assets/indomie-logo.png" alt="Indomie" class="partner-logo-img">
+                            </div>
+                            <div class="partner-logo partner-logo-image partner-logo-image-dark">
+                                <img src="assets/sultana.jpeg" alt="Sultana" class="partner-logo-img">
+                            </div>
+                            <div class="partner-logo partner-logo-image">
+                                <img src="assets/twellium.jpeg" alt="Twellium" class="partner-logo-img">
+                            </div>
+                            <div class="partner-logo partner-logo-image">
+                                <img src="assets/dolait.png" alt="Dolait" class="partner-logo-img">
+                            </div>
+                        </div>
                     </div>
-                    <div class="partner-logo partner-logo-image partner-logo-image-dark">
-                        <img src="assets/sultana.jpeg" alt="Sultana" class="partner-logo-img">
-                    </div>
-                    <div class="partner-logo partner-logo-image">
-                        <img src="assets/twellium.jpeg" alt="Twellium" class="partner-logo-img">
-                    </div>
-                    <div class="partner-logo partner-logo-image">
-                        <img src="assets/dolait.png" alt="Dolait" class="partner-logo-img">
-                    </div>
-                </div>
-                <p class="footer-partners-label" style="margin-top: 1.25rem;">Partners</p>
-                <div class="footer-partners-row">
-                    <div class="partner-logo partner-logo-image partner-logo-image-dark">
-                        <img src="assets/timelinecreatives.png" alt="Timeline Creative" class="partner-logo-img">
-                    </div>
-                    <div class="partner-logo partner-logo-image">
-                        <img src="assets/tigon.jpeg" alt="Tigon Creative Studios" class="partner-logo-img">
+                    <div class="footer-partners-divider"></div>
+                    <div class="footer-partners-group">
+                        <p class="footer-partners-label">Partners</p>
+                        <div class="footer-partners-row">
+                            <div class="partner-logo partner-logo-image partner-logo-image-dark">
+                                <img src="assets/timelinecreatives.png" alt="Timeline Creative" class="partner-logo-img">
+                            </div>
+                            <div class="partner-logo partner-logo-image">
+                                <img src="assets/tigon.jpeg" alt="Tigon Creative Studios" class="partner-logo-img">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <p class="footer-partners-label" style="margin-top: 1.25rem;">Powered by</p>
