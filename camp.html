@@ -48,14 +48,16 @@ html {
 }
 
 .nav-logo {
-    font-size: 1.3rem;
-    font-weight: 700;
-    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
     cursor: pointer;
+}
+
+.nav-logo-img {
+    height: 36px;
+    width: auto;
+    display: block;
 }
 
 .nav-back {
@@ -595,7 +597,7 @@ html {
 <body>
     <!-- Navigation -->
     <nav class="nav-bar">
-        <a href="index.html" class="nav-logo">BESTIES</a>
+        <a href="index.html" class="nav-logo"><img src="assets/besties-logo.webp" alt="Besties" class="nav-logo-img"></a>
         <a href="index.html" class="nav-back">← Back</a>
     </nav>
 
