@@ -1519,6 +1519,23 @@ p {
     font-size: 0.9rem;
 }
 
+.footer-bottom-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.footer-donate-link {
+    color: #bbb;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-donate-link:hover {
+    color: var(--besties-pink);
+}
+
 .footer-contact-btn {
     display: inline-flex;
     align-items: center;
@@ -1944,7 +1961,10 @@ p {
                     <p>&copy; 2026 Besties. A Global Movement for Girls. Made to Shine ✨</p>
                     <p style="margin-top: 0.5rem; font-size: 0.85rem;">Created by <a href="https://theimagedept.vercel.app/index.html" target="_blank" style="color: var(--besties-pink); text-decoration: none; font-weight: 600;">The Image Dept.</a></p>
                 </div>
-                <a href="contact.html" class="footer-contact-btn">✉️ Contact Us</a>
+                <div class="footer-bottom-actions">
+                    <a href="donate.html" class="footer-donate-link">Donate</a>
+                    <a href="contact.html" class="footer-contact-btn">✉️ Contact Us</a>
+                </div>
             </div>
         </div>
     </footer>

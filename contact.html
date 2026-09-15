@@ -232,13 +232,19 @@ html {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.3rem;
+    color: var(--dark-gray);
     text-decoration: none;
     transition: all 0.3s ease;
 }
 
+.social-link svg {
+    width: 22px;
+    height: 22px;
+}
+
 .social-link:hover {
     background: var(--besties-pink);
+    color: white;
     transform: translateY(-3px);
 }
 
@@ -342,9 +348,15 @@ html {
     <section class="social-section">
         <h3>Follow Besties</h3>
         <div class="social-row">
-            <a href="https://www.instagram.com/bestgurlies?stkn=MXVpNTVlcHFyenRyOA==" class="social-link" title="Instagram" target="_blank">📷</a>
-            <a href="#" class="social-link" title="YouTube">▶️</a>
-            <a href="#" class="social-link" title="TikTok">🎵</a>
+            <a href="https://www.instagram.com/bestgurlies?stkn=MXVpNTVlcHFyenRyOA==" class="social-link" title="Instagram" target="_blank">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            </a>
+            <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" class="social-link" title="YouTube" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.68a3.02 3.02 0 0 0-2.12-2.14C19.51 4 12 4 12 4s-7.51 0-9.38.54A3.02 3.02 0 0 0 .5 6.68 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.32 3.02 3.02 0 0 0 2.12 2.14C4.49 20 12 20 12 20s7.51 0 9.38-.54a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.32ZM9.6 15.6V8.4l6.3 3.6Z"/></svg>
+            </a>
+            <a href="https://www.tiktok.com/@bestgurlies?_r=1&amp;_t=ZS-99jlQOkIXsi" class="social-link" title="TikTok" target="_blank">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.7 2h-3.4v13.6a2.9 2.9 0 1 1-2.1-2.79v-3.5a6.4 6.4 0 1 0 5.5 6.34V8.8a7.6 7.6 0 0 0 4.3 1.33V6.7a4.3 4.3 0 0 1-4.3-4.3Z"/></svg>
+            </a>
         </div>
     </section>
 
