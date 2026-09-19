@@ -252,6 +252,185 @@ html {
 }
 
 /* Gallery Section */
+.episode-section {
+    padding: 80px 40px;
+    text-align: center;
+}
+
+.episode-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.episode-section h2 {
+    font-family: 'Fredoka', sans-serif;
+    font-size: clamp(1.8rem, 5vw, 2.5rem);
+    margin-bottom: 1rem;
+    color: var(--dark-gray);
+}
+
+.episode-subtitle {
+    color: #777;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.episode-slider {
+    position: relative;
+}
+
+.episode-track {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0 0 2.5rem;
+    margin-bottom: -1rem;
+    scrollbar-width: none;
+}
+
+.episode-track::-webkit-scrollbar {
+    display: none;
+}
+
+.episode-track .episode-placeholder {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+}
+
+.episode-nav {
+    position: absolute;
+    top: calc(50% - 1.25rem);
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.episode-nav:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.episode-nav:disabled {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.episode-nav svg {
+    width: 22px;
+    height: 22px;
+}
+
+.episode-nav.prev {
+    left: 12px;
+}
+
+.episode-nav.next {
+    right: 12px;
+}
+
+.episode-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.episode-dot {
+    width: 10px;
+    height: 10px;
+    border: none;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease;
+}
+
+.episode-dot.active {
+    background: var(--besties-pink);
+}
+
+.episode-placeholder {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: 15px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--besties-green) 0%, var(--besties-purple) 100%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: #fff;
+}
+
+.episode-thumb {
+    text-decoration: none;
+    background-size: cover;
+    background-position: center;
+}
+
+.episode-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.episode-thumb:hover .episode-play-icon {
+    background: var(--besties-pink);
+}
+
+.episode-thumb .episode-play-icon {
+    transition: background 0.2s ease;
+    background: rgba(0, 0, 0, 0.55);
+}
+
+.episode-play-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.episode-play-icon svg {
+    width: 34px;
+    height: 34px;
+    margin-left: 4px;
+}
+
+.episode-label {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.3rem, 4vw, 1.8rem);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.episode-badge {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 0.4rem 1.1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 .gallery-section {
     padding: 80px 40px;
     background: var(--light-gray);
@@ -281,6 +460,39 @@ html {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    cursor: zoom-out;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.lightbox.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox img {
+    max-width: min(92vw, 1100px);
+    max-height: 88vh;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    transform: scale(0.85);
+    transition: transform 0.25s ease;
+}
+
+.lightbox.open img {
+    transform: scale(1);
 }
 
 .gallery-item {
@@ -382,6 +594,7 @@ html {
 
 /* Responsive */
 @media (max-width: 768px) {
+
     .nav-bar {
         padding: 15px 20px;
     }
@@ -469,32 +682,85 @@ html {
         </div>
     </section>
 
+    <!-- Episode placeholders -->
+    <section class="episode-section" id="episodes">
+        <div class="episode-container">
+            <h2>Watch the Episodes</h2>
+            <p class="episode-subtitle">The Besties Camp reality experience, straight from our first camp.</p>
+            <div class="episode-slider">
+                <button type="button" class="episode-nav prev" id="episodePrev" aria-label="Previous episode">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button type="button" class="episode-nav next" id="episodeNext" aria-label="Next episode">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <div class="episode-track" id="episodeTrack">
+                <a class="episode-placeholder episode-thumb" href="https://youtu.be/dlP2IijXLSo" target="_blank" rel="noopener" aria-label="Watch Episode 1 on YouTube" style="background-image: url('assets/episode-1-thumb.webp');">
+                    <div class="episode-play-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                </a>
+                <div class="episode-placeholder" role="img" aria-label="Episode 2 video coming soon">
+                    <div class="episode-play-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="episode-label">Episode 2</div>
+                    <div class="episode-badge">Coming Soon</div>
+                </div>
+                <div class="episode-placeholder" role="img" aria-label="Episode 3 video coming soon">
+                    <div class="episode-play-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="episode-label">Episode 3</div>
+                    <div class="episode-badge">Coming Soon</div>
+                </div>
+                <div class="episode-placeholder" role="img" aria-label="Episode 4 video coming soon">
+                    <div class="episode-play-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M6 4l14 8-14 8V4z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="episode-label">Episode 4</div>
+                    <div class="episode-badge">Coming Soon</div>
+                </div>
+                </div>
+                <div class="episode-dots" id="episodeDots"></div>
+            </div>
+        </div>
+    </section>
+
     <!-- Gallery -->
     <section class="gallery-section">
         <div class="gallery-container">
             <h2>Photos From This Camp</h2>
             <p class="gallery-subtitle">A closer look at the welcome party, workshops, and friendships from our first camp.</p>
             <div class="gallery-grid">
-                <a href="gallery-images/camp-01.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-01.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-02.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-02.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-03.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-03.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-04.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-04.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-05.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-05.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-06.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-06.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-07.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-07.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-08.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-08.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-09.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-09.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-10.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-10.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-11.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-11.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-12.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-12.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-13.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-13.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-14.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-14.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-15.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-15.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-16.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-16.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-17.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-17.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-18.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-18.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-19.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-19.webp" alt="Besties Summer Camp moment"></a>
-                <a href="gallery-images/camp-20.webp" class="gallery-item" target="_blank"><img src="gallery-images/camp-20.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-01.webp" class="gallery-item"><img src="gallery-images/camp-01.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-02.webp" class="gallery-item"><img src="gallery-images/camp-02.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-03.webp" class="gallery-item"><img src="gallery-images/camp-03.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-04.webp" class="gallery-item"><img src="gallery-images/camp-04.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-05.webp" class="gallery-item"><img src="gallery-images/camp-05.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-06.webp" class="gallery-item"><img src="gallery-images/camp-06.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-07.webp" class="gallery-item"><img src="gallery-images/camp-07.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-08.webp" class="gallery-item"><img src="gallery-images/camp-08.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-09.webp" class="gallery-item"><img src="gallery-images/camp-09.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-10.webp" class="gallery-item"><img src="gallery-images/camp-10.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-11.webp" class="gallery-item"><img src="gallery-images/camp-11.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-12.webp" class="gallery-item"><img src="gallery-images/camp-12.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-13.webp" class="gallery-item"><img src="gallery-images/camp-13.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-14.webp" class="gallery-item"><img src="gallery-images/camp-14.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-15.webp" class="gallery-item"><img src="gallery-images/camp-15.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-16.webp" class="gallery-item"><img src="gallery-images/camp-16.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-17.webp" class="gallery-item"><img src="gallery-images/camp-17.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-18.webp" class="gallery-item"><img src="gallery-images/camp-18.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-19.webp" class="gallery-item"><img src="gallery-images/camp-19.webp" alt="Besties Summer Camp moment"></a>
+                <a href="gallery-images/camp-20.webp" class="gallery-item"><img src="gallery-images/camp-20.webp" alt="Besties Summer Camp moment"></a>
             </div>
         </div>
     </section>
@@ -519,6 +785,116 @@ html {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
     <script>
+// Episode slider
+(function initEpisodeSlider() {
+    const track = document.getElementById('episodeTrack');
+    const prev = document.getElementById('episodePrev');
+    const next = document.getElementById('episodeNext');
+    const dotsWrap = document.getElementById('episodeDots');
+    if (!track || !prev || !next || !dotsWrap) return;
+
+    const slides = Array.from(track.children);
+    let dots = [];
+
+    function step() {
+        return slides[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
+    }
+
+    function goTo(i) {
+        track.scrollTo({ left: i * step(), behavior: 'smooth' });
+    }
+
+    function buildDots() {
+        const count = Math.round((track.scrollWidth - track.clientWidth) / step()) + 1;
+        if (count === dots.length) return;
+        dotsWrap.innerHTML = '';
+        dots = [];
+        dotsWrap.style.display = count > 1 ? 'flex' : 'none';
+        for (let i = 0; i < count; i++) {
+            const d = document.createElement('button');
+            d.type = 'button';
+            d.className = 'episode-dot';
+            d.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            d.addEventListener('click', function () { goTo(i); });
+            dotsWrap.appendChild(d);
+            dots.push(d);
+        }
+    }
+
+    function update() {
+        buildDots();
+        const idx = Math.round(track.scrollLeft / step());
+        if (idx !== 0) stopPlayer();
+        const max = track.scrollWidth - track.clientWidth - 2;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max;
+        dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+    }
+
+    let playing = null;
+
+    function stopPlayer() {
+        if (!playing) return;
+        playing.player.replaceWith(playing.thumb);
+        playing = null;
+    }
+
+    const thumb = track.querySelector('.episode-thumb');
+    if (thumb) {
+        thumb.addEventListener('click', function (e) {
+            e.preventDefault();
+            const id = thumb.getAttribute('href').split('/').pop().split('?')[0];
+            const player = document.createElement('div');
+            player.className = 'episode-placeholder episode-player';
+            const frame = document.createElement('iframe');
+            frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+            frame.title = 'Besties Camp Episode 1';
+            frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+            frame.allowFullscreen = true;
+            player.appendChild(frame);
+            thumb.replaceWith(player);
+            playing = { thumb: thumb, player: player };
+        });
+    }
+
+    prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+    track.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+})();
+
+// Gallery image lightbox
+(function initLightbox() {
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-label', 'Enlarged photo');
+    const img = document.createElement('img');
+    box.appendChild(img);
+    document.body.appendChild(box);
+
+    function close() {
+        box.classList.remove('open');
+    }
+
+    document.addEventListener('click', function (e) {
+        const item = e.target.closest('.gallery-item');
+        if (!item) return;
+        e.preventDefault();
+        const thumb = item.querySelector('img');
+        img.src = item.getAttribute('href');
+        img.alt = thumb ? thumb.alt : '';
+        box.classList.add('open');
+    });
+
+    box.addEventListener('click', close);
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+    });
+})();
+
 // Hero video mute/unmute toggle
 (function initHeroVideoMute() {
     const video = document.querySelector('.hero-image-bg');
