@@ -1554,15 +1554,108 @@ p {
     gap: 1.25rem;
 }
 
-.footer-donate-link {
-    color: #bbb;
-    text-decoration: underline;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
+.donate-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.footer-donate-link:hover {
-    color: var(--besties-pink);
+.donate-modal.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.donate-modal-panel {
+    position: relative;
+    width: min(460px, 100%);
+    height: min(92vh, 520px);
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    transform-origin: bottom right;
+    transform: scale(0.1);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.donate-modal.open .donate-modal-panel {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.donate-modal iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+}
+
+.donate-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.donate-modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.donate-fab {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 990;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 14px 22px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
+    color: #fff;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(255, 107, 157, 0.45);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.3);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, box-shadow 0.2s ease;
+}
+
+.donate-fab.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.donate-fab.visible:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgba(255, 107, 157, 0.55);
 }
 
 .footer-contact-btn {
@@ -1959,7 +2052,6 @@ p {
                         <input type="email" id="newsletterEmail" placeholder="Sign up for our newsletter" required>
                         <button type="submit" class="footer-newsletter-btn">Join Now</button>
                     </form>
-                    <a href="donate.html" class="footer-donate-link">Donate</a>
                 </div>
             </div>
 
@@ -2013,6 +2105,15 @@ p {
             </div>
         </div>
     </footer>
+
+    <!-- Donate button + dialog -->
+    <button type="button" class="donate-fab" id="donateFab">&#128150; Donate</button>
+    <div class="donate-modal" id="donateModal" role="dialog" aria-modal="true" aria-label="Donate to Besties">
+        <div class="donate-modal-panel">
+            <button type="button" class="donate-modal-close" id="donateModalClose" aria-label="Close donate dialog">&times;</button>
+            <iframe id="donateFrame" title="Donate to Besties"></iframe>
+        </div>
+    </div>
 
     <script>
 // Newsletter signup
@@ -2146,6 +2247,42 @@ window.addEventListener('scroll', () => {
     </script>
 
     <!-- GSAP scroll animations -->
+    <script>
+// Donate dialog
+(function initDonateModal() {
+    const fab = document.getElementById('donateFab');
+    const modal = document.getElementById('donateModal');
+    const frame = document.getElementById('donateFrame');
+    const closeBtn = document.getElementById('donateModalClose');
+    if (!fab || !modal || !frame || !closeBtn) return;
+
+    let fabTimer;
+
+    function open() {
+        if (!frame.getAttribute('src')) frame.setAttribute('src', 'donate.html');
+        clearTimeout(fabTimer);
+        fab.classList.remove('visible');
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        fabTimer = setTimeout(function () { fab.classList.add('visible'); }, 250);
+    }
+
+    fab.addEventListener('click', open);
+    setTimeout(open, 5000);
+    closeBtn.addEventListener('click', close);
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) close();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+    });
+})();
+</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
