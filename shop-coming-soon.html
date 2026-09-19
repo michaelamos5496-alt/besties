@@ -330,7 +330,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
                     <p>Your payment was received.</p>
                     <div class="co-ref" id="coRef"></div>
                     <p>We will contact you to confirm your order and delivery. Keep your reference number handy.</p>
-                    <a class="btn wa" id="coWa" href="#" target="_blank" rel="noopener">Send confirmation on WhatsApp</a>
+                    <a class="btn wa" id="coWa" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a>
                     <button type="button" class="btn ghost" id="coDoneClose">Continue shopping</button>
                 </div>
             </div>
@@ -344,6 +344,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     const WA = '233248051774';
     // Paste your Paystack PUBLIC key here (pk_test_... or pk_live_...). Never put a secret key (sk_...) in this file.
     const PAYSTACK_KEY = 'pk_test_1f6cb2548ebb782d1f25333b05ad287bb997adb2';
+    // Access key from web3forms.com (free). Paid orders are emailed to the address you registered there. It is safe to keep in this file.
+    const ORDER_EMAIL_KEY = '';
     const PRODUCTS = {
         shirt: {
             name: 'Besties Shirt',
@@ -782,10 +784,36 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         renderCart();
         $('coThanks').textContent = 'Thank you, ' + v.name.split(' ')[0] + '!';
         $('coRef').textContent = ref;
-        const msg = ['Hi Besties! I have just paid for my order.', '', 'Reference: ' + ref, 'Name: ' + v.name, 'Phone: ' + v.phone, 'Delivery: ' + v.address]
+        const msg = ['Hi Besties! I have just paid for my order.', '', 'Payment: Paid online (Paystack)', 'Reference: ' + ref, 'Name: ' + v.name, 'Phone: ' + v.phone, 'Delivery: ' + v.address]
             .concat(v.notes ? ['Notes: ' + v.notes] : [], ['', 'Order:'], lines, ['', 'Total paid: ' + money(total)]);
-        $('coWa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg.join('\n'));
+        const waUrl = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg.join('\n'));
+        $('coWa').href = waUrl;
         showView('done');
+        emailOrder(ref, v, total, lines);
+    }
+
+    function emailOrder(ref, v, total, lines) {
+        if (!ORDER_EMAIL_KEY) return;
+        const payload = JSON.stringify({
+            access_key: ORDER_EMAIL_KEY,
+            subject: 'New paid order ' + ref + ' (' + money(total) + ')',
+            from_name: 'Besties Shop',
+            name: v.name,
+            email: v.email,
+            phone: v.phone,
+            reference: ref,
+            total_paid: money(total),
+            delivery_address: v.address,
+            notes: v.notes || '-',
+            order: lines.join('\n')
+        });
+        function send(retry) {
+            fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: payload })
+                .then(function (r) { return r.json(); })
+                .then(function (d) { if (!d.success && retry) setTimeout(function () { send(false); }, 3000); })
+                .catch(function () { if (retry) setTimeout(function () { send(false); }, 3000); });
+        }
+        send(true);
     }
 
     function showPayError(text) {
