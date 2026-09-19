@@ -98,6 +98,9 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
 .pm-note { font-size: 0.82rem; color: #999; }
 .pm-error { margin-top: 6px; color: #d6336c; font-size: 0.85rem; font-weight: 600; }
 .chip.size { min-width: 52px; text-align: center; }
+.badge-preorder { position: absolute; top: 10px; left: 10px; z-index: 2; background: var(--navy); color: #fff; padding: 4px 12px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+[hidden] { display: none !important; }
+.pm-preorder { display: inline-block; align-self: flex-start; padding: 6px 14px; border-radius: 12px; background: rgba(45,53,97,0.08); color: var(--navy); font-size: 0.85rem; font-weight: 600; }
 .price { font-weight: 700; font-size: 1.15rem; color: var(--pink); }
 .cart-total { display: flex; justify-content: space-between; font-weight: 700; padding-top: 4px; }
 
@@ -183,11 +186,19 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
                     <button type="button" class="btn" data-open="tshirt">View &amp; add to cart</button>
                 </div>
             </article>
+            <article class="product" data-id="jersey">
+                <div class="product-img" style="background: #fff;"><span class="badge-preorder">Pre-order</span><img loading="lazy" decoding="async" src="assets/merch-jersey.webp" alt="Besties Jersey" style="object-fit: contain;"></div>
+                <div class="product-body">
+                    <h3>Besties Jersey</h3>
+                    <p>Besties jersey with the Besties logo.</p>
+                    <button type="button" class="btn" data-open="jersey">View &amp; pre-order</button>
+                </div>
+            </article>
             <article class="product" data-id="lacoste">
                 <div class="product-img" style="background: linear-gradient(180deg,#a2a8b4 0%,#d2d5db 100%);"><img loading="lazy" decoding="async" src="assets/merch-lacoste.webp" alt="Besties Lacoste" style="object-fit: cover; object-position: center 52%;"></div>
                 <div class="product-body">
                     <h3>Besties Lacoste</h3>
-                    <p>Blue polo with a white collar and the Besties logo.</p>
+                    <p>Polo with the Besties logo, in blue, green, red and yellow.</p>
                     <button type="button" class="btn" data-open="lacoste">View &amp; add to cart</button>
                 </div>
             </article>
@@ -228,6 +239,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
                 <h2 id="pmName"></h2>
                 <p id="pmDesc"></p>
                 <div class="price" id="pmPrice" hidden></div>
+                <div class="pm-preorder" id="pmPreorder" hidden>Pre-order: we will confirm the price and delivery date with you on WhatsApp.</div>
                 <div id="pmOptionWrap" hidden>
                     <div class="pm-label" id="pmOptionLabel"></div>
                     <div class="pm-chips" id="pmChips" role="radiogroup"></div>
@@ -268,7 +280,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     const PRODUCTS = {
         shirt: {
             name: 'Besties Shirt',
-            price: 150, // SAMPLE price (GHS), replace with the real one
+            price: 120,
             sizes: ['S', 'M', 'L', 'XL'],
             desc: 'White shirt with the Besties logo.',
             images: [
@@ -279,26 +291,37 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         },
         tshirt: {
             name: 'Besties T-shirt',
-            price: 130, // SAMPLE price (GHS), replace with the real one
+            price: 100,
             sizes: ['S', 'M', 'L', 'XL'],
             desc: 'Besties T-shirt with the Besties logo, in red, green, blue and pink.',
             optionLabel: 'Colour',
             options: ['Red', 'Green', 'Blue', 'Pink'],
             images: [
                 { src: 'assets/merch-tshirt.webp', alt: 'Besties T-shirt', contain: true },
-                { src: 'assets/merch-tshirt-red-1100.webp', alt: 'Besties wearing red Besties T-shirts', color: 'Red' },
-                { src: 'assets/merch-tshirt-green-1100.webp', alt: 'Besties wearing green Besties T-shirts', color: 'Green' },
-                { src: 'assets/merch-tshirt-blue-1100.webp', alt: 'Besties wearing blue Besties T-shirts', color: 'Blue' },
-                { src: 'assets/merch-tshirt-pink-1100.webp', alt: 'Besties wearing pink Besties T-shirts', color: 'Pink' },
                 { src: 'assets/merch-tshirt-solo-1100.webp', alt: 'A Bestie wearing the Besties T-shirt' },
                 { src: 'assets/merch-tshirt-group-1100.webp', alt: 'Besties wearing the Besties T-shirt together' }
             ]
         },
+        jersey: {
+            name: 'Besties Jersey',
+            price: null, // pre-order: price confirmed on WhatsApp
+            sizes: ['S', 'M', 'L', 'XL'],
+            desc: 'Besties jersey with the Besties logo.',
+            preorder: true,
+            images: [
+                { src: 'assets/merch-jersey.webp', alt: 'Besties Jersey, front', contain: true },
+                { src: 'assets/merch-jersey-back.webp', alt: 'Besties Jersey, back', contain: true },
+                { src: 'assets/merch-jersey-model-front-1100.webp', alt: 'A Bestie wearing the Besties Jersey, front' },
+                { src: 'assets/merch-jersey-model-back-1100.webp', alt: 'A Bestie wearing the Besties Jersey, back' }
+            ]
+        },
         lacoste: {
             name: 'Besties Lacoste',
-            price: 180, // SAMPLE price (GHS), replace with the real one
+            price: 150,
             sizes: ['S', 'M', 'L', 'XL'],
-            desc: 'Blue polo with a white collar and the Besties logo.',
+            desc: 'Polo with the Besties logo, in blue, green, red and yellow.',
+            optionLabel: 'Colour',
+            options: ['Blue', 'Green', 'Red', 'Yellow'],
             images: [
                 { src: 'assets/merch-lacoste.webp', alt: 'Besties Lacoste', contain: true },
                 { src: 'assets/merch-lacoste-group-1100.webp', alt: 'Besties wearing the Besties Lacoste together' },
@@ -307,7 +330,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         },
         headband: {
             name: 'Besties Headband',
-            price: 60, // SAMPLE price (GHS), replace with the real one
+            price: 50,
             desc: 'Soft headband with the Besties logo, in white, green, red and blue.',
             optionLabel: 'Colour',
             options: ['White', 'Green', 'Red', 'Blue'],
@@ -377,6 +400,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         $('pmQty').textContent = '1';
         $('pmName').textContent = pr.name;
         $('pmDesc').textContent = pr.desc;
+        $('pmPreorder').hidden = !pr.preorder;
+        $('pmAdd').textContent = pr.preorder ? 'Pre-order' : 'Add to cart';
         $('pmPrice').hidden = pr.price == null;
         if (pr.price != null) $('pmPrice').textContent = money(pr.price);
         pmSize = null;
@@ -437,8 +462,6 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
                 c.textContent = o;
                 c.addEventListener('click', function () {
                     pmOption = o;
-                    const at = PRODUCTS[current].images.findIndex(function (im) { return im.color === o; });
-                    if (at >= 0) setMain(at);
                     Array.prototype.forEach.call(chips.children, function (x) {
                         const on = x === c;
                         x.classList.toggle('active', on);
@@ -473,7 +496,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         save();
         renderCart();
         closeOverlay(pm);
-        toast(pr.name + ' added to cart');
+        toast(pr.name + (pr.preorder ? ' pre-order added to cart' : ' added to cart'));
         const fab = $('cartFab');
         fab.classList.remove('bump');
         void fab.offsetWidth;
@@ -486,6 +509,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     function describe(it) {
         const pr = PRODUCTS[it.id];
         const parts = [];
+        if (pr.preorder) parts.push('Pre-order');
         if (it.option) parts.push(pr.optionLabel + ': ' + it.option);
         if (it.size) parts.push('Size: ' + it.size);
         return parts.join(', ');
@@ -505,8 +529,10 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
             const pr = PRODUCTS[it.id];
             lines.push((n + 1) + '. ' + pr.name + (d ? ' (' + d + ')' : '') + ' x' + it.qty + (pr.price != null ? ' - ' + money(pr.price * it.qty) : ''));
         });
-        if (cart.every(function (i) { return PRODUCTS[i.id].price != null; })) {
-            lines.push('', 'Total: ' + money(cart.reduce(function (n, i) { return n + PRODUCTS[i.id].price * i.qty; }, 0)));
+        const pricedItems = cart.filter(function (i) { return PRODUCTS[i.id].price != null; });
+        if (pricedItems.length) {
+            const sum = money(pricedItems.reduce(function (n, i) { return n + PRODUCTS[i.id].price * i.qty; }, 0));
+            lines.push('', pricedItems.length === cart.length ? 'Total: ' + sum : 'Subtotal (excluding pre-order items): ' + sum);
         }
         const name = $('cartName').value.trim();
         const notes = $('cartNotes').value.trim();
@@ -565,7 +591,9 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         $('cartEmpty').hidden = cart.length > 0;
         $('cartForm').hidden = cart.length === 0;
         list.hidden = cart.length === 0;
-        const priced = cart.length > 0 && cart.every(function (i) { return PRODUCTS[i.id].price != null; });
+        const pricedItems = cart.filter(function (i) { return PRODUCTS[i.id].price != null; });
+        const priced = pricedItems.length > 0;
+        const allPriced = pricedItems.length === cart.length;
         let totalEl = $('cartTotal');
         if (!totalEl) {
             totalEl = document.createElement('div');
@@ -574,7 +602,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
             $('cartForm').prepend(totalEl);
         }
         totalEl.hidden = !priced;
-        if (priced) totalEl.innerHTML = '<span>Total</span><span>' + money(cart.reduce(function (n, i) { return n + PRODUCTS[i.id].price * i.qty; }, 0)) + '</span>';
+        if (priced) totalEl.innerHTML = '<span>' + (allPriced ? 'Total' : 'Subtotal (excl. pre-order)') + '</span><span>' + money(pricedItems.reduce(function (n, i) { return n + PRODUCTS[i.id].price * i.qty; }, 0)) + '</span>';
         updateLink();
     }
 
