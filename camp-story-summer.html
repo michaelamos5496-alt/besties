@@ -381,14 +381,6 @@ html {
     background-position: center;
 }
 
-.episode-player iframe {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
 .episode-thumb:hover .episode-play-icon {
     background: var(--besties-pink);
 }
@@ -824,37 +816,10 @@ html {
     function update() {
         buildDots();
         const idx = Math.round(track.scrollLeft / step());
-        if (idx !== 0) stopPlayer();
         const max = track.scrollWidth - track.clientWidth - 2;
         prev.disabled = track.scrollLeft <= 2;
         next.disabled = track.scrollLeft >= max;
         dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
-    }
-
-    let playing = null;
-
-    function stopPlayer() {
-        if (!playing) return;
-        playing.player.replaceWith(playing.thumb);
-        playing = null;
-    }
-
-    const thumb = track.querySelector('.episode-thumb');
-    if (thumb) {
-        thumb.addEventListener('click', function (e) {
-            e.preventDefault();
-            const id = thumb.getAttribute('href').split('/').pop().split('?')[0];
-            const player = document.createElement('div');
-            player.className = 'episode-placeholder episode-player';
-            const frame = document.createElement('iframe');
-            frame.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
-            frame.title = 'Besties Camp Episode 1';
-            frame.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
-            frame.allowFullscreen = true;
-            player.appendChild(frame);
-            thumb.replaceWith(player);
-            playing = { thumb: thumb, player: player };
-        });
     }
 
     prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
