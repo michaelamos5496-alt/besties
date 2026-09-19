@@ -248,31 +248,34 @@ html {
 
 .about-camp-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.25rem;
 }
 
 .about-camp-feature {
     background: white;
-    padding: 2rem 1.5rem;
+    padding: 1.4rem 1.25rem;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .about-camp-feature .icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
 }
 
 .about-camp-feature h4 {
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
+    font-size: 1.05rem;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
     color: var(--besties-green);
 }
 
 .about-camp-feature p {
-    font-size: 0.9rem;
+    font-size: 0.88rem;
+    line-height: 1.55;
     color: #777;
     margin: 0;
 }
@@ -599,6 +602,34 @@ html {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .about-camp-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+    }
+
+    .about-camp-feature {
+        padding: 0.9rem 0.7rem;
+        border-radius: 10px;
+    }
+
+    .about-camp-feature .icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .about-camp-feature h4 {
+        font-size: 0.85rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .about-camp-feature p {
+        font-size: 0.72rem;
+        line-height: 1.45;
+    }
+
+    .about-camp-intro {
+        margin-bottom: 1.5rem;
+    }
     .gallery-section {
         padding: 60px 16px;
     }
