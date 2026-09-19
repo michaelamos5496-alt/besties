@@ -191,40 +191,12 @@ html {
     margin-bottom: 0.5rem;
 }
 
-.countdown-banner .next-camp-name {
-    font-size: 1rem;
-    opacity: 0.9;
-    margin-bottom: 2rem;
-}
-
-.countdown-timer {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.countdown-unit {
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    min-width: 80px;
-}
-
-.countdown-unit .value {
-    font-size: clamp(1.8rem, 5vw, 2.5rem);
-    font-weight: 700;
+.countdown-banner .coming-soon {
     font-family: 'Fredoka', sans-serif;
-    line-height: 1;
-}
-
-.countdown-unit .label {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    opacity: 0.85;
-    margin-top: 0.35rem;
+    font-size: clamp(2.2rem, 7vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 2rem;
 }
 
 .countdown-banner .cta-btn {
@@ -673,11 +645,6 @@ html {
     .stories-section {
         padding: 60px 20px;
     }
-
-    .countdown-unit {
-        min-width: 65px;
-        padding: 0.75rem 0.85rem;
-    }
 }
 
     </style>
@@ -716,14 +683,8 @@ html {
     <!-- Countdown / Registration Banner -->
     <section class="countdown-banner" id="countdownBanner">
         <div class="registration-badge"><span class="dot"></span> Registration Open</div>
-        <h2>Countdown to Our Next Camp</h2>
-        <p class="next-camp-name"></p>
-        <div class="countdown-timer">
-            <div class="countdown-unit"><div class="value" id="cdDays">00</div><div class="label">Days</div></div>
-            <div class="countdown-unit"><div class="value" id="cdHours">00</div><div class="label">Hours</div></div>
-            <div class="countdown-unit"><div class="value" id="cdMins">00</div><div class="label">Mins</div></div>
-            <div class="countdown-unit"><div class="value" id="cdSecs">00</div><div class="label">Secs</div></div>
-        </div>
+        <h2>Our Next Camp</h2>
+        <p class="coming-soon">Coming Soon</p>
         <a href="https://wa.me/233248051774" class="cta-btn primary" target="_blank">Message Us on WhatsApp</a>
     </section>
 
@@ -844,53 +805,6 @@ html {
     </footer>
 
     <script>
-// Countdown to next upcoming camp session
-function initCampCountdown() {
-    const banner = document.getElementById('countdownBanner');
-    const nameEl = banner.querySelector('.next-camp-name');
-    const timerEl = banner.querySelector('.countdown-timer');
-
-    const nextCampDate = new Date('2026-10-10T00:00:00');
-    const nextCampName = 'Fall Adventure Camp';
-    const next = nextCampDate > new Date() ? { date: nextCampDate, name: nextCampName } : null;
-
-    if (!next) {
-        nameEl.textContent = 'Stay tuned for our next camp announcement!';
-        timerEl.style.display = 'none';
-        return;
-    }
-
-    nameEl.textContent = `Next up: ${next.name}`;
-
-    const cdDays = document.getElementById('cdDays');
-    const cdHours = document.getElementById('cdHours');
-    const cdMins = document.getElementById('cdMins');
-    const cdSecs = document.getElementById('cdSecs');
-
-    function tick() {
-        const diff = next.date - new Date();
-        if (diff <= 0) {
-            clearInterval(timerId);
-            timerEl.innerHTML = '<div style="font-size: 1.2rem;">Camp is happening now! 🎉</div>';
-            return;
-        }
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const mins = Math.floor((diff / (1000 * 60)) % 60);
-        const secs = Math.floor((diff / 1000) % 60);
-
-        cdDays.textContent = String(days).padStart(2, '0');
-        cdHours.textContent = String(hours).padStart(2, '0');
-        cdMins.textContent = String(mins).padStart(2, '0');
-        cdSecs.textContent = String(secs).padStart(2, '0');
-    }
-
-    tick();
-    const timerId = setInterval(tick, 1000);
-}
-
-initCampCountdown();
-
 // Gallery image lightbox
 (function initLightbox() {
     const box = document.createElement('div');

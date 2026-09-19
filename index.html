@@ -460,34 +460,13 @@ p {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
-.hero-countdown-row {
-    display: flex;
-    align-items: baseline;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: clamp(20px, 5vw, 48px);
-}
-
-.hero-countdown-stat {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    line-height: 1;
-}
-
-.hero-countdown-stat span {
+.hero-coming-soon {
     font-family: 'Fredoka', sans-serif;
     font-size: clamp(2.4rem, 7vw, 4.2rem);
     font-weight: 700;
+    line-height: 1;
     color: var(--besties-pink);
     text-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-}
-
-.hero-countdown-stat small {
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
-    font-weight: 500;
-    color: white;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .hero-cta-btn {
@@ -1620,6 +1599,21 @@ p {
     background: rgba(0, 0, 0, 0.8);
 }
 
+@media (max-width: 480px) {
+    .donate-modal-panel {
+        width: min(330px, 100%);
+        height: min(86vh, 410px);
+    }
+
+    .donate-modal-close {
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+        font-size: 1.2rem;
+    }
+}
+
 .donate-fab {
     position: fixed;
     right: 20px;
@@ -1910,14 +1904,9 @@ p {
         <img src="assets/besties-logo.webp" alt="Besties" class="hero-logo">
         <div class="hero-content">
             <p class="hero-subtitle">EMPOWERING GIRLS TO SHINE</p>
-            <a href="camp.html" class="hero-countdown-pill" id="heroCountdownPill">
-                <div class="hero-countdown-label">Next Besties Camp In</div>
-                <div class="hero-countdown-row">
-                    <div class="hero-countdown-stat"><span id="heroCdDays">00</span><small>Days</small></div>
-                    <div class="hero-countdown-stat"><span id="heroCdHours">00</span><small>Hours</small></div>
-                    <div class="hero-countdown-stat"><span id="heroCdMins">00</span><small>Minutes</small></div>
-                    <div class="hero-countdown-stat"><span id="heroCdSecs">00</span><small>Seconds</small></div>
-                </div>
+            <a href="camp.html" class="hero-countdown-pill">
+                <div class="hero-countdown-label">Next Besties Camp</div>
+                <div class="hero-coming-soon">Coming Soon</div>
             </a>
             <a href="camp.html" class="hero-cta-btn">Learn More</a>
         </div>
@@ -2210,39 +2199,6 @@ window.addEventListener('scroll', () => {
         }
     });
 });
-
-// Hero countdown stats to next camp
-(function initHeroCountdown() {
-    const pill = document.getElementById('heroCountdownPill');
-    const cdDays = document.getElementById('heroCdDays');
-    const cdHours = document.getElementById('heroCdHours');
-    const cdMins = document.getElementById('heroCdMins');
-    const cdSecs = document.getElementById('heroCdSecs');
-    if (!pill || !cdDays || !cdHours || !cdMins || !cdSecs) return;
-
-    const nextCampDate = new Date('2026-10-10T00:00:00');
-
-    function tick() {
-        const diff = nextCampDate - new Date();
-        if (diff <= 0) {
-            pill.style.display = 'none';
-            clearInterval(timerId);
-            return;
-        }
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-        const mins = Math.floor((diff / (1000 * 60)) % 60);
-        const secs = Math.floor((diff / 1000) % 60);
-
-        cdDays.textContent = String(days).padStart(2, '0');
-        cdHours.textContent = String(hours).padStart(2, '0');
-        cdMins.textContent = String(mins).padStart(2, '0');
-        cdSecs.textContent = String(secs).padStart(2, '0');
-    }
-
-    tick();
-    const timerId = setInterval(tick, 1000);
-})();
 
     </script>
 
