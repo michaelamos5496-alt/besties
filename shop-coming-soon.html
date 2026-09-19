@@ -369,7 +369,10 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
             optionLabel: 'Colour',
             options: ['Red', 'Green', 'Blue', 'Pink'],
             images: [
-                { src: 'assets/merch-tshirt.webp', alt: 'Besties T-shirt', contain: true },
+                { src: 'assets/merch-tshirt.webp', alt: 'Besties T-shirt in red', contain: true, color: 'Red' },
+                { src: 'assets/merch-tshirt-green.webp', alt: 'Besties T-shirt in green', contain: true, color: 'Green' },
+                { src: 'assets/merch-tshirt-blue.webp', alt: 'Besties T-shirt in blue', contain: true, color: 'Blue' },
+                { src: 'assets/merch-tshirt-pink.webp', alt: 'Besties T-shirt in pink', contain: true, color: 'Pink' },
                 { src: 'assets/merch-tshirt-solo-1100.webp', alt: 'A Bestie wearing the Besties T-shirt' },
                 { src: 'assets/merch-tshirt-group-1100.webp', alt: 'Besties wearing the Besties T-shirt together' }
             ]
@@ -534,6 +537,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
                 c.textContent = o;
                 c.addEventListener('click', function () {
                     pmOption = o;
+                    const at = PRODUCTS[current].images.findIndex(function (im) { return im.color === o; });
+                    if (at >= 0) setMain(at);
                     Array.prototype.forEach.call(chips.children, function (x) {
                         const on = x === c;
                         x.classList.toggle('active', on);
@@ -625,7 +630,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
             const row = document.createElement('div');
             row.className = 'cart-item';
             const img = document.createElement('img');
-            img.src = pr.images[0].src;
+            const shot = pr.images.find(function (im) { return im.color && im.color === it.option; }) || pr.images[0];
+            img.src = shot.src;
             img.alt = '';
             const mid = document.createElement('div');
             const h = document.createElement('h3');
