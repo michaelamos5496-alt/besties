@@ -154,7 +154,9 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
 .co-success p { color: #666; }
 .co-ref { font-family: monospace; font-size: 1rem; background: #f4f4f7; padding: 6px 14px; border-radius: 8px; letter-spacing: 1px; color: var(--dark); }
 .co-success .btn { width: 100%; margin-top: 4px; }
-.co-success .btn.wa { background: #25D366; }
+.co-wa-link { font-size: 0.82rem; color: #999; text-decoration: underline; }
+.co-wa-link:hover { color: var(--pink); }
+.co-wa-note { font-weight: 600; color: #1a9e4a !important; font-size: 0.9rem; }
 .co-success .btn.ghost { border: 2px solid #e3e3ea; background: #fff; color: var(--dark); cursor: pointer; font-family: inherit; }
 
 .toast { position: fixed; left: 50%; bottom: 96px; z-index: 1300; transform: translate(-50%, 20px); background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; opacity: 0; pointer-events: none; transition: all 0.3s ease; }
@@ -323,14 +325,15 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
             </div>
 
             <div class="co-done" id="coDone" hidden>
-                <div class="cart-head"><h2>Order confirmed</h2><button type="button" class="m-close" id="coDoneX" aria-label="Close">&times;</button></div>
+                <div class="cart-head"><h2>Order approved</h2><button type="button" class="m-close" id="coDoneX" aria-label="Close">&times;</button></div>
                 <div class="co-body co-success">
                     <div class="co-tick" aria-hidden="true">&#10003;</div>
-                    <h3 id="coThanks">Thank you!</h3>
+                    <h3 id="coThanks">Order approved!</h3>
                     <p>Your payment was received.</p>
                     <div class="co-ref" id="coRef"></div>
                     <p>We will contact you to confirm your order and delivery. Keep your reference number handy.</p>
-                    <a class="btn wa" id="coWa" href="#" target="_blank" rel="noopener">Message us on WhatsApp</a>
+                    <p class="co-wa-note" id="coWaNote"></p>
+                    <a class="co-wa-link" id="coWa" href="#" target="_blank" rel="noopener">WhatsApp did not open? Tap here to send your order.</a>
                     <button type="button" class="btn ghost" id="coDoneClose">Continue shopping</button>
                 </div>
             </div>
@@ -782,7 +785,7 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         cart = [];
         save();
         renderCart();
-        $('coThanks').textContent = 'Thank you, ' + v.name.split(' ')[0] + '!';
+        $('coThanks').textContent = 'Order approved, ' + v.name.split(' ')[0] + '!';
         $('coRef').textContent = ref;
         const msg = ['Hi Besties! I have just paid for my order.', '', 'Payment: Paid online (Paystack)', 'Reference: ' + ref, 'Name: ' + v.name, 'Phone: ' + v.phone, 'Delivery: ' + v.address]
             .concat(v.notes ? ['Notes: ' + v.notes] : [], ['', 'Order:'], lines, ['', 'Total paid: ' + money(total)]);
@@ -790,6 +793,14 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         $('coWa').href = waUrl;
         showView('done');
         emailOrder(ref, v, total, lines);
+        const note = $('coWaNote');
+        const win = window.open(waUrl, '_blank');
+        if (win) {
+            note.textContent = 'Your order is being sent to WhatsApp. Please tap Send in WhatsApp so we receive it.';
+        } else {
+            note.textContent = 'Sending your order to WhatsApp. Please tap Send in WhatsApp so we receive it.';
+            setTimeout(function () { window.location.href = waUrl; }, 1200);
+        }
     }
 
     function emailOrder(ref, v, total, lines) {
@@ -886,9 +897,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     if (payReady) {
         $('cartCheckout').hidden = false;
         $('waFields').hidden = true;
-        $('cartSend').classList.add('wa-alt');
-        $('cartSend').textContent = 'Order on WhatsApp instead';
-        $('cartHint').textContent = 'Pay securely with card or mobile money, or send your order on WhatsApp and we will confirm it with you.';
+        $('cartSend').hidden = true;
+        $('cartHint').textContent = 'Pay securely with card or mobile money. Your order is sent to us automatically once payment goes through.';
     }
 
     renderCart();
