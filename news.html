@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#FF6B9D">
+    <meta name="theme-color" content="#2d3561">
     <meta name="description" content="The latest updates and general news from Besties.">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
@@ -23,8 +23,8 @@
 :root {
     --besties-pink: #FF6B9D;
     --besties-purple: #D5A6E0;
+    --navy: #2d3561;
     --white: #FFFFFF;
-    --light-gray: #FAFAFA;
     --dark-gray: #333333;
 }
 
@@ -32,7 +32,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     background: var(--white);
     color: var(--dark-gray);
-    line-height: 1.8;
+    line-height: 1.7;
 }
 
 /* Navigation */
@@ -67,166 +67,144 @@ body {
     color: var(--besties-pink);
 }
 
-/* Hero */
-.hero {
-    position: relative;
-    min-height: 50vh;
-    padding: 100px 40px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-}
-
-.hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center 30%;
-    z-index: 1;
-}
-
-.hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.6) 0%, rgba(213, 166, 224, 0.6) 100%);
-    z-index: 2;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 3;
-}
-
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-    margin-bottom: 1rem;
+/* Header */
+.news-header {
+    background: var(--navy);
     color: white;
+    text-align: center;
+    padding: 70px 24px 64px;
+}
+
+.news-header h1 {
     font-family: 'Fredoka', sans-serif;
-    font-weight: 700;
-    letter-spacing: -1px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-size: clamp(2.2rem, 6vw, 3.4rem);
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
 }
 
-.hero p {
-    font-size: 1.1rem;
-    max-width: 560px;
+.news-header p {
+    max-width: 620px;
     margin: 0 auto;
-    color: rgba(255, 255, 255, 0.95);
-    font-weight: 300;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.05rem;
+    line-height: 1.7;
 }
 
-/* Posts */
+/* Tabs */
+.news-tabs-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 56px 16px 48px;
+}
+
+.news-tabs {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    padding: 5px;
+    background: #f2f2f5;
+    border-radius: 50px;
+}
+
+.news-tab {
+    padding: 10px 22px;
+    border: none;
+    border-radius: 50px;
+    background: transparent;
+    color: #666;
+    font-family: inherit;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.news-tab:hover {
+    color: var(--dark-gray);
+}
+
+.news-tab.active {
+    background: white;
+    color: var(--dark-gray);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid */
 .news-section {
-    padding: 80px 40px;
+    padding: 0 40px 90px;
 }
 
 .news-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 1100px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem 2rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .post-card {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #f0f0f0;
-    border-radius: 12px;
-    overflow: hidden;
-    background: white;
+    display: block;
     text-decoration: none;
     color: inherit;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
 }
 
-.post-card:hover {
-    border-color: var(--besties-pink);
-    box-shadow: 0 8px 30px rgba(255, 107, 157, 0.12);
-    transform: translateY(-4px);
-}
-
-.post-card.featured {
-    grid-column: 1 / -1;
-    flex-direction: row;
+.post-card[hidden] {
+    display: none;
 }
 
 .post-image {
     width: 100%;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
     display: block;
+    border-radius: 16px;
+    background: #f2f2f5;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.post-card.featured .post-image {
-    width: 50%;
-    aspect-ratio: auto;
-    min-height: 300px;
-}
-
-.post-body {
-    padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    flex: 1;
+.post-card:hover .post-image {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(45, 53, 97, 0.15);
 }
 
 .post-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
+    margin-top: 1.1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
     color: var(--besties-pink);
 }
 
 .post-card h2 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: 1.35rem;
-    line-height: 1.3;
-    font-weight: 600;
+    margin-top: 0.4rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.4;
     color: var(--dark-gray);
 }
 
-.post-card.featured h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
+.post-card:hover h2 {
+    color: var(--besties-pink);
 }
 
 .post-excerpt {
+    margin-top: 0.7rem;
     color: #666;
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-.post-link {
-    margin-top: auto;
-    padding-top: 0.5rem;
-    color: var(--besties-pink);
-    font-weight: 700;
-    font-size: 0.9rem;
-}
-
-.post-card.coming-soon {
-    justify-content: center;
-    align-items: center;
+.news-more {
     text-align: center;
-    min-height: 220px;
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.06) 0%, rgba(213, 166, 224, 0.12) 100%);
-    border-style: dashed;
-    cursor: default;
-}
-
-.post-card.coming-soon:hover {
-    transform: none;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    border-color: #f0f0f0;
+    color: #999;
+    font-size: 0.95rem;
+    margin-top: 3.5rem;
 }
 
 /* Footer */
@@ -247,36 +225,49 @@ body {
     color: var(--besties-pink);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
+    .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
     .nav-bar {
         padding: 15px 20px;
     }
 
-    .hero {
-        padding: 70px 20px;
+    .news-header {
+        padding: 50px 20px 46px;
+    }
+
+    .news-tabs-wrap {
+        padding: 36px 16px 32px;
+    }
+
+    .news-tab {
+        padding: 9px 13px;
+        font-size: 0.85rem;
     }
 
     .news-section {
-        padding: 50px 16px;
+        padding: 0 20px 60px;
     }
 
     .news-grid {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 2.25rem;
+    }
+}
+
+@media (max-width: 380px) {
+    .news-tabs {
+        gap: 2px;
+        padding: 4px;
     }
 
-    .post-card.featured {
-        flex-direction: column;
-    }
-
-    .post-card.featured .post-image {
-        width: 100%;
-        min-height: 0;
-        aspect-ratio: 16 / 10;
-    }
-
-    .post-body {
-        padding: 1.25rem;
+    .news-tab {
+        padding: 9px 9px;
+        font-size: 0.78rem;
     }
 }
     </style>
@@ -287,72 +278,91 @@ body {
         <a href="index.html" class="nav-back">← Back</a>
     </nav>
 
-    <section class="hero">
-        <picture>
-            <source media="(max-width: 768px)" srcset="assets/news-banner-900.webp">
-            <img src="assets/news-banner-1600.webp" alt="Besties together at camp" class="hero-bg" fetchpriority="high">
-        </picture>
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h1>News</h1>
-            <p>The latest updates and general news from Besties.</p>
+    <header class="news-header">
+        <h1>Besties newsroom</h1>
+        <p>Here you can get an accurate picture of what's happening at Besties. Find the latest updates and general news.</p>
+    </header>
+
+    <div class="news-tabs-wrap">
+        <div class="news-tabs" id="newsTabs" role="group" aria-label="Filter news">
+            <button type="button" class="news-tab active" data-filter="all" aria-pressed="true">All news</button>
+            <button type="button" class="news-tab" data-filter="update" aria-pressed="false">Updates</button>
+            <button type="button" class="news-tab" data-filter="camp" aria-pressed="false">Camp</button>
+            <button type="button" class="news-tab" data-filter="watch" aria-pressed="false">Watch</button>
+            <button type="button" class="news-tab" data-filter="story" aria-pressed="false">Our story</button>
         </div>
-    </section>
+    </div>
 
     <main class="news-section">
-        <div class="news-grid">
-            <a class="post-card featured" href="camp-story-summer.html">
-                <img class="post-image" loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Summer Camp recap">
-                <div class="post-body">
-                    <div class="post-label">Camp Story</div>
-                    <h2>Besties Summer Camp: 60 Hours of Friendship, Fun &amp; Unforgettable Moments</h2>
-                    <p class="post-excerpt">12 girls, including the four original Besties from the Best Girlfriends podcast, came together for three days and two nights of friendship, creativity, learning and plenty of fun. The very first Besties Camp is officially in the books.</p>
-                    <span class="post-link">Read the full story →</span>
-                </div>
+        <div class="news-grid" id="newsGrid">
+            <a class="post-card" data-category="update" href="news-candle-making-class.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/news-candle-700.webp" alt="Besties together at camp" style="object-position: center;">
+                <div class="post-label">Coming up</div>
+                <h2>Candle Making Class is on the way</h2>
+                <p class="post-excerpt">Our next event is a hands-on candle making class. Date, venue and price will be announced soon.</p>
             </a>
 
-            <a class="post-card" href="apply.html">
-                <img class="post-image" loading="lazy" decoding="async" src="assets/image_3-700.webp" alt="Besties in their uniforms" style="object-position: center 25%;">
-                <div class="post-body">
-                    <div class="post-label">Update</div>
-                    <h2>New Besties Club members get a welcome pack</h2>
-                    <p class="post-excerpt">Every Besties Club membership now includes a welcome pack with a Besties T-shirt, Lacoste and headband.</p>
-                    <span class="post-link">Learn about membership →</span>
-                </div>
+            <a class="post-card" data-category="watch" href="news-episode-1.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/episode-1-thumb-640.webp" alt="Besties Camp Episode 1" style="object-position: center;">
+                <div class="post-label">Watch</div>
+                <h2>Besties Camp Episode 1 is on YouTube</h2>
+                <p class="post-excerpt">The first episode of the Besties Camp reality experience is out now, a look at the first day of camp.</p>
             </a>
 
-            <a class="post-card" href="https://youtu.be/dlP2IijXLSo" target="_blank" rel="noopener">
-                <img class="post-image" loading="lazy" decoding="async" src="assets/episode-1-thumb-640.webp" alt="Besties Camp Episode 1: They're Finally Here!!">
-                <div class="post-body">
-                    <div class="post-label">Watch</div>
-                    <h2>Besties Camp Episode 1 is on YouTube</h2>
-                    <p class="post-excerpt">Watch the first day of Besties Camp, captured as a reality experience by Egli Studios.</p>
-                    <span class="post-link">Watch on YouTube →</span>
-                </div>
+            <a class="post-card" data-category="camp" href="news-tasty-goodness-challenge.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/news-tasty-700.webp" alt="Besties laughing with their finished dish at the Tasty Goodness Challenge" style="object-position: center 25%;">
+                <div class="post-label">Camp</div>
+                <h2>Inside the Tasty Goodness Challenge</h2>
+                <p class="post-excerpt">The Besties took over the kitchen at Summer Camp, turning fresh vegetables, sausages and noodles into colourful plates.</p>
             </a>
 
-            <a class="post-card" href="events.html">
-                <img class="post-image" loading="lazy" decoding="async" src="gallery-images/thumbs/camp-09.webp" alt="Besties enjoying a creative session">
-                <div class="post-body">
-                    <div class="post-label">Coming Up</div>
-                    <h2>Candle Making Class is coming soon</h2>
-                    <p class="post-excerpt">Our next event is a hands-on candle making class. Date, venue and price will be announced soon.</p>
-                    <span class="post-link">See events →</span>
-                </div>
+            <a class="post-card" data-category="camp" href="news-camp-programme.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties together at camp" style="object-position: center 30%;">
+                <div class="post-label">Camp</div>
+                <h2>Three days, two nights: what the girls got up to at camp</h2>
+                <p class="post-excerpt">From a welcome party with a female DJ to a beading masterclass and a candid conversation about growing up, here is a closer look at the camp programme.</p>
             </a>
 
-            <div class="post-card coming-soon">
-                <div class="post-body" style="align-items: center; justify-content: center;">
-                    <div class="post-label">More on the way</div>
-                    <h2>More news coming soon</h2>
-                    <p class="post-excerpt">Check back for updates and announcements from the Besties.</p>
-                </div>
-            </div>
+            <a class="post-card" data-category="update" href="news-how-to-join.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/news-join-700.webp" alt="Besties in their green T-shirts" style="object-position: center 25%;">
+                <div class="post-label">Update</div>
+                <h2>How to join Besties: a step-by-step guide</h2>
+                <p class="post-excerpt">Everything parents and girls need to know about applying, what membership includes and what it costs.</p>
+            </a>
+
+            <a class="post-card" data-category="story" href="news-how-besties-began.html">
+                <img class="post-image" loading="lazy" decoding="async" src="assets/yorm-960.webp" alt="Aggor Yorm, founder of Egli Studios and Besties" style="object-position: center 40%;">
+                <div class="post-label">Our story</div>
+                <h2>From a WhatsApp voice note to a community for girls</h2>
+                <p class="post-excerpt">How a phone call about a group chat became a podcast, a community, and now camps and experiences for girls.</p>
+            </a>
         </div>
+        <p class="news-more">More news coming soon.</p>
     </main>
 
     <footer class="footer">
         <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank" rel="noopener">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
     </footer>
+
+    <script>
+(function () {
+    const tabs = document.querySelectorAll('.news-tab');
+    const cards = document.querySelectorAll('.post-card');
+
+    tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+            const filter = tab.dataset.filter;
+            tabs.forEach(function (t) {
+                const on = t === tab;
+                t.classList.toggle('active', on);
+                t.setAttribute('aria-pressed', on ? 'true' : 'false');
+            });
+            cards.forEach(function (card) {
+                card.hidden = filter !== 'all' && card.dataset.category !== filter;
+            });
+        });
+    });
+})();
+    </script>
 </body>
 </html>
