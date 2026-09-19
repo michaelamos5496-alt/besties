@@ -1313,50 +1313,6 @@ p {
     transform: translateY(-3px);
 }
 
-.footer-newsletter {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-}
-
-.footer-newsletter input {
-    padding: 12px 18px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-    color: white;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 0.95rem;
-    min-width: 220px;
-}
-
-.footer-newsletter input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
-}
-
-.footer-newsletter input:focus {
-    outline: none;
-    border-color: var(--besties-pink);
-}
-
-.footer-newsletter-btn {
-    padding: 12px 28px;
-    border-radius: 50px;
-    background: var(--besties-pink);
-    color: white;
-    border: none;
-    font-weight: 700;
-    font-size: 0.95rem;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: all 0.3s ease;
-}
-
-.footer-newsletter-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-}
-
 .footer-partners {
     margin-bottom: 2rem;
     text-align: center;
@@ -1620,15 +1576,6 @@ p {
         text-align: center;
     }
 
-    .footer-newsletter {
-        justify-content: center;
-        width: 100%;
-    }
-
-    .footer-newsletter input {
-        flex: 1 1 auto;
-    }
-
     .footer-bottom {
         justify-content: center;
         text-align: center;
@@ -1793,6 +1740,7 @@ p {
                 <a href="#home" class="mobile-menu-item">Home</a>
                 <a href="our-story.html" class="mobile-menu-item">Our Story</a>
                 <a href="events.html" class="mobile-menu-item">Events</a>
+                <a href="news.html" class="mobile-menu-item">News</a>
                 <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" class="mobile-menu-item" target="_blank">Podcast</a>
                 <a href="shop-coming-soon.html" class="mobile-menu-item">Merchandise</a>
                 <a href="#faq" class="mobile-menu-item">FAQ</a>
@@ -1939,12 +1887,6 @@ p {
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.68a3.02 3.02 0 0 0-2.12-2.14C19.51 4 12 4 12 4s-7.51 0-9.38.54A3.02 3.02 0 0 0 .5 6.68 31.6 31.6 0 0 0 0 12a31.6 31.6 0 0 0 .5 5.32 3.02 3.02 0 0 0 2.12 2.14C4.49 20 12 20 12 20s7.51 0 9.38-.54a3.02 3.02 0 0 0 2.12-2.14A31.6 31.6 0 0 0 24 12a31.6 31.6 0 0 0-.5-5.32ZM9.6 15.6V8.4l6.3 3.6Z"/></svg>
                     </a>
                 </div>
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 0.85rem;">
-                    <form class="footer-newsletter" id="newsletterForm">
-                        <input type="email" id="newsletterEmail" placeholder="Sign up for our newsletter" required>
-                        <button type="submit" class="footer-newsletter-btn">Join Now</button>
-                    </form>
-                </div>
             </div>
 
             <div class="footer-partners">
@@ -2008,20 +1950,6 @@ p {
     </div>
 
     <script>
-// Newsletter signup
-
-const newsletterForm = document.getElementById('newsletterForm');
-
-if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        const email = document.getElementById('newsletterEmail').value.trim();
-        const subject = 'Newsletter Signup';
-        const body = `Please add this email to the Besties newsletter list: ${email}`;
-        window.location.href = `mailto:hello@bestiesgh.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    });
-}
-
 // FAQ toggle
 
 const faqToggleBtn = document.getElementById('faqToggleBtn');
