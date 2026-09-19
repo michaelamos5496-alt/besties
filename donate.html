@@ -12,8 +12,10 @@
     <script>
         if (window.self !== window.top) document.documentElement.classList.add('embedded');
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -230,7 +232,7 @@ body {
 </head>
 <body>
     <nav class="nav-bar">
-        <a href="index.html" class="nav-logo"><img src="assets/besties-logo.webp" alt="Besties" class="nav-logo-img"></a>
+        <a href="index.html" class="nav-logo"><img src="assets/besties-logo-480.webp" alt="Besties" class="nav-logo-img"></a>
         <a href="index.html" class="nav-back">← Back</a>
     </nav>
 
@@ -274,7 +276,7 @@ body {
 
     function update() {
         const text = selected
-            ? "Hi Besties! I'd like to donate " + fmt(selected) + " to support the girls."
+            ? "Hi Besties! I'd like to donate " + fmt(selected) + " to support the girls. How can I give?"
             : "Hi Besties! I'd like to donate to support the girls. How can I give?";
         link.href = 'https://wa.me/' + number + '?text=' + encodeURIComponent(text);
     }
@@ -295,7 +297,16 @@ body {
                 return getJson('https://www.cloudflare.com/cdn-cgi/trace')
                     .then(function (r) { return r.text(); })
                     .then(function (t) { const m = t.match(/^loc=(\w+)/m); return m ? m[1] : null; });
-            });
+            })
+            .catch(function () { return null; });
+    }
+
+    function inGhanaTimezone() {
+        try {
+            return Intl.DateTimeFormat().resolvedOptions().timeZone === 'Africa/Accra';
+        } catch (e) {
+            return false;
+        }
     }
 
     function showCedis() {
@@ -317,12 +328,16 @@ body {
 
     update();
 
-    getCountry()
-        .then(function (country) {
-            if (country === 'GH') showCedis();
-        })
-        .catch(function () {})
-        .finally(function () { wrap.classList.add('ready'); });
+    if (inGhanaTimezone()) {
+        showCedis();
+        wrap.classList.add('ready');
+    } else {
+        getCountry()
+            .then(function (country) {
+                if (!country || country === 'GH') showCedis();
+            })
+            .finally(function () { wrap.classList.add('ready'); });
+    }
 })();
     </script>
 </body>

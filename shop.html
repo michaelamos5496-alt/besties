@@ -9,8 +9,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <title>Besties Shop - Premium Merchandise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -613,7 +615,7 @@ function renderProducts() {
     grid.innerHTML = products.map(product => `
         <div class="product-card">
             <div class="product-image">
-                <img src="${product.image}" alt="${product.name}">
+                <img loading="lazy" decoding="async" src="${product.image}" alt="${product.name}">
                 ${product.badge ? `<span class="product-badge">${product.badge}</span>` : ''}
             </div>
             <div class="product-info">

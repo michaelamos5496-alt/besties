@@ -11,10 +11,14 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Besties - A Global Movement for Girls</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Childlike&display=swap">
+    <link rel="preload" as="image" href="assets/campbanner-1600.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/campbanner-1280.webp" media="(max-width: 768px)" fetchpriority="high">
     <style>
 /* Besties Website - Main Stylesheet */
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Childlike&display=swap');
 
 :root {
     --besties-pink: #FF6B9D;
@@ -138,81 +142,9 @@ p {
     transform: translateX(-50%) translateY(-120px);
 }
 
-.nav-pill {
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    padding: 12px 20px;
-    display: flex;
-    gap: 0;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(20px);
-    pointer-events: auto;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #000000;
-    border-radius: 40px;
-    transition: color 0.3s ease;
-    cursor: pointer;
-    font-weight: 500;
-    position: relative;
-    pointer-events: auto;
-    z-index: 50;
-}
-
-.nav-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-2px);
-}
-
-.nav-item.active {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-.nav-icon {
-    width: 20px;
-    height: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #000000;
-    stroke: #000000;
-}
-
-.navbar-inner {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.nav-apply-btn {
-    background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%);
-    color: white;
-    padding: 14px 26px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    text-decoration: none;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(255, 107, 157, 0.3);
-    transition: all 0.3s ease;
-}
-
-.nav-apply-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.4);
-}
-
 /* Hamburger Menu */
 .hamburger-menu {
-    display: none;
+    display: flex;
     background: none;
     border: none;
     cursor: pointer;
@@ -351,13 +283,19 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('assets/campbanner.webp');
+    background-image: url('assets/campbanner-1600.webp');
     background-size: cover;
     background-position: center;
     background-attachment: scroll;
     z-index: 1;
     pointer-events: none;
     transform: translateZ(0);
+}
+
+@media (max-width: 768px) {
+    .hero::before {
+        background-image: url('assets/campbanner-1280.webp');
+    }
 }
 
 .hero::after {
@@ -373,6 +311,9 @@ p {
 }
 
 .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     max-width: 800px;
     z-index: 20;
@@ -444,7 +385,7 @@ p {
     z-index: 20;
     animation: fadeInUp 1s ease;
     transition: transform 0.3s ease;
-    margin-bottom: clamp(1.25rem, 3vw, 2rem);
+    margin-bottom: 0.9rem;
 }
 
 .hero-countdown-pill:hover {
@@ -471,10 +412,11 @@ p {
 
 .hero-cta-btn {
     display: inline-block;
-    padding: clamp(12px, 2vw, 16px) clamp(32px, 5vw, 48px);
-    border: 2px solid white;
+    padding: 8px 24px;
+    border: 1.5px solid white;
     border-radius: 50px;
     color: white;
+    font-size: 0.85rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     text-decoration: none;
@@ -1722,22 +1664,6 @@ p {
     .contact-card h2 {
         font-size: 1.8rem;
     }
-
-    .nav-label {
-        display: none;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-
-    .nav-pill {
-        display: none;
-    }
-
-    .nav-apply-btn {
-        display: none;
-    }
 }
 
 @media (max-width: 1024px) {
@@ -1852,29 +1778,6 @@ p {
             <span></span>
             <span></span>
         </button>
-        <div class="navbar-inner">
-            <div class="nav-pill" id="navPill">
-                <a href="#home" class="nav-item active" title="Home">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                    </svg>
-                </a>
-                <a href="our-story.html" class="nav-item" title="Our Story">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                    </svg>
-                </a>
-                <a href="#faq" class="nav-item" title="FAQ">
-                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                        <line x1="12" y1="17" x2="12.01" y2="17"></line>
-                    </svg>
-                </a>
-            </div>
-            <a href="apply.html" class="nav-apply-btn">Apply Now</a>
-        </div>
     </nav>
 
     <!-- Mobile Menu -->
@@ -1901,7 +1804,7 @@ p {
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="assets/besties-logo.webp" alt="Besties" class="hero-logo">
+        <img src="assets/besties-logo-480.webp" alt="Besties" class="hero-logo">
         <div class="hero-content">
             <p class="hero-subtitle">EMPOWERING GIRLS TO SHINE</p>
             <a href="camp.html" class="hero-countdown-pill">
@@ -1930,25 +1833,25 @@ p {
                     <p class="featured-tagline">You're one step away from joining a community where girls build confidence, make lasting friendships, and grow together.</p>
                     <a href="apply.html" class="featured-btn" style="text-decoration: none; display: inline-block;">Apply Now →</a>
                 </div>
-                <img src="assets/image_4.webp" alt="Besties Community" class="featured-image">
+                <img loading="lazy" decoding="async" src="assets/image_4-1200.webp" alt="Besties Community" class="featured-image">
             </div>
 
             <!-- Action Cards -->
             <div class="action-cards">
                 <a href="camp.html" class="action-card" style="text-decoration: none;">
-                    <img src="assets/campbanner.webp" alt="Besties Camp" class="action-card-image" style="object-position: center 20%;">
+                    <img loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Camp" class="action-card-image" style="object-position: center 20%;">
                     <div class="action-card-header">BESTIES CAMP</div>
                 </a>
                 <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" class="action-card" style="text-decoration: none;" target="_blank">
-                    <img src="assets/image_3.webp" alt="Besties Podcast" class="action-card-image">
+                    <img loading="lazy" decoding="async" src="assets/image_3-700.webp" alt="Besties Podcast" class="action-card-image">
                     <div class="action-card-header">BESTIES PODCAST</div>
                 </a>
                 <a href="events.html" class="action-card" style="text-decoration: none;">
-                    <img src="assets/image_3.webp" alt="Upcoming Events" class="action-card-image">
+                    <img loading="lazy" decoding="async" src="assets/image_3-700.webp" alt="Upcoming Events" class="action-card-image">
                     <div class="action-card-header">UPCOMING EVENTS</div>
                 </a>
                 <a href="shop-coming-soon.html" class="action-card" style="text-decoration: none;">
-                    <img src="assets/image_2.webp" alt="Shop Merchandise" class="action-card-image">
+                    <img loading="lazy" decoding="async" src="assets/image_2-700.webp" alt="Shop Merchandise" class="action-card-image">
                     <div class="action-card-header">SHOP MERCHANDISE</div>
                 </a>
             </div>
@@ -1958,7 +1861,7 @@ p {
     <!-- Our Story Teaser -->
     <section style="padding: 80px 40px; background: var(--light-gray);">
         <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-wrap: wrap; align-items: center; gap: 3rem;">
-            <img src="assets/yorm.webp" alt="Aggor Yorm, Founder of Egli Studios and Besties" style="flex: 1 1 360px; width: 100%; max-width: 480px; height: 320px; border-radius: 16px; object-fit: cover; object-position: center 50%; display: block; margin: 0 auto;">
+            <img loading="lazy" decoding="async" src="assets/yorm-960.webp" alt="Aggor Yorm, Founder of Egli Studios and Besties" style="flex: 1 1 360px; width: 100%; max-width: 480px; height: 320px; border-radius: 16px; object-fit: cover; object-position: center 50%; display: block; margin: 0 auto;">
             <div style="flex: 1 1 360px;">
                 <h2 style="font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: 1.25rem; color: var(--dark-gray); background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">How It All Started</h2>
                 <p style="font-size: 1.05rem; color: #555; line-height: 1.8; margin-bottom: 1.5rem;">Besties began with a phone call and a WhatsApp voice note between four girls that grew into a podcast, then a community, and now camps and experiences reaching girls everywhere. Hear it straight from our founder, Aggor Yorm.</p>
@@ -2050,16 +1953,16 @@ p {
                         <p class="footer-partners-label">Sponsors</p>
                         <div class="footer-partners-row">
                             <div class="partner-logo partner-logo-image">
-                                <img src="assets/indomie-logo.png" alt="Indomie" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/indomie-logo.png" alt="Indomie" class="partner-logo-img">
                             </div>
                             <div class="partner-logo partner-logo-image partner-logo-image-dark">
-                                <img src="assets/sultana.jpeg" alt="Sultana" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/sultana.jpeg" alt="Sultana" class="partner-logo-img">
                             </div>
                             <div class="partner-logo partner-logo-image">
-                                <img src="assets/twellium.jpeg" alt="Twellium" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/twellium.jpeg" alt="Twellium" class="partner-logo-img">
                             </div>
                             <div class="partner-logo partner-logo-image">
-                                <img src="assets/dolait.png" alt="Dolait" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/dolait.png" alt="Dolait" class="partner-logo-img">
                             </div>
                         </div>
                     </div>
@@ -2068,10 +1971,10 @@ p {
                         <p class="footer-partners-label">Partners</p>
                         <div class="footer-partners-row">
                             <div class="partner-logo partner-logo-image partner-logo-image-dark">
-                                <img src="assets/timelinecreatives.png" alt="Timeline Creative" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/timelinecreatives.png" alt="Timeline Creative" class="partner-logo-img">
                             </div>
                             <div class="partner-logo partner-logo-image">
-                                <img src="assets/tigon.jpeg" alt="Tigon Creative Studios" class="partner-logo-img">
+                                <img loading="lazy" decoding="async" src="assets/tigon.jpeg" alt="Tigon Creative Studios" class="partner-logo-img">
                             </div>
                         </div>
                     </div>
@@ -2079,7 +1982,7 @@ p {
                 <p class="footer-partners-label" style="margin-top: 1.25rem;">Powered by</p>
                 <div class="footer-partners-row">
                     <a href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" target="_blank" class="partner-logo partner-logo-image" style="text-decoration: none;">
-                        <img src="assets/Egli Studios_logo.png" alt="Egli Studios" class="partner-logo-img">
+                        <img loading="lazy" decoding="async" src="assets/Egli Studios_logo.png" alt="Egli Studios" class="partner-logo-img">
                     </a>
                 </div>
             </div>
@@ -2178,27 +2081,6 @@ if (navbar) {
         lastScrollY = currentScrollY;
     }, { passive: true });
 }
-
-// Active nav item
-const navItems = document.querySelectorAll('.nav-item');
-const sections = document.querySelectorAll('section');
-
-window.addEventListener('scroll', () => {
-    let currentSection = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (window.pageYOffset >= sectionTop - 200) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-
-    navItems.forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === `#${currentSection}`) {
-            item.classList.add('active');
-        }
-    });
-});
 
     </script>
 

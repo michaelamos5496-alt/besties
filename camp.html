@@ -9,8 +9,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <title>Besties Camp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -648,19 +650,18 @@ html {
 }
 
     </style>
+    <script src="assets/video-loader.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav-bar">
-        <a href="index.html" class="nav-logo"><img src="assets/besties-logo.webp" alt="Besties" class="nav-logo-img"></a>
+        <a href="index.html" class="nav-logo"><img src="assets/besties-logo-480.webp" alt="Besties" class="nav-logo-img"></a>
         <a href="index.html" class="nav-back">← Back</a>
     </nav>
 
     <!-- Hero -->
     <section class="hero hero-image">
-        <video class="hero-image-bg" autoplay muted loop playsinline preload="auto">
-            <source src="assets/camp1trailer.mp4" type="video/mp4">
-        </video>
+        <video class="hero-image-bg" autoplay muted loop playsinline preload="none" poster="assets/camp1trailer-poster.webp" data-src="assets/camp1trailer-720.mp4" data-src-mobile="assets/camp1trailer-480.mp4"></video>
         <div class="hero-image-overlay"></div>
         <div class="hero-content-wrapper">
             <h1>Besties Camp</h1>
@@ -727,10 +728,7 @@ html {
             <h2>Camp Moments</h2>
             <p class="gallery-subtitle">A peek at the adventures, friendships, and campfire memories from past Besties Camp sessions.</p>
             <div class="gallery-video-wrapper">
-                <video id="campMomentsVideo" autoplay muted loop playsinline preload="auto">
-                    <source src="assets/camp1trailer.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
+                <video id="campMomentsVideo" autoplay muted loop playsinline preload="none" poster="assets/camp1trailer-poster.webp" data-src="assets/camp1trailer-720.mp4" data-src-mobile="assets/camp1trailer-480.mp4"></video>
                 <button type="button" class="video-mute-btn" id="campMomentsMuteBtn" aria-label="Unmute video" aria-pressed="false">
                     <svg class="icon-muted" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M3 9v6h4l5 5V4L7 9H3z" fill="currentColor"/>
@@ -745,26 +743,26 @@ html {
                 </button>
             </div>
             <div class="gallery-grid" id="campGalleryGrid">
-                <a href="gallery-images/camp-02.webp" class="gallery-item"><img src="gallery-images/camp-02.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-03.webp" class="gallery-item"><img src="gallery-images/camp-03.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-04.webp" class="gallery-item"><img src="gallery-images/camp-04.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-05.webp" class="gallery-item"><img src="gallery-images/camp-05.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-06.webp" class="gallery-item"><img src="gallery-images/camp-06.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-08.webp" class="gallery-item"><img src="gallery-images/camp-08.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-10.webp" class="gallery-item"><img src="gallery-images/camp-10.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-12.webp" class="gallery-item"><img src="gallery-images/camp-12.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-01.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-01.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-07.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-07.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-09.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-09.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-11.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-11.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-13.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-13.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-14.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-14.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-15.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-15.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-16.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-16.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-17.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-17.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-18.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-18.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-19.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-19.webp" alt="Besties Camp moment"></a>
-                <a href="gallery-images/camp-20.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/camp-20.webp" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-02.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-02.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-03.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-03.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-04.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-04.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-05.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-05.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-06.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-06.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-08.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-08.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-10.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-10.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-12.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-12.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-01.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-01.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-07.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-07.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-09.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-09.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-11.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-11.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-13.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-13.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-14.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-14.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-15.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-15.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-16.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-16.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-17.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-17.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-18.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-18.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-19.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-19.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
+                <a href="gallery-images/camp-20.webp" class="gallery-item gallery-item-extra"><img src="gallery-images/thumbs/camp-20.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
             </div>
             <div class="gallery-view-more-wrapper">
                 <button class="cta-btn" id="galleryViewMoreBtn" onclick="toggleGalleryPhotos()">View More Photos</button>
@@ -778,7 +776,7 @@ html {
             <h2>The Besties Camp Story So Far</h2>
             <p class="stories-subtitle">A recap of our very first Besties Camp — and just the beginning.</p>
             <a class="featured-story" href="camp-story-summer.html">
-                <img src="assets/campbanner.webp" alt="Besties Summer Camp recap" class="featured-story-image">
+                <img loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Summer Camp recap" class="featured-story-image">
                 <div class="featured-story-content">
                     <div class="story-date">Our First Camp</div>
                     <h3>Besties Summer Camp: 60 Hours of Friendship, Fun &amp; Unforgettable Moments</h3>

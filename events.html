@@ -9,8 +9,10 @@
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <title>Besties Events</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
     <style>
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap');
 
 * {
     margin: 0;
@@ -151,7 +153,8 @@ html {
 
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 480px));
+    justify-content: center;
     gap: 3rem;
     max-width: 1400px;
     margin: 0 auto;
@@ -558,7 +561,7 @@ html {
 <body>
     <!-- Navigation -->
     <nav class="nav-bar">
-        <a href="index.html" class="nav-logo"><img src="assets/besties-logo.webp" alt="Besties" class="nav-logo-img"></a>
+        <a href="index.html" class="nav-logo"><img src="assets/besties-logo-480.webp" alt="Besties" class="nav-logo-img"></a>
         <a href="index.html" class="nav-back">← Back</a>
     </nav>
 
@@ -578,140 +581,14 @@ html {
     <!-- Events -->
     <section class="events-section">
         <div class="events-grid">
-            <!-- Event 1 -->
             <div class="event-card">
-                <img src="assets/image_1.webp" alt="Summer Camp" class="event-image">
+                <img loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Camp" class="event-image" style="object-position: center 25%;">
                 <div class="event-content">
-                    <div class="event-date">June 15-20, 2026</div>
-                    <h3>Summer Camp Adventure</h3>
-                    <div class="event-location">📍 Mountain Resort, Colorado</div>
-                    <p class="event-description">Join us for an unforgettable summer camp experience! Build lasting friendships, participate in outdoor activities, and discover new talents.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 Ages 8-17</div>
-                        <div class="event-detail-item">⏱️ 6 Days / 5 Nights</div>
-                        <div class="event-detail-item">🎯 Limited Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 1,800</div>
-                    </div>
+                    <div class="event-date">Date coming soon</div>
+                    <h3>Candle Making Class</h3>
+                    <p class="event-description">A hands-on candle making class for Besties. Full details on date, venue and price are on the way.</p>
                     <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Summer Camp Adventure', 1800)">Register Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event 2 -->
-            <div class="event-card">
-                <img src="assets/image_2.webp" alt="Leadership Workshop" class="event-image">
-                <div class="event-content">
-                    <div class="event-date">July 8-10, 2026</div>
-                    <h3>Leadership Workshop</h3>
-                    <div class="event-location">📍 Virtual</div>
-                    <p class="event-description">Develop your leadership skills with industry experts. Learn public speaking, project management, and how to inspire others.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 Ages 12-17</div>
-                        <div class="event-detail-item">⏱️ 3 Days</div>
-                        <div class="event-detail-item">🎯 50 Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 450</div>
-                    </div>
-                    <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Leadership Workshop', 450)">Register Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event 3 -->
-            <div class="event-card">
-                <img src="assets/image_3.webp" alt="Art & Creative Expression" class="event-image">
-                <div class="event-content">
-                    <div class="event-date">July 22-23, 2026</div>
-                    <h3>Art & Creative Expression</h3>
-                    <div class="event-location">📍 NYC Art Studio</div>
-                    <p class="event-description">Express yourself through art! Join workshops on painting, digital art, crafting, and music with renowned artists and creatives.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 Ages 8-16</div>
-                        <div class="event-detail-item">⏱️ 2 Days</div>
-                        <div class="event-detail-item">🎯 75 Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 700</div>
-                    </div>
-                    <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Art & Creative Expression', 700)">Register Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event 4 -->
-            <div class="event-card">
-                <img src="assets/image_4.webp" alt="Tech & Innovation Summit" class="event-image">
-                <div class="event-content">
-                    <div class="event-date">August 5-6, 2026</div>
-                    <h3>Tech & Innovation Summit</h3>
-                    <div class="event-location">📍 San Francisco, CA</div>
-                    <p class="event-description">Explore coding, AI, robotics, and tech innovation. Meet female tech leaders and build projects with peers.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 Ages 11-17</div>
-                        <div class="event-detail-item">⏱️ 2 Days</div>
-                        <div class="event-detail-item">🎯 100 Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 850</div>
-                    </div>
-                    <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Tech & Innovation Summit', 850)">Register Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event 5 -->
-            <div class="event-card">
-                <img src="assets/image_5.webp" alt="Wellness & Confidence Retreat" class="event-image">
-                <div class="event-content">
-                    <div class="event-date">August 12-14, 2026</div>
-                    <h3>Wellness & Confidence Retreat</h3>
-                    <div class="event-location">📍 Wellness Center, California</div>
-                    <p class="event-description">Focus on mental health, self-care, and building confidence. Yoga, meditation, journaling, and meaningful connections.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 Ages 10-17</div>
-                        <div class="event-detail-item">⏱️ 3 Days / 2 Nights</div>
-                        <div class="event-detail-item">🎯 60 Spots Available</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">GHS 1,200</div>
-                    </div>
-                    <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Wellness & Confidence Retreat', 1200)">Register Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Event 6 -->
-            <div class="event-card">
-                <img src="assets/image_1.webp" alt="Community Giving Day" class="event-image">
-                <div class="event-content">
-                    <div class="event-date">August 30, 2026</div>
-                    <h3>Community Giving Day</h3>
-                    <div class="event-location">📍 Various Locations</div>
-                    <p class="event-description">Make a difference! Join local community service projects and learn about the impact Besties are making worldwide.</p>
-                    <div class="event-details">
-                        <div class="event-detail-item">👥 All Ages Welcome</div>
-                        <div class="event-detail-item">⏱️ 1 Day</div>
-                        <div class="event-detail-item">🎯 Unlimited</div>
-                    </div>
-                    <div style="background: linear-gradient(135deg, rgba(255, 107, 157, 0.1) 0%, rgba(213, 166, 224, 0.1) 100%); padding: 1rem; border-radius: 8px; margin: 1rem 0 0 0; text-align: center;">
-                        <div style="color: #999; font-size: 0.85rem; margin-bottom: 0.25rem;">Registration Fee</div>
-                        <div style="font-size: 1.6rem; font-weight: 700; color: var(--besties-pink);">FREE</div>
-                    </div>
-                    <div class="event-buttons">
-                        <button class="event-btn primary" onclick="openEventModal('Community Giving Day', 0)">Register Now</button>
+                        <a class="event-btn primary" href="https://wa.me/233248051774?text=Hi%20Besties!%20I'd%20like%20to%20know%20more%20about%20the%20Candle%20Making%20Class." target="_blank" rel="noopener">Ask on WhatsApp</a>
                     </div>
                 </div>
             </div>
