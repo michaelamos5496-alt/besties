@@ -126,6 +126,36 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
 .cart-form .btn.disabled { opacity: 0.45; pointer-events: none; }
 .cart-form .link { border: none; background: none; color: #999; font-family: inherit; font-size: 0.85rem; cursor: pointer; text-decoration: underline; align-self: center; }
 .cart-hint { font-size: 0.8rem; color: #999; text-align: center; }
+.cart-view, .checkout, .co-done { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.cart-form .btn.pay, .co-form .btn.pay { background: linear-gradient(135deg, var(--pink) 0%, #FF8FB3 100%); color: #fff; }
+.cart-form .btn.wa-alt { background: #fff; color: #1a9e4a; border: 2px solid #25D366; }
+.co-back { border: none; background: #f0f0f4; color: var(--dark); width: 38px; height: 38px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; margin-right: 10px; }
+.co-back:hover { background: #e4e4ea; }
+.cart-head .co-title { display: flex; align-items: center; }
+.co-body { flex: 1; overflow-y: auto; padding: 16px 20px 26px; }
+.co-summary { background: #fafafa; border-radius: 12px; padding: 12px 14px; margin-bottom: 16px; font-size: 0.9rem; }
+.co-summary .row { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; }
+.co-summary .row span:first-child { color: #555; }
+.co-summary .row.total { border-top: 1px solid #e8e8ee; margin-top: 6px; padding-top: 8px; font-weight: 700; font-size: 1rem; }
+.co-form { display: flex; flex-direction: column; gap: 12px; }
+.co-field label { display: block; font-size: 0.82rem; font-weight: 700; margin-bottom: 4px; color: var(--navy); }
+.co-field input, .co-field textarea { width: 100%; padding: 11px 14px; border: 2px solid #e3e3ea; border-radius: 10px; font-family: inherit; font-size: 0.95rem; }
+.co-field textarea { resize: vertical; min-height: 64px; }
+.co-field input:focus, .co-field textarea:focus { outline: none; border-color: var(--pink); }
+.co-field.invalid input, .co-field.invalid textarea { border-color: #d6336c; }
+.co-err { display: none; margin-top: 4px; color: #d6336c; font-size: 0.8rem; font-weight: 600; }
+.co-field.invalid .co-err { display: block; }
+.co-form .btn.pay { margin-top: 6px; border: none; cursor: pointer; font-family: inherit; width: 100%; }
+.co-form .btn.pay:disabled { opacity: 0.6; cursor: default; transform: none; box-shadow: none; }
+.co-error { margin-top: 10px; padding: 10px 14px; border-radius: 10px; background: rgba(214,51,108,0.08); color: #d6336c; font-size: 0.88rem; font-weight: 600; }
+.co-success { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 12px; padding-top: 40px; }
+.co-tick { width: 68px; height: 68px; border-radius: 50%; background: #25D366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+.co-success h3 { font-family: 'Fredoka', sans-serif; font-size: 1.5rem; color: var(--navy); }
+.co-success p { color: #666; }
+.co-ref { font-family: monospace; font-size: 1rem; background: #f4f4f7; padding: 6px 14px; border-radius: 8px; letter-spacing: 1px; color: var(--dark); }
+.co-success .btn { width: 100%; margin-top: 4px; }
+.co-success .btn.wa { background: #25D366; }
+.co-success .btn.ghost { border: 2px solid #e3e3ea; background: #fff; color: var(--dark); cursor: pointer; font-family: inherit; }
 
 .toast { position: fixed; left: 50%; bottom: 96px; z-index: 1300; transform: translate(-50%, 20px); background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; opacity: 0; pointer-events: none; transition: all 0.3s ease; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
@@ -259,16 +289,51 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
 
     <div class="m-overlay cart-overlay" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Your cart">
         <aside class="cart-panel">
-            <div class="cart-head"><h2>Your cart</h2><button type="button" class="m-close" id="cartClose" aria-label="Close cart">&times;</button></div>
-            <div class="cart-items" id="cartItems"></div>
-            <div class="cart-empty" id="cartEmpty">Your cart is empty. Tap a product to add it.</div>
-            <form class="cart-form" id="cartForm" onsubmit="return false">
-                <input type="text" id="cartName" maxlength="60" placeholder="Your name (optional)" autocomplete="name">
-                <textarea id="cartNotes" maxlength="300" placeholder="Notes (optional)"></textarea>
-                <a class="btn disabled" id="cartSend" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
-                <p class="cart-hint">This opens WhatsApp with your order ready to send. We will confirm sizes and prices with you.</p>
-                <button type="button" class="link" id="cartClear">Clear cart</button>
-            </form>
+            <div class="cart-view" id="cartView">
+                <div class="cart-head"><h2>Your cart</h2><button type="button" class="m-close" id="cartClose" aria-label="Close cart">&times;</button></div>
+                <div class="cart-items" id="cartItems"></div>
+                <div class="cart-empty" id="cartEmpty">Your cart is empty. Tap a product to add it.</div>
+                <form class="cart-form" id="cartForm" onsubmit="return false">
+                    <div id="waFields">
+                        <input type="text" id="cartName" maxlength="60" placeholder="Your name (optional)" autocomplete="name">
+                        <textarea id="cartNotes" maxlength="300" placeholder="Notes (optional)"></textarea>
+                    </div>
+                    <button type="button" class="btn pay" id="cartCheckout" hidden>Checkout</button>
+                    <a class="btn disabled" id="cartSend" href="#" target="_blank" rel="noopener">Send order on WhatsApp</a>
+                    <p class="cart-hint" id="cartHint">This opens WhatsApp with your order ready to send. We will confirm sizes and prices with you.</p>
+                    <button type="button" class="link" id="cartClear">Clear cart</button>
+                </form>
+            </div>
+
+            <div class="checkout" id="checkoutView" hidden>
+                <div class="cart-head"><div class="co-title"><button type="button" class="co-back" id="coBack" aria-label="Back to cart">&larr;</button><h2>Checkout</h2></div><button type="button" class="m-close" id="coClose" aria-label="Close checkout">&times;</button></div>
+                <div class="co-body">
+                    <div class="co-summary" id="coSummary"></div>
+                    <form class="co-form" id="coForm" novalidate>
+                        <div class="co-field"><label for="coName">Full name *</label><input type="text" id="coName" maxlength="80" autocomplete="name"><div class="co-err">Please enter your full name.</div></div>
+                        <div class="co-field"><label for="coEmail">Email *</label><input type="email" id="coEmail" maxlength="120" autocomplete="email" inputmode="email"><div class="co-err">Please enter a valid email address.</div></div>
+                        <div class="co-field"><label for="coPhone">Phone number *</label><input type="tel" id="coPhone" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="e.g. 024 123 4567"><div class="co-err">Please enter a valid phone number.</div></div>
+                        <div class="co-field"><label for="coAddress">Delivery address or area *</label><textarea id="coAddress" maxlength="250" placeholder="Where should we deliver? (or write 'pickup')"></textarea><div class="co-err">Please tell us where to deliver.</div></div>
+                        <div class="co-field"><label for="coNotes">Notes (optional)</label><input type="text" id="coNotes" maxlength="200"></div>
+                        <button type="submit" class="btn pay" id="coPay">Pay</button>
+                        <div class="co-error" id="coError" role="alert" hidden></div>
+                    </form>
+                    <p class="cart-hint" style="margin-top: 14px;">Secure payment by Paystack. Pay with card or mobile money.</p>
+                </div>
+            </div>
+
+            <div class="co-done" id="coDone" hidden>
+                <div class="cart-head"><h2>Order confirmed</h2><button type="button" class="m-close" id="coDoneX" aria-label="Close">&times;</button></div>
+                <div class="co-body co-success">
+                    <div class="co-tick" aria-hidden="true">&#10003;</div>
+                    <h3 id="coThanks">Thank you!</h3>
+                    <p>Your payment was received.</p>
+                    <div class="co-ref" id="coRef"></div>
+                    <p>We will contact you to confirm your order and delivery. Keep your reference number handy.</p>
+                    <a class="btn wa" id="coWa" href="#" target="_blank" rel="noopener">Send confirmation on WhatsApp</a>
+                    <button type="button" class="btn ghost" id="coDoneClose">Continue shopping</button>
+                </div>
+            </div>
         </aside>
     </div>
 
@@ -277,6 +342,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     <script>
 (function () {
     const WA = '233248051774';
+    // Paste your Paystack PUBLIC key here (pk_test_... or pk_live_...). Never put a secret key (sk_...) in this file.
+    const PAYSTACK_KEY = 'pk_test_1f6cb2548ebb782d1f25333b05ad287bb997adb2';
     const PRODUCTS = {
         shirt: {
             name: 'Besties Shirt',
@@ -606,18 +673,195 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         updateLink();
     }
 
-    $('cartFab').addEventListener('click', function () { openOverlay(drawer, $('cartClose')); });
-    $('cartClose').addEventListener('click', function () { closeOverlay(drawer); });
-    drawer.addEventListener('click', function (e) { if (e.target === drawer) closeOverlay(drawer); });
+    function showView(name) {
+        $('cartView').hidden = name !== 'cart';
+        $('checkoutView').hidden = name !== 'checkout';
+        $('coDone').hidden = name !== 'done';
+    }
+
+    function closeCart() {
+        closeOverlay(drawer);
+        showView('cart');
+    }
+
+    $('cartFab').addEventListener('click', function () { showView('cart'); openOverlay(drawer, $('cartClose')); });
+    $('cartClose').addEventListener('click', closeCart);
+    $('coClose').addEventListener('click', closeCart);
+    $('coDoneX').addEventListener('click', closeCart);
+    $('coDoneClose').addEventListener('click', closeCart);
+    drawer.addEventListener('click', function (e) { if (e.target === drawer) closeCart(); });
     $('cartName').addEventListener('input', updateLink);
     $('cartNotes').addEventListener('input', updateLink);
     $('cartClear').addEventListener('click', function () { cart = []; save(); renderCart(); });
 
     document.addEventListener('keydown', function (e) {
         if (e.key !== 'Escape') return;
-        if (drawer.classList.contains('open')) closeOverlay(drawer);
+        if (drawer.classList.contains('open')) closeCart();
         else if (pm.classList.contains('open')) closeOverlay(pm);
     });
+
+    /* ---- checkout (Paystack) ---- */
+    const payReady = /^pk_(test|live)_/.test(PAYSTACK_KEY);
+    let paystackLoading = null;
+
+    function loadPaystack() {
+        if (window.PaystackPop) return Promise.resolve();
+        if (!paystackLoading) {
+            paystackLoading = new Promise(function (resolve, reject) {
+                const sc = document.createElement('script');
+                sc.src = 'https://js.paystack.co/v2/inline.js';
+                sc.onload = resolve;
+                sc.onerror = function () { paystackLoading = null; reject(new Error('load')); };
+                document.head.appendChild(sc);
+            });
+        }
+        return paystackLoading;
+    }
+
+    function orderTotal() {
+        return cart.reduce(function (n, i) { return n + (PRODUCTS[i.id].price || 0) * i.qty; }, 0);
+    }
+
+    function orderLines() {
+        return cart.map(function (it, n) {
+            const pr = PRODUCTS[it.id];
+            const d = describe(it);
+            return (n + 1) + '. ' + pr.name + (d ? ' (' + d + ')' : '') + ' x' + it.qty + ' - ' + money(pr.price * it.qty);
+        });
+    }
+
+    function renderSummary() {
+        const box = $('coSummary');
+        box.innerHTML = '';
+        cart.forEach(function (it) {
+            const pr = PRODUCTS[it.id];
+            const d = describe(it);
+            const row = document.createElement('div');
+            row.className = 'row';
+            const l = document.createElement('span');
+            l.textContent = pr.name + (d ? ' (' + d + ')' : '') + ' x' + it.qty;
+            const r = document.createElement('span');
+            r.textContent = money(pr.price * it.qty);
+            row.append(l, r);
+            box.appendChild(row);
+        });
+        const t = document.createElement('div');
+        t.className = 'row total';
+        t.innerHTML = '<span>Total</span><span>' + money(orderTotal()) + '</span>';
+        box.appendChild(t);
+        $('coPay').textContent = 'Pay ' + money(orderTotal());
+    }
+
+    function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v); }
+    function validPhone(v) { const d = v.replace(/[^0-9]/g, ''); return d.length >= 9 && d.length <= 15; }
+
+    function setInvalid(id, bad) { $(id).closest('.co-field').classList.toggle('invalid', bad); $(id).setAttribute('aria-invalid', bad ? 'true' : 'false'); }
+
+    function checkForm() {
+        const v = {
+            name: $('coName').value.trim(),
+            email: $('coEmail').value.trim(),
+            phone: $('coPhone').value.trim(),
+            address: $('coAddress').value.trim(),
+            notes: $('coNotes').value.trim()
+        };
+        const bad = { coName: v.name.length < 2, coEmail: !validEmail(v.email), coPhone: !validPhone(v.phone), coAddress: v.address.length < 5 };
+        Object.keys(bad).forEach(function (id) { setInvalid(id, bad[id]); });
+        const first = Object.keys(bad).find(function (id) { return bad[id]; });
+        if (first) { $(first).focus(); return null; }
+        return v;
+    }
+
+    function newReference() {
+        return 'BST-' + Date.now().toString(36).toUpperCase() + Math.random().toString(36).slice(2, 6).toUpperCase();
+    }
+
+    function paid(ref, v, total, lines) {
+        cart = [];
+        save();
+        renderCart();
+        $('coThanks').textContent = 'Thank you, ' + v.name.split(' ')[0] + '!';
+        $('coRef').textContent = ref;
+        const msg = ['Hi Besties! I have just paid for my order.', '', 'Reference: ' + ref, 'Name: ' + v.name, 'Phone: ' + v.phone, 'Delivery: ' + v.address]
+            .concat(v.notes ? ['Notes: ' + v.notes] : [], ['', 'Order:'], lines, ['', 'Total paid: ' + money(total)]);
+        $('coWa').href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg.join('\n'));
+        showView('done');
+    }
+
+    function showPayError(text) {
+        const el = $('coError');
+        el.textContent = text;
+        el.hidden = !text;
+    }
+
+    $('cartCheckout').addEventListener('click', function () {
+        if (!cart.length) return;
+        if (cart.some(function (i) { return PRODUCTS[i.id].price == null; })) { toast('Some items have no price yet. Please order on WhatsApp.'); return; }
+        if (!$('coName').value) $('coName').value = $('cartName').value;
+        renderSummary();
+        showPayError('');
+        showView('checkout');
+        loadPaystack().catch(function () {});
+        $('coName').focus();
+    });
+    $('coBack').addEventListener('click', function () { showView('cart'); });
+
+    $('coForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const payBtn = $('coPay');
+        if (payBtn.disabled) return;
+        const v = checkForm();
+        if (!v) return;
+        const total = orderTotal();
+        const lines = orderLines();
+        if (total <= 0) return;
+        const ref = newReference();
+        const parts = v.name.split(/\s+/);
+        payBtn.disabled = true;
+        payBtn.textContent = 'Opening payment...';
+        showPayError('');
+        function reset() { payBtn.disabled = false; payBtn.textContent = 'Pay ' + money(orderTotal()); }
+        loadPaystack().then(function () {
+            const popup = new window.PaystackPop();
+            popup.newTransaction({
+                key: PAYSTACK_KEY,
+                email: v.email,
+                amount: Math.round(total * 100),
+                currency: 'GHS',
+                reference: ref,
+                firstName: parts[0],
+                lastName: parts.slice(1).join(' '),
+                phone: v.phone,
+                metadata: {
+                    custom_fields: [
+                        { display_name: 'Customer name', variable_name: 'customer_name', value: v.name },
+                        { display_name: 'Phone', variable_name: 'phone', value: v.phone },
+                        { display_name: 'Delivery address', variable_name: 'address', value: v.address },
+                        { display_name: 'Notes', variable_name: 'notes', value: v.notes || '-' },
+                        { display_name: 'Order', variable_name: 'order', value: lines.join('; ') }
+                    ]
+                },
+                onSuccess: function (tx) { reset(); paid((tx && tx.reference) || ref, v, total, lines); },
+                onCancel: function () { reset(); toast('Payment cancelled. You have not been charged.'); },
+                onError: function () { reset(); showPayError('Payment could not be started. Please try again or order on WhatsApp.'); }
+            });
+        }).catch(function () {
+            reset();
+            showPayError('Could not load the payment window. Please check your connection or order on WhatsApp.');
+        });
+    });
+
+    ['coName', 'coEmail', 'coPhone', 'coAddress'].forEach(function (id) {
+        $(id).addEventListener('input', function () { setInvalid(id, false); });
+    });
+
+    if (payReady) {
+        $('cartCheckout').hidden = false;
+        $('waFields').hidden = true;
+        $('cartSend').classList.add('wa-alt');
+        $('cartSend').textContent = 'Order on WhatsApp instead';
+        $('cartHint').textContent = 'Pay securely with card or mobile money, or send your order on WhatsApp and we will confirm it with you.';
+    }
 
     renderCart();
 })();
