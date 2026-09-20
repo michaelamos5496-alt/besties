@@ -13,6 +13,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
+    <script src="assets/config.js"></script>
     <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root { --pink: #FF6B9D; --purple: #D5A6E0; --navy: #2d3561; --dark: #333; }
@@ -45,10 +46,6 @@ body { font-family: 'Montserrat', sans-serif; color: var(--dark); background: #f
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,107,157,0.35); }
 
 
-.cta { text-align: center; padding: 70px 24px 90px; }
-.cta h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--navy); margin-bottom: 0.8rem; }
-.cta p { color: #777; max-width: 520px; margin: 0 auto 1.6rem; }
-.cta .btn { display: inline-block; padding: 14px 40px; }
 
 .footer { padding: 40px; text-align: center; border-top: 1px solid #f0f0f0; color: #999; font-size: 0.9rem; }
 .footer a { color: var(--dark); text-decoration: none; }
@@ -245,12 +242,6 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
         </div>
     </section>
 
-    <section class="cta">
-        <h2>Ready to order?</h2>
-        <p>Message us on WhatsApp and we will help you pick the right size.</p>
-        <a class="btn" href="https://wa.me/233248051774" target="_blank" rel="noopener">Message Us on WhatsApp</a>
-    </section>
-
     <footer class="footer">
         <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank" rel="noopener">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
     </footer>
@@ -345,8 +336,8 @@ button.btn { border: none; cursor: pointer; font-family: inherit; width: 100%; }
     <script>
 (function () {
     const WA = '233248051774';
-    // Paste your Paystack PUBLIC key here (pk_test_... or pk_live_...). Never put a secret key (sk_...) in this file.
-    const PAYSTACK_KEY = 'pk_test_1f6cb2548ebb782d1f25333b05ad287bb997adb2';
+    // The Paystack public key is set in assets/config.js.
+    const PAYSTACK_KEY = (window.BESTIES_CONFIG && window.BESTIES_CONFIG.paystackKey) || '';
     // Access key from web3forms.com (free). Paid orders are emailed to the address you registered there. It is safe to keep in this file.
     const ORDER_EMAIL_KEY = '';
     const PRODUCTS = {
