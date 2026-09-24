@@ -1633,8 +1633,8 @@ p {
     position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    width: min(980px, 100%);
-    height: min(92vh, 660px);
+    width: min(840px, 100%);
+    height: min(88vh, 560px);
     background: #fff;
     border-radius: 16px;
     overflow: hidden;
@@ -1675,7 +1675,7 @@ p {
 
 .donate-side-hero {
     position: relative;
-    flex: 0 0 46%;
+    flex: 0 0 42%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1687,7 +1687,7 @@ p {
 
 .donate-side-hero strong {
     font-family: 'Fredoka', sans-serif;
-    font-size: clamp(2rem, 4.2vw, 3.1rem);
+    font-size: clamp(1.7rem, 3.6vw, 2.5rem);
     line-height: 1.05;
     color: #F6E7FF;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
@@ -1708,14 +1708,14 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 24px 28px;
+    padding: 18px 24px;
     background: linear-gradient(135deg, var(--besties-pink) 0%, #b56fd6 100%);
 }
 
 .donate-side-gifts h3 {
-    margin: 0 0 16px;
+    margin: 0 0 12px;
     font-family: 'Fredoka', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     line-height: 1.15;
     text-transform: uppercase;
     color: #fff;
@@ -1727,13 +1727,13 @@ p {
     padding: 0;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 9px;
 }
 
 .donate-gift-list li {
     position: relative;
     padding-left: 30px;
-    font-size: 1rem;
+    font-size: 0.92rem;
     line-height: 1.4;
     font-weight: 500;
     color: #fff;
@@ -1778,8 +1778,8 @@ p {
 @media (max-width: 820px) {
     .donate-modal-panel {
         display: block;
-        width: min(460px, 100%);
-        height: min(94vh, 820px);
+        width: min(420px, 100%);
+        height: min(88vh, 700px);
         overflow-y: auto;
     }
 
@@ -1788,16 +1788,34 @@ p {
     }
 
     .donate-side-hero {
-        min-height: 230px;
-        padding: 40px 20px 24px;
+        min-height: 150px;
+        padding: 30px 16px 16px;
     }
 
     .donate-side-hero strong {
-        font-size: 1.9rem;
+        font-size: 1.5rem;
+    }
+
+    .donate-side-hero span {
+        margin-top: 6px;
+        font-size: 0.85rem;
     }
 
     .donate-side-gifts {
-        padding: 22px 22px 26px;
+        padding: 14px 18px 16px;
+    }
+
+    .donate-side-gifts h3 {
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+
+    .donate-gift-list {
+        gap: 6px;
+    }
+
+    .donate-gift-list li {
+        font-size: 0.85rem;
     }
 
     .donate-mount {
