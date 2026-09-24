@@ -1722,24 +1722,36 @@ p {
 }
 
 .donate-gift-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 14px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
-.donate-gift-list b {
-    display: block;
-    font-family: 'Fredoka', sans-serif;
-    font-size: 1.6rem;
-    line-height: 1.1;
+.donate-gift-list li {
+    position: relative;
+    padding-left: 30px;
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 500;
     color: #fff;
 }
 
-.donate-gift-list p {
-    margin: 4px 0 0;
-    font-size: 0.82rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.95);
+.donate-gift-list li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
 }
 
 .donate-modal-close {
@@ -2283,11 +2295,12 @@ p {
                 </div>
                 <div class="donate-side-gifts">
                     <h3>What a gift can do</h3>
-                    <div class="donate-gift-list">
-                        <div><b>GH₵50</b><p>Helps a girl take part in a Besties activity</p></div>
-                        <div><b>GH₵100</b><p>Covers creative supplies for a group of girls</p></div>
-                        <div><b>GH₵200</b><p>Supports a girl's place at a Besties camp or event</p></div>
-                    </div>
+                    <ul class="donate-gift-list">
+                        <li>Helps girls join Besties camps and events</li>
+                        <li>Provides creative supplies and activities</li>
+                        <li>Supports mentorship and confidence-building sessions</li>
+                        <li>Helps us reach and empower more girls</li>
+                    </ul>
                 </div>
             </aside>
             <div class="donate-mount" id="donateMount" data-donate></div>
