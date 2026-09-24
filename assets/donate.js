@@ -3,7 +3,7 @@
     var KEY = CFG.paystackKey || '';
     var WA = CFG.whatsapp || '';
     var READY = /^pk_(test|live)_/.test(KEY);
-    var AMOUNTS = [50, 100, 200, 500];
+    var AMOUNTS = [50, 100, 200];
     var MIN = 10;
     var paystackLoading = null;
 
@@ -30,11 +30,11 @@
     var TEMPLATE =
         '<div class="bd">' +
         '<div data-view="form">' +
-        '<h2 class="bd-title">Support Besties</h2>' +
+        '<h2 class="bd-title">Make a Donation</h2>' +
         '<p class="bd-intro">Help us empower more girls. Choose an amount and give securely.</p>' +
         '<form class="bd-form" novalidate>' +
         '<div class="bd-amounts" role="radiogroup" aria-label="Donation amount"></div>' +
-        '<div class="bd-field" data-field="custom" hidden><label>Amount (GH₵)</label><input type="number" inputmode="decimal" min="10" step="1" placeholder="Enter amount"><div class="bd-err">The minimum donation is GH₵10.</div></div>' +
+        '<div class="bd-field bd-other" data-field="custom"><label>Other amount</label><div class="bd-money"><span aria-hidden="true">GH₵</span><input type="number" inputmode="decimal" min="10" step="1" aria-label="Other amount in GH₵"></div><div class="bd-err">The minimum donation is GH₵10.</div></div>' +
         '<div class="bd-field" data-field="name"><label>Full name *</label><input type="text" maxlength="80" autocomplete="name"><div class="bd-err">Please enter your name.</div></div>' +
         '<div class="bd-field" data-field="email"><label>Email *</label><input type="email" maxlength="120" autocomplete="email" inputmode="email"><div class="bd-err">Please enter a valid email address.</div></div>' +
         '<div class="bd-field" data-field="phone"><label>Phone (optional)</label><input type="tel" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="e.g. 024 123 4567"><div class="bd-err">Please enter a valid phone number.</div></div>' +
@@ -93,25 +93,29 @@
         }
         function label() { var a = currentAmount(); payBtn.textContent = a >= MIN ? 'Donate ' + money(a) : 'Donate'; }
 
-        AMOUNTS.concat(['other']).forEach(function (a) {
+        AMOUNTS.forEach(function (a) {
             var b = document.createElement('button');
             b.type = 'button';
             b.className = 'bd-amt' + (a === selected ? ' active' : '');
             b.setAttribute('role', 'radio');
             b.setAttribute('aria-checked', a === selected ? 'true' : 'false');
-            b.textContent = a === 'other' ? 'Other' : money(a);
+            b.textContent = money(a);
             b.addEventListener('click', function () {
                 selected = a;
                 buttons.forEach(function (x) { var on = x === b; x.classList.toggle('active', on); x.setAttribute('aria-checked', on ? 'true' : 'false'); });
-                customField.hidden = a !== 'other';
+                customInput.value = '';
                 customField.classList.remove('invalid');
-                if (a === 'other') customInput.focus();
                 label();
             });
             buttons.push(b);
             wrap.appendChild(b);
         });
-        customInput.addEventListener('input', function () { customField.classList.remove('invalid'); label(); });
+        customInput.addEventListener('input', function () {
+            selected = 'other';
+            buttons.forEach(function (x) { x.classList.remove('active'); x.setAttribute('aria-checked', 'false'); });
+            customField.classList.remove('invalid');
+            label();
+        });
         label();
 
         function field(name) { return q('[data-field="' + name + '"]'); }

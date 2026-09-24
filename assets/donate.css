@@ -1,20 +1,25 @@
 .bd { font-family: 'Montserrat', sans-serif; color: #333; line-height: 1.6; padding: 46px 22px 22px; text-align: center; }
 .bd * { box-sizing: border-box; }
 .bd [hidden] { display: none !important; }
-.bd-title { font-family: 'Fredoka', sans-serif; font-size: 1.9rem; font-weight: 700; margin: 0 0 0.4rem; background: linear-gradient(135deg, #FF6B9D 0%, #D5A6E0 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.bd-title { font-family: 'Fredoka', sans-serif; font-size: 1.9rem; font-weight: 700; margin: 0 0 0.4rem; color: #2d3561; -webkit-text-fill-color: #2d3561; background: none; text-transform: uppercase; letter-spacing: 0.02em; }
 .bd-intro { color: #777; font-size: 0.92rem; margin: 0 0 1.1rem; }
 .bd-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }
 .bd-amounts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
-.bd-amt { padding: 12px 6px; border: 2px solid #e0e0e0; background: #fff; border-radius: 10px; cursor: pointer; font-family: inherit; font-size: 0.95rem; font-weight: 600; color: #333; white-space: nowrap; transition: all 0.2s ease; }
-.bd-amt:hover, .bd-amt.active { border-color: #FF6B9D; color: #FF6B9D; background: rgba(255, 107, 157, 0.06); }
+.bd-amt { padding: 13px 6px; border: 2px solid #e0e0e0; background: #fff; border-radius: 10px; cursor: pointer; font-family: inherit; font-size: 0.95rem; font-weight: 600; color: #333; white-space: nowrap; transition: all 0.2s ease; }
+.bd-amt:hover { border-color: #FF6B9D; color: #FF6B9D; }
+.bd-amt.active { border-color: #2d3561; background: #2d3561; color: #fff; }
+.bd-other label { text-align: center; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; color: #666; }
+.bd-money { position: relative; }
+.bd-money span { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; font-weight: 600; color: #888; pointer-events: none; }
+.bd-money input { padding-left: 52px; }
 .bd-field label { display: block; font-size: 0.8rem; font-weight: 700; margin-bottom: 4px; color: #2d3561; }
 .bd-field input { width: 100%; padding: 11px 14px; border: 2px solid #e3e3ea; border-radius: 10px; font-family: inherit; font-size: 0.95rem; }
 .bd-field input:focus { outline: none; border-color: #FF6B9D; }
 .bd-field.invalid input { border-color: #d6336c; }
 .bd-err { display: none; margin-top: 4px; color: #d6336c; font-size: 0.8rem; font-weight: 600; }
 .bd-field.invalid .bd-err { display: block; }
-.bd-pay { margin-top: 4px; width: 100%; padding: 14px; border: none; border-radius: 50px; background: linear-gradient(135deg, #FF6B9D 0%, #FF8FB3 100%); color: #fff; font-family: inherit; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.25s ease; }
-.bd-pay:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 107, 157, 0.35); }
+.bd-pay { margin-top: 4px; width: 100%; padding: 15px; border: none; border-radius: 10px; background: #2d3561; color: #fff; font-family: inherit; font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.04em; cursor: pointer; transition: all 0.25s ease; }
+.bd-pay:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(45, 53, 97, 0.3); }
 .bd-pay:disabled { opacity: 0.6; cursor: default; }
 .bd-error { padding: 10px 14px; border-radius: 10px; background: rgba(214, 51, 108, 0.08); color: #d6336c; font-size: 0.88rem; font-weight: 600; }
 .bd-note { margin: 0.9rem 0 0; font-size: 0.78rem; color: #999; }
