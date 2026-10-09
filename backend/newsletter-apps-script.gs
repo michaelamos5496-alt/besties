@@ -3,7 +3,7 @@
 // (Execute as: Me, Who has access: Anyone). The web app URL goes in index.html (data-endpoint).
 
 const SHEET_NAME = 'Subscribers';
-const NOTIFY_EMAIL = 'hello@bestiesgh.com'; // gets an email per new signup; set to '' to turn off
+const NOTIFY_EMAIL = 'contact@bestiesafrica.com'; // gets an email per new signup; set to '' to turn off
 
 function doPost(e) {
   const email = String((e.parameter && e.parameter.email) || '').trim().toLowerCase();
