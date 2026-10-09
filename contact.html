@@ -166,7 +166,7 @@ body {
 
     <script>
 (function () {
-    var WA = (window.BESTIES_CONFIG && window.BESTIES_CONFIG.whatsapp) || '233248051774';
+    var ACCESS_KEY = '1b446358-75dc-4769-bb99-f1b0efcdad00'; // Web3Forms public key; emails go to contact@bestiesafrica.com
     var form = document.getElementById('contactForm');
     var note = document.getElementById('formNote');
     function field(n) { return form.querySelector('[data-field="' + n + '"]'); }
@@ -183,10 +183,30 @@ body {
         Object.keys(bad).forEach(function (k) { field(k).classList.toggle('invalid', bad[k]); });
         var first = Object.keys(bad).filter(function (k) { return bad[k]; })[0];
         if (first) { control(first).focus(); return; }
-        var text = ['Hi Besties!', '', v.message, '', 'Name: ' + v.name, 'Email: ' + v.email].join('\n');
-        window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(text), '_blank');
-        note.textContent = 'WhatsApp opened with your message. Please tap Send there.';
-        form.reset();
+        var btn = form.querySelector('button.send');
+        btn.disabled = true;
+        note.textContent = 'Sending...';
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                access_key: ACCESS_KEY,
+                subject: 'New message from bestiesafrica.com',
+                from_name: 'Besties Website',
+                name: v.name,
+                email: v.email,
+                message: v.message
+            })
+        }).then(function (r) { return r.json(); }).then(function (d) {
+            if (d.success) {
+                note.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
+                form.reset();
+            } else {
+                note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
+            }
+        }).catch(function () {
+            note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
+        }).then(function () { btn.disabled = false; });
     });
 })();
     </script>
