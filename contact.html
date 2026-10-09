@@ -79,6 +79,11 @@ body {
 .cform { display: flex; flex-direction: column; gap: 14px; margin-bottom: 2rem; }
 .field label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 4px; }
 .field input, .field textarea { width: 100%; padding: 12px 0; border: none; border-bottom: 2px solid #e6e6ee; background: transparent; font-family: inherit; font-size: 1rem; color: var(--dark); border-radius: 0; }
+.field select { padding: 12px 0; border: none; border-bottom: 2px solid #e6e6ee; background: transparent; font-family: inherit; font-size: 1rem; color: var(--dark); border-radius: 0; max-width: 46%; }
+.field select:focus { outline: none; border-bottom-color: var(--pink); }
+.phone-row { display: flex; gap: 12px; }
+.phone-row input { flex: 1; min-width: 0; }
+.field.invalid .phone-row select { border-bottom-color: #d6336c; }
 .field textarea { resize: vertical; min-height: 96px; }
 .field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--pink); }
 .field.invalid input, .field.invalid textarea { border-bottom-color: #d6336c; }
@@ -143,6 +148,7 @@ body {
                 <form class="cform" id="contactForm" novalidate>
                     <div class="field" data-field="name"><label for="cName">Name</label><input type="text" id="cName" maxlength="80" autocomplete="name"><div class="err">Please enter your name.</div></div>
                     <div class="field" data-field="email"><label for="cEmail">Email</label><input type="email" id="cEmail" maxlength="120" autocomplete="email" inputmode="email"><div class="err">Please enter a valid email address.</div></div>
+                    <div class="field" data-field="phone"><label for="cPhone">Phone / WhatsApp number</label><div class="phone-row"><select id="cCode" aria-label="Country code"><option value="+233" selected>Ghana +233</option><option value="+234">Nigeria +234</option><option value="+254">Kenya +254</option><option value="+27">South Africa +27</option><option value="+255">Tanzania +255</option><option value="+256">Uganda +256</option><option value="+225">Côte d'Ivoire +225</option><option value="+221">Senegal +221</option><option value="+237">Cameroon +237</option><option value="+250">Rwanda +250</option><option value="+251">Ethiopia +251</option><option value="+20">Egypt +20</option><option value="+212">Morocco +212</option><option value="+44">United Kingdom +44</option><option value="+1">USA / Canada +1</option><option value="+49">Germany +49</option><option value="+33">France +33</option><option value="+971">UAE +971</option><option value="+61">Australia +61</option></select><input type="tel" id="cPhone" maxlength="20" autocomplete="tel-national" inputmode="tel" placeholder="24 805 1774"></div><div class="err">Please enter a valid phone number.</div></div>
                     <div class="field" data-field="message"><label for="cMessage">Message</label><textarea id="cMessage" maxlength="800"></textarea><div class="err">Please write a short message.</div></div>
                     <div class="send-row">
                         <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
@@ -171,15 +177,16 @@ body {
     var note = document.getElementById('formNote');
     function field(n) { return form.querySelector('[data-field="' + n + '"]'); }
     function control(n) { return field(n).querySelector('input, textarea'); }
+    var code = document.getElementById('cCode');
 
-    ['name', 'email', 'message'].forEach(function (n) {
+    ['name', 'email', 'phone', 'message'].forEach(function (n) {
         control(n).addEventListener('input', function () { field(n).classList.remove('invalid'); note.textContent = ''; });
     });
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var v = { name: control('name').value.trim(), email: control('email').value.trim(), message: control('message').value.trim() };
-        var bad = { name: v.name.length < 2, email: !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email), message: v.message.length < 5 };
+        var v = { name: control('name').value.trim(), email: control('email').value.trim(), phone: control('phone').value.replace(/[^\d]/g, '').replace(/^0+/, ''), message: control('message').value.trim() };
+        var bad = { name: v.name.length < 2, email: !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email), phone: v.phone.length < 6 || v.phone.length > 14, message: v.message.length < 5 };
         Object.keys(bad).forEach(function (k) { field(k).classList.toggle('invalid', bad[k]); });
         var first = Object.keys(bad).filter(function (k) { return bad[k]; })[0];
         if (first) { control(first).focus(); return; }
@@ -195,6 +202,7 @@ body {
                 from_name: 'Besties Website',
                 name: v.name,
                 email: v.email,
+                phone: code.value + ' ' + v.phone,
                 message: v.message
             })
         }).then(function (r) { return r.json(); }).then(function (d) {
