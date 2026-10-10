@@ -161,6 +161,8 @@ html {
     margin: 0 auto;
 }
 
+.event-card:target { box-shadow: 0 0 0 3px var(--besties-pink), 0 12px 30px rgba(255,107,157,0.25); }
+#mentorship-class { scroll-margin-top: 100px; }
 .event-card {
     border: 1px solid #f0f0f0;
     border-radius: 12px;
@@ -579,7 +581,7 @@ html {
     <!-- Events -->
     <section class="events-section">
         <div class="events-grid">
-            <div class="event-card">
+            <div class="event-card" id="mentorship-class">
                 <img loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Camp" class="event-image" style="object-position: center 25%;">
                 <div class="event-content">
                     <div class="event-date">17th October 2026</div>
