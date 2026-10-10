@@ -182,6 +182,9 @@ html {
     animation: pulse-dot 1.5s ease-in-out infinite;
 }
 
+.registration-badge.closed .dot { background: #ff6b6b; animation: none; opacity: 1; }
+.countdown-banner .closed-note { max-width: 480px; margin: -1rem auto 1.5rem; opacity: 0.95; }
+
 @keyframes pulse-dot {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
@@ -714,10 +717,11 @@ html {
 
     <!-- Countdown / Registration Banner -->
     <section class="countdown-banner" id="countdownBanner">
-        <div class="registration-badge"><span class="dot"></span> Registration Open</div>
+        <div class="registration-badge closed"><span class="dot"></span> Registration Closed</div>
         <h2>Our Next Camp</h2>
         <p class="coming-soon">Coming Soon</p>
-        <a href="https://wa.me/233248051774" class="cta-btn primary" target="_blank">Message Us on WhatsApp</a>
+        <p class="closed-note">Registration is closed for now. Join our community to be first to know when it reopens.</p>
+        <a href="https://whatsapp.com/channel/0029VbBtrms2P59lqY3Bn42o" class="cta-btn primary" target="_blank" rel="noopener">Join Our Community</a>
     </section>
 
     <!-- About Camp -->
