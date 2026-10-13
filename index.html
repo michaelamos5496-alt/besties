@@ -2168,7 +2168,7 @@ p {
             </div>
         </div>
         <div class="hero-image-bottom">
-            <img src="assets/hero-girls.webp" alt="The Besties" class="besties-characters">
+            <img src="assets/hero-girls-2.webp" width="1280" height="1155" alt="The Besties" class="besties-characters">
         </div>
     </section>
 
@@ -2701,6 +2701,18 @@ if (navbar) {
 .hero-cta-btn-whatsapp { background: #25D366; border-color: #25D366; }
 .hero-cta-btn-whatsapp:hover { background: #1ebc59; border-color: #1ebc59; }
 .hero-image-bottom { margin-top: clamp(1rem, 3vw, 2.5rem); }
+@media (min-width: 769px) {
+    .hero { height: 100vh; min-height: 680px; }
+    .hero-image-bottom { margin-top: clamp(0.5rem, 2vh, 1.5rem); flex: 1 1 auto; min-height: 0; display: flex; justify-content: center; align-items: flex-end; }
+    .besties-characters { width: auto; max-width: 100%; height: 100%; max-height: 100%; object-fit: contain; object-position: center bottom; }
+    .hero { padding-top: clamp(76px, 10vh, 100px); }
+    .hero-logo { width: clamp(130px, 14vw, 180px); margin-bottom: 0.4rem; }
+    .hero-subtitle { margin-bottom: 0.6rem; }
+    .hero-countdown-pill { margin-bottom: 0.7rem; gap: 10px; }
+    .cd-hero div { min-width: clamp(58px, 5vw, 74px); padding: 8px 4px; }
+    .cd-hero b { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+    .hero-cta-btn { padding: 9px 26px; font-size: 0.9rem; }
+}
 </style>
 <script>
 (function () {
