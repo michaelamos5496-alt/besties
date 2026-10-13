@@ -525,11 +525,13 @@ p {
 
 .besties-characters {
     width: auto;
-    height: clamp(45vh, 75vh, 85vh);
-    max-height: 85vh;
+    height: 62vh;
+    max-height: 62vh;
     object-fit: contain;
     filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.1));
     animation: fadeInUp 1s ease;
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
 }
 
 @media (max-width: 768px) {
@@ -2182,7 +2184,7 @@ p {
             </div>
         </div>
         <div class="hero-image-bottom">
-            <img src="assets/image_4.webp" alt="The Four Besties" class="besties-characters">
+            <img src="assets/hero-girls.webp" alt="The Besties" class="besties-characters">
         </div>
     </section>
 
