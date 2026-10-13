@@ -5,7 +5,11 @@
     var SELECTOR = [
         '.btn', '.cta-btn', '.hero-cta-btn', '.event-btn', '.featured-btn',
         '.join-cta-btn', '.contact-btn', '.footer-contact-btn',
-        '.apply-submit-btn', '.add-to-cart-btn', '.checkout-btn'
+        '.apply-submit-btn', '.add-to-cart-btn', '.checkout-btn',
+        '.nav-dock-apply', '.mobile-menu-item-cta', '.hero-countdown-pill',
+        '.modal-btn', '.donate-fab', '.cart-fab', '.nav-back', '.co-back',
+        '.co-wa-link', '.news-tab', '.filter-btn', '.episode-nav',
+        '.video-mute-btn', '.qty-btn', '.footer-social-icon', '.send'
     ].join(',');
     var ENTER_DURATION = 1.2;
     var EXIT_SPEED = 2.5;
