@@ -512,38 +512,22 @@ p {
 
 .hero-image-bottom {
     width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    display: block;
     flex-shrink: 0;
     margin: 0 calc(-50vw + 50%);
-    margin-top: -80px;
+    margin-top: 0;
+    margin-bottom: calc(-1 * clamp(60px, 10vh, 120px));
     z-index: 15;
     overflow: hidden;
     position: relative;
+    line-height: 0;
 }
 
 .besties-characters {
-    width: auto;
-    height: 62vh;
-    max-height: 62vh;
-    object-fit: contain;
-    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.1));
+    display: block;
+    width: 100%;
+    height: auto;
     animation: fadeInUp 1s ease;
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%);
-}
-
-@media (max-width: 768px) {
-    .hero-image-bottom {
-        margin-top: -20px;
-    }
-
-    .besties-characters {
-        width: 100vw;
-        height: auto;
-        max-height: none;
-    }
 }
 
 .hero-title {
