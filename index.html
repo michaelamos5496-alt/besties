@@ -2687,6 +2687,20 @@ if (navbar) {
 .cd-hero b { font-size: clamp(1.7rem, 6vw, 3rem); }
 .cd-hero span { font-size: clamp(0.6rem, 1.6vw, 0.8rem); }
 .cd-done { font-weight: 700; color: var(--besties-pink); margin: 0.9rem 0 0.4rem; }
+
+/* Homepage hero: clean white layout, headline block on top, group photo full-bleed at the bottom */
+.hero { background: #fff; justify-content: flex-start; padding-top: clamp(90px, 13vh, 140px); padding-bottom: 0; }
+.hero::before, .hero::after { display: none; }
+.hero-logo { position: static; width: clamp(190px, 24vw, 320px); margin: 0 auto clamp(0.6rem, 1.5vw, 1rem); filter: none; }
+.hero-subtitle { color: #14142b; text-shadow: none; font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 600; letter-spacing: 0.12em; margin-bottom: clamp(0.8rem, 2vw, 1.4rem); }
+.hero-countdown-label { color: #14142b; text-shadow: none; }
+.hero-countdown-pill { margin-bottom: clamp(1rem, 2vw, 1.4rem); }
+.cd-hero div { background: #fff; border: 1px solid rgba(20, 20, 43, 0.08); box-shadow: 0 6px 18px rgba(20, 20, 43, 0.08); }
+.hero-cta-btn { background: #14142b; border-color: #14142b; color: #fff; text-shadow: none; padding: 12px 30px; font-size: 0.95rem; }
+.hero-cta-btn:hover { background: var(--besties-pink); border-color: var(--besties-pink); color: #fff; }
+.hero-cta-btn-whatsapp { background: #25D366; border-color: #25D366; }
+.hero-cta-btn-whatsapp:hover { background: #1ebc59; border-color: #1ebc59; }
+.hero-image-bottom { margin-top: clamp(1rem, 3vw, 2.5rem); }
 </style>
 <script>
 (function () {
