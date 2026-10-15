@@ -242,6 +242,8 @@ html {
 }
 
 .slots { display: inline-block; background: rgba(255,107,157,0.12); color: var(--besties-pink); font-size: 0.8rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 999px; margin: 0.5rem 0 0; }
+.vital { background: rgba(255,107,157,0.12); border-left: 4px solid var(--besties-pink); border-radius: 10px; padding: 0.8rem 1rem; margin: 0.75rem 0; display: grid; gap: 0.35rem; font-size: 1.05rem; color: #14142b; }
+.vital strong { font-weight: 800; }
 .event-buttons {
     display: flex;
     gap: 1rem;
@@ -582,15 +584,22 @@ html {
     <!-- Events -->
     <section class="events-section">
         <div class="events-grid">
-            <div class="event-card" id="mentorship-class">
+            <div class="event-card" id="art-date">
                 <img loading="lazy" decoding="async" src="assets/campbanner-700.webp" alt="Besties Camp" class="event-image" style="object-position: center 25%;">
                 <div class="event-content">
-                    <div class="event-date">31st October 2026</div>
-                    <h3>Besties Mentorship Class</h3>
-                    <p class="event-description">Join us for a special mentorship experience filled with meaningful conversations from women across different walks of life to celebrate the International Day of the Girl Child.</p>
-                    <div class="slots">🎟️ 12 slots open</div>
-                    <div class="cd" data-countdown="2026-10-31T00:00:00Z"><div><b data-u="d">--</b><span>Days</span></div><div><b data-u="h">--</b><span>Hours</span></div><div><b data-u="m">--</b><span>Mins</span></div><div><b data-u="s">--</b><span>Secs</span></div></div>
-                    <div class="event-buttons"><a class="event-btn primary" href="https://wa.me/233248051774?text=Hi%20Besties!%20I%27d%20like%20to%20register%20for%20the%20Besties%20Mentorship%20Class%20on%2017th%20October." target="_blank" rel="noopener">Register Now!</a></div>
+                    <div class="event-date">25th October 2026 · 3:00 PM</div>
+                    <h3>Besties Art Date 🎨</h3>
+                    <p class="event-caption" style="font-weight:700;color:var(--besties-pink);margin:0 0 0.5rem;">Calabash painting &amp; conversations with inspiring women in celebration of International Day of the Girl Child</p>
+                    <p class="event-description">Join us for a special experience that combines creativity and meaningful interactions with accomplished women leaders, giving each girl an opportunity to learn, connect and express themselves in a fun and relaxed setting!</p>
+                    <div class="vital">
+                        <div>📅 <strong>25th October 2026</strong></div>
+                        <div>🕒 <strong>3:00 PM</strong></div>
+                        <div>📍 <strong>Glaze Art Studio</strong></div>
+                        <div>💰 <strong>GH₵200</strong></div>
+                        <div>🎟️ <strong>Only 8 slots</strong></div>
+                    </div>
+                    <div class="cd" data-countdown="2026-10-25T15:00:00Z"><div><b data-u="d">--</b><span>Days</span></div><div><b data-u="h">--</b><span>Hours</span></div><div><b data-u="m">--</b><span>Mins</span></div><div><b data-u="s">--</b><span>Secs</span></div></div>
+                    <div class="event-buttons"><a class="event-btn primary" href="https://wa.me/233248051774?text=Hi%20Besties!%20I%27d%20like%20to%20register%20for%20Besties%20Art%20Date%20on%2025th%20October." target="_blank" rel="noopener">Register Now!</a></div>
                 </div>
             </div>
             <div class="event-card">
