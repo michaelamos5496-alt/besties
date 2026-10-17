@@ -32,6 +32,15 @@
 .pod-info { padding: 1.1rem 1.25rem 1.3rem; }
 .pod-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--besties-pink); margin-bottom: 0.35rem; }
 .pod-info h3 { font-size: 1.05rem; color: var(--dark-gray); }
+.pod-dots { display: none; }
+@media (max-width: 768px) {
+    .pod-grid { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; margin: 0 -20px; padding: 6px 20px 16px; scroll-padding: 0 20px; }
+    .pod-grid::-webkit-scrollbar { display: none; }
+    .pod-card { flex: 0 0 82%; scroll-snap-align: center; }
+    .pod-dots { display: flex; justify-content: center; gap: 8px; margin-top: 0.5rem; }
+    .pod-dots span { width: 8px; height: 8px; border-radius: 50%; background: #f5c2d6; transition: all 0.2s; }
+    .pod-dots span.active { background: var(--besties-pink); width: 22px; border-radius: 8px; }
+}
 .pod-more { text-align: center; margin-top: 2.5rem; }
 .pod-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(15,18,40,0.88); }
 .pod-modal.open { display: flex; }
@@ -61,7 +70,7 @@
             <p>The podcast brings girls into a world of laughter, relatable conversations, fun challenges, and real talk about friendship, confidence, school, family, and everything in between. Through their unique personalities and shared experiences, the girls inspire their peers to express themselves, celebrate their individuality, and discover the joy of girlhood.</p>
         </section>
         <h2 class="pod-videos-title">Watch the Episodes</h2>
-        <div class="pod-grid">
+        <div class="pod-grid" id="podGrid">
             <button type="button" class="pod-card" data-yt="hNUYNEKyci0" data-title="Our Biggest Pet Peeves | Best Girlfriends EP 12">
                 <div class="pod-thumb" style="background-image: url('https://i.ytimg.com/vi/hNUYNEKyci0/hqdefault.jpg');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
                 <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 12</div><h3>Our Biggest Pet Peeves</h3></div>
@@ -87,6 +96,7 @@
                 <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 1</div><h3>Spilling The Tea On Us</h3></div>
             </button>
         </div>
+        <div class="pod-dots" id="podDots" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div>
         <div class="pod-more">
             <a class="btn primary" href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" target="_blank" rel="noopener">More on YouTube</a>
         </div>
@@ -118,6 +128,12 @@
     document.querySelectorAll('.pod-card').forEach(function (c) {
         c.addEventListener('click', function () { open(c.dataset.yt, c.dataset.title); });
     });
+    var grid = document.getElementById('podGrid'), dots = document.querySelectorAll('#podDots span');
+    if (dots.length) dots[0].classList.add('active');
+    grid.addEventListener('scroll', function () {
+        var i = Math.round(grid.scrollLeft / (grid.firstElementChild.offsetWidth + 16));
+        dots.forEach(function (d, k) { d.classList.toggle('active', k === i); });
+    }, { passive: true });
     document.getElementById('podClose').addEventListener('click', close);
     modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
