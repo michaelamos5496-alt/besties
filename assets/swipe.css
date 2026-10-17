@@ -6,6 +6,7 @@
         display: flex !important;
         grid-template-columns: none !important;
         justify-content: flex-start !important;
+        align-items: flex-start !important;
         gap: 1rem !important;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
