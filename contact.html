@@ -174,7 +174,6 @@ body {
                         <label for="cMessage">Your message</label>
                         <textarea id="cMessage" maxlength="800" placeholder="Tell us how we can help"></textarea>
                         <div class="err">Please write a short message.</div>
-                        <div class="h-captcha" data-captcha="true" data-theme="dark" style="margin-top: 1rem;"></div>
                     </div>
 
                     <div class="form-foot">
@@ -260,13 +259,6 @@ body {
         if (bad(n)) { showErr(n, true); ctrl(n).focus(); return; }
         if (cur < steps.length - 1) { show(cur + 1); return; }
         for (var k = 0; k < order.length; k++) { if (bad(order[k])) { show(k); showErr(order[k], true); return; } }
-        var cap = form.querySelector('textarea[name=h-captcha-response]');
-        var capVal = cap ? cap.value : '';
-        if (cap && !capVal) {
-            note.classList.add('bad');
-            note.textContent = 'Please complete the captcha to confirm you are not a robot.';
-            return;
-        }
         nextBtn.disabled = true;
         note.classList.remove('bad');
         note.textContent = 'Sending...';
@@ -275,7 +267,6 @@ body {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
                 access_key: ACCESS_KEY,
-                'h-captcha-response': capVal,
                 subject: 'Besties website message from ' + val('name'),
                 from_name: 'Besties Website',
                 replyto: val('email'),
@@ -287,7 +278,6 @@ body {
         }).then(function (r) { return r.json(); }).then(function (d) {
             if (d.success) {
                 form.reset();
-                if (window.hcaptcha) { try { window.hcaptcha.reset(); } catch (x) {} }
                 show(0);
                 note.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
             } else {
@@ -299,7 +289,6 @@ body {
     });
 })();
     </script>
-    <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="button-hover.js" defer></script>
 </body>
 </html>
