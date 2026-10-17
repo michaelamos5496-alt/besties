@@ -20,179 +20,240 @@
 :root {
     --pink: #FF6B9D;
     --purple: #D5A6E0;
-    --navy: #2d3561;
-    --dark: #333;
+    --bg: #12142a;
+    --text: #f6f3f8;
+    --muted: rgba(246, 243, 248, 0.55);
+    --line: rgba(246, 243, 248, 0.18);
 }
+
+html, body { background: var(--bg); }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    color: var(--dark);
-    background: linear-gradient(135deg, rgba(255, 107, 157, 0.07) 0%, rgba(213, 166, 224, 0.09) 100%);
-    line-height: 1.7;
+    color: var(--text);
+    line-height: 1.6;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
+    overflow-x: hidden;
 }
 
-.nav-bar { padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: #fff; border-bottom: 1px solid #f5f5f5; }
-.nav-logo { display: inline-flex; align-items: center; text-decoration: none; }
-.nav-logo-img { height: 36px; width: auto; display: block; }
-.nav-back { text-decoration: none; color: var(--dark); font-weight: 500; transition: color 0.3s ease; }
-.nav-back:hover { color: var(--pink); }
+.contact-page { position: relative; min-height: 100vh; display: flex; flex-direction: column; }
 
-.contact-wrap { flex: 1; padding: 60px 24px 80px; }
+.contact-photo { position: absolute; top: 0; right: 0; bottom: 0; width: 58%; z-index: 0; }
+.contact-photo picture, .contact-photo img { display: block; width: 100%; height: 100%; }
+.contact-photo img { object-fit: cover; object-position: center 25%; }
+.contact-photo::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--bg) 0%, rgba(18, 20, 42, 0.78) 28%, rgba(18, 20, 42, 0.25) 70%, rgba(18, 20, 42, 0.1) 100%); }
+.contact-photo::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, rgba(18, 20, 42, 0.45) 0%, transparent 25%, transparent 75%, rgba(18, 20, 42, 0.5) 100%); }
 
-.contact-card {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    background: #fff;
-    border-radius: 28px;
-    overflow: hidden;
-    box-shadow: 0 24px 60px rgba(45, 53, 97, 0.14);
-}
+.top-bar { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 26px 56px; }
+.top-bar .logo img { height: 34px; width: auto; display: block; }
+.top-bar a.back { color: var(--text); text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.8; transition: opacity 0.2s ease, color 0.2s ease; }
+.top-bar a.back:hover { opacity: 1; color: var(--pink); }
 
-.contact-photo { display: flex; align-items: center; justify-content: center; padding: 30px; background: linear-gradient(160deg, rgba(255, 107, 157, 0.14) 0%, rgba(213, 166, 224, 0.26) 100%); }
-.contact-photo picture { display: block; width: 100%; }
-.contact-photo img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 22%; border-radius: 20px; box-shadow: 0 14px 34px rgba(45, 53, 97, 0.2); }
+.contact-main { position: relative; z-index: 2; flex: 1; display: flex; align-items: center; padding: 20px 56px 60px; }
+.contact-inner { width: 100%; max-width: 640px; }
 
-.contact-body { padding: 52px 52px 46px; }
+.heading { border-left: 4px solid var(--pink); padding-left: 26px; margin-bottom: 3.2rem; }
+.heading .eyebrow { font-size: 1.05rem; color: var(--text); opacity: 0.9; }
+.heading h1 { font-family: 'Fredoka', sans-serif; font-weight: 600; font-size: clamp(3rem, 8vw, 5.6rem); line-height: 1.02; letter-spacing: -1px; }
 
-.contact-body h1 {
-    font-family: 'Fredoka', sans-serif;
-    font-size: clamp(2rem, 4vw, 2.6rem);
-    font-weight: 700;
-    line-height: 1.15;
-    color: var(--navy);
-    margin-bottom: 0.6rem;
-}
+.info-row { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; margin-bottom: 3.2rem; }
+.info-item .head { display: flex; align-items: center; gap: 10px; font-size: 1rem; font-weight: 500; margin-bottom: 0.7rem; }
+.info-item .head svg { width: 15px; height: 15px; color: var(--text); flex: none; }
+.info-item .body { padding-left: 25px; font-size: 0.92rem; color: var(--muted); }
+.info-item a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+.info-item a:hover { color: var(--pink); }
 
-.lead { color: #666; font-size: 1rem; margin-bottom: 1.8rem; }
+.get-in-touch { display: flex; align-items: center; gap: 14px; font-size: 1.1rem; font-weight: 500; margin-bottom: 2.2rem; }
+.get-in-touch::before { content: ""; width: 3px; height: 18px; background: var(--pink); }
 
-.info-row { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 1.2rem; padding-bottom: 1.8rem; margin-bottom: 1.8rem; border-bottom: 1px solid #eee; }
-.info-row .lbl { display: block; font-size: 0.78rem; color: #999; margin-bottom: 2px; }
-.info-row .val, .info-row a { font-size: 0.92rem; font-weight: 600; color: var(--dark); text-decoration: none; word-break: break-word; }
-.info-row a:hover { color: var(--pink); }
-
-.contact-body h2 { font-family: 'Fredoka', sans-serif; font-size: 1.35rem; font-weight: 600; color: var(--navy); margin-bottom: 1rem; }
-
-.cform { display: flex; flex-direction: column; gap: 14px; margin-bottom: 2rem; }
-.field label { display: block; font-size: 0.8rem; color: #888; margin-bottom: 4px; }
-.field input, .field textarea { width: 100%; padding: 12px 0; border: none; border-bottom: 2px solid #e6e6ee; background: transparent; font-family: inherit; font-size: 1rem; color: var(--dark); border-radius: 0; }
-.field select { padding: 12px 0; border: none; border-bottom: 2px solid #e6e6ee; background: transparent; font-family: inherit; font-size: 1rem; color: var(--dark); border-radius: 0; max-width: 46%; }
-.field select:focus { outline: none; border-bottom-color: var(--pink); }
-.phone-row { display: flex; gap: 12px; }
+.cform { max-width: 600px; }
+.step { display: none; }
+.step.active { display: block; animation: stepIn 0.35s ease; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.step label { display: block; font-size: 0.72rem; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.step input, .step textarea, .step select { width: 100%; padding: 8px 0 14px; border: none; border-bottom: 1px solid var(--line); background: transparent; color: var(--text); font-family: 'Fredoka', sans-serif; font-size: clamp(1.4rem, 3.2vw, 2rem); font-weight: 500; border-radius: 0; transition: border-color 0.25s ease; }
+.step textarea { resize: none; height: 96px; line-height: 1.3; }
+.step input::placeholder, .step textarea::placeholder { color: rgba(246, 243, 248, 0.28); }
+.step input:focus, .step textarea:focus, .step select:focus { outline: none; border-bottom-color: var(--pink); }
+.step select { width: auto; max-width: 42%; font-size: 1rem; font-family: 'Montserrat', sans-serif; padding-bottom: 20px; }
+.step select option { color: #222; }
+.phone-row { display: flex; gap: 16px; align-items: flex-end; }
 .phone-row input { flex: 1; min-width: 0; }
-.field.invalid .phone-row select { border-bottom-color: #d6336c; }
-.field textarea { resize: vertical; min-height: 96px; }
-.field input:focus, .field textarea:focus { outline: none; border-bottom-color: var(--pink); }
-.field.invalid input, .field.invalid textarea { border-bottom-color: #d6336c; }
-.err { display: none; margin-top: 4px; color: #d6336c; font-size: 0.8rem; font-weight: 600; }
-.field.invalid .err { display: block; }
+.err { min-height: 1.3rem; margin-top: 0.6rem; color: #ff8fb0; font-size: 0.82rem; font-weight: 600; }
 
-.send-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 6px; }
-.form-note { font-size: 0.84rem; color: #1a9e4a; font-weight: 600; }
-.send { margin-left: auto; padding: 14px 34px; border: none; border-radius: 50px; background: linear-gradient(135deg, var(--pink) 0%, #FF8FB3 100%); color: #fff; font-family: inherit; font-weight: 700; font-size: 0.95rem; cursor: pointer; transition: all 0.25s ease; }
-.send:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255, 107, 157, 0.35); }
+.form-foot { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1.6rem; }
+.dots { display: flex; gap: 2rem; }
+.dots button { background: none; border: 0; padding: 0; cursor: pointer; font-family: inherit; font-size: 0.7rem; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(246, 243, 248, 0.35); text-align: left; transition: color 0.2s ease; }
+.dots button::before { content: ""; display: block; width: 5px; height: 5px; border-radius: 50%; background: currentColor; margin-bottom: 8px; }
+.dots button.active { color: var(--text); }
+.dots button.active::before { background: var(--pink); }
+.dots button.done { color: var(--muted); }
+.next { display: inline-flex; align-items: center; gap: 18px; background: none; border: 0; color: var(--text); font-family: inherit; font-size: 1rem; font-weight: 500; cursor: pointer; }
+.next .circle { width: 72px; height: 72px; border-radius: 50%; border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; transition: all 0.25s ease; }
+.next .circle svg { width: 24px; height: 24px; }
+.next:hover .circle { background: var(--pink); border-color: var(--pink); }
+.next:disabled { opacity: 0.5; cursor: default; }
+.form-note { margin-top: 1.4rem; font-size: 0.9rem; color: #7be0a3; font-weight: 600; min-height: 1.3rem; }
+.form-note.bad { color: #ff8fb0; }
 
-.follow { display: flex; flex-wrap: wrap; gap: 1.6rem 2.4rem; }
-.follow a { text-decoration: none; }
-.follow .lbl { display: block; font-size: 0.78rem; color: #999; margin-bottom: 2px; }
-.follow .val { font-size: 0.92rem; font-weight: 600; color: var(--dark); transition: color 0.2s ease; }
-.follow a:hover .val { color: var(--pink); }
-
-.footer { padding: 30px; text-align: center; color: #999; font-size: 0.9rem; }
-.footer a { color: var(--dark); text-decoration: none; }
-.footer a:hover { color: var(--pink); }
+.social { display: flex; flex-wrap: wrap; gap: 0.6rem 2rem; margin-top: 2.6rem; }
+.social a { color: var(--muted); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.5px; transition: color 0.2s ease; }
+.social a:hover { color: var(--pink); }
 
 @media (max-width: 860px) {
-    .nav-bar { padding: 15px 20px; }
-    .contact-wrap { padding: 24px 16px 50px; }
-    .contact-card { grid-template-columns: 1fr; border-radius: 22px; }
-    .contact-photo { padding: 0; background: none; }
-    .contact-photo img { aspect-ratio: 4 / 3; border-radius: 0; box-shadow: none; object-position: center 18%; }
-    .contact-body { padding: 30px 22px 30px; }
-    .info-row { grid-template-columns: 1fr; gap: 0.9rem; justify-content: stretch; }
-    .send-row { flex-direction: column-reverse; align-items: stretch; }
-    .send { margin-left: 0; width: 100%; }
-    .form-note { text-align: center; }
+    .contact-photo { position: relative; width: 100%; height: 34vh; min-height: 220px; }
+    .contact-photo::before { background: linear-gradient(180deg, rgba(18, 20, 42, 0.15) 0%, var(--bg) 100%); }
+    .contact-photo::after { display: none; }
+    .contact-page { display: block; }
+    .top-bar { position: absolute; top: 0; left: 0; right: 0; padding: 18px 20px; }
+    .contact-main { padding: 0 20px 50px; margin-top: -40px; }
+    .heading { margin-bottom: 2rem; padding-left: 18px; }
+    .info-row { gap: 1.2rem 2rem; margin-bottom: 2.2rem; }
+    .dots { gap: 1rem; }
+    .dots button { letter-spacing: 1.2px; font-size: 0.62rem; }
+    .next .circle { width: 60px; height: 60px; }
+    .next .label { display: none; }
 }
     </style>
 </head>
 <body>
-    <nav class="nav-bar">
-        <a href="index.html" class="nav-logo"><img src="assets/besties-logo-480.webp" alt="Besties" class="nav-logo-img"></a>
-        <a href="index.html" class="nav-back">← Back to Home</a>
-    </nav>
+    <div class="contact-page">
+        <div class="contact-photo">
+            <picture>
+                <source media="(max-width: 860px)" srcset="assets/contact-hero-640.webp">
+                <img src="assets/contact-hero-1000.webp" alt="The Besties girls together" fetchpriority="high">
+            </picture>
+        </div>
 
-    <main class="contact-wrap">
-        <div class="contact-card">
-            <div class="contact-photo">
-                <picture>
-                    <source media="(max-width: 860px)" srcset="assets/contact-hero-640.webp">
-                    <img src="assets/contact-hero-1000.webp" alt="The Besties girls together" fetchpriority="high">
-                </picture>
-            </div>
+        <header class="top-bar">
+            <a href="index.html" class="logo"><img src="assets/besties-logo-480.webp" alt="Besties"></a>
+            <a href="index.html" class="back">← Back to Home</a>
+        </header>
 
-            <div class="contact-body">
-                <h1>Contact us</h1>
-                <p class="lead">Ask about camps, events or partnerships, or just say hello. We'd love to hear from you.</p>
+        <main class="contact-main">
+            <div class="contact-inner">
+                <div class="heading">
+                    <p class="eyebrow">How to contact us</p>
+                    <h1>Contacts</h1>
+                </div>
 
                 <div class="info-row">
-                    <div><span class="lbl">Address</span><span class="val">Accra, Ghana</span></div>
-                    <div><span class="lbl">Email</span><a href="mailto:contact@bestiesafrica.com">contact@bestiesafrica.com</a></div>
-                    <div><span class="lbl">Phone</span><a href="https://wa.me/233248051774" target="_blank" rel="noopener">+233 24 805 1774</a></div>
+                    <div class="info-item">
+                        <div class="head"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>Location</div>
+                        <div class="body">Accra, Ghana</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="head"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1Z"/></svg>Phone</div>
+                        <div class="body"><a href="https://wa.me/233248051774" target="_blank" rel="noopener">+233 24 805 1774</a></div>
+                    </div>
+                    <div class="info-item">
+                        <div class="head"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 5h16a2 2 0 0 1 2 2v.4l-10 6.2L2 7.4V7a2 2 0 0 1 2-2Zm18 4.75V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.75l10 6.2Z"/></svg>E-mail</div>
+                        <div class="body"><a href="mailto:contact@bestiesafrica.com">contact@bestiesafrica.com</a></div>
+                    </div>
                 </div>
 
-                <h2>Send us a message</h2>
+                <div class="get-in-touch">Get in touch</div>
+
                 <form class="cform" id="contactForm" novalidate>
-                    <div class="field" data-field="name"><label for="cName">Name</label><input type="text" id="cName" maxlength="80" autocomplete="name"><div class="err">Please enter your name.</div></div>
-                    <div class="field" data-field="email"><label for="cEmail">Email</label><input type="email" id="cEmail" maxlength="120" autocomplete="email" inputmode="email"><div class="err">Please enter a valid email address.</div></div>
-                    <div class="field" data-field="phone"><label for="cPhone">Phone / WhatsApp number</label><div class="phone-row"><select id="cCode" aria-label="Country code"><option value="+233" selected>Ghana +233</option><option value="+234">Nigeria +234</option><option value="+254">Kenya +254</option><option value="+27">South Africa +27</option><option value="+255">Tanzania +255</option><option value="+256">Uganda +256</option><option value="+225">Côte d'Ivoire +225</option><option value="+221">Senegal +221</option><option value="+237">Cameroon +237</option><option value="+250">Rwanda +250</option><option value="+251">Ethiopia +251</option><option value="+20">Egypt +20</option><option value="+212">Morocco +212</option><option value="+44">United Kingdom +44</option><option value="+1">USA / Canada +1</option><option value="+49">Germany +49</option><option value="+33">France +33</option><option value="+971">UAE +971</option><option value="+61">Australia +61</option></select><input type="tel" id="cPhone" maxlength="20" autocomplete="tel-national" inputmode="tel" placeholder="24 805 1774"></div><div class="err">Please enter a valid phone number.</div></div>
-                    <div class="field" data-field="message"><label for="cMessage">Message</label><textarea id="cMessage" maxlength="800"></textarea><div class="err">Please write a short message.</div></div>
-                    <div class="send-row">
-                        <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
-                        <button type="submit" class="send">Send Message</button>
+                    <div class="step active" data-field="name">
+                        <label for="cName">Your name</label>
+                        <input type="text" id="cName" maxlength="80" autocomplete="name" placeholder="Enter your name">
+                        <div class="err">Please enter your name.</div>
                     </div>
+                    <div class="step" data-field="email">
+                        <label for="cEmail">Your email</label>
+                        <input type="email" id="cEmail" maxlength="120" autocomplete="email" inputmode="email" placeholder="Enter your email">
+                        <div class="err">Please enter a valid email address.</div>
+                    </div>
+                    <div class="step" data-field="phone">
+                        <label for="cPhone">Phone / WhatsApp</label>
+                        <div class="phone-row"><select id="cCode" aria-label="Country code"><option value="+233" selected>Ghana +233</option><option value="+234">Nigeria +234</option><option value="+254">Kenya +254</option><option value="+27">South Africa +27</option><option value="+255">Tanzania +255</option><option value="+256">Uganda +256</option><option value="+225">Côte d'Ivoire +225</option><option value="+221">Senegal +221</option><option value="+237">Cameroon +237</option><option value="+250">Rwanda +250</option><option value="+251">Ethiopia +251</option><option value="+20">Egypt +20</option><option value="+212">Morocco +212</option><option value="+44">United Kingdom +44</option><option value="+1">USA / Canada +1</option><option value="+49">Germany +49</option><option value="+33">France +33</option><option value="+971">UAE +971</option><option value="+61">Australia +61</option></select><input type="tel" id="cPhone" maxlength="20" autocomplete="tel-national" inputmode="tel" placeholder="Your number"></div>
+                        <div class="err">Please enter a valid phone number.</div>
+                    </div>
+                    <div class="step" data-field="message">
+                        <label for="cMessage">Your message</label>
+                        <textarea id="cMessage" maxlength="800" placeholder="Tell us how we can help"></textarea>
+                        <div class="err">Please write a short message.</div>
+                    </div>
+
+                    <div class="form-foot">
+                        <div class="dots" id="dots">
+                            <button type="button" class="active" data-go="0">Name</button>
+                            <button type="button" data-go="1">E-mail</button>
+                            <button type="button" data-go="2">Phone</button>
+                            <button type="button" data-go="3">Message</button>
+                        </div>
+                        <button type="submit" class="next" id="nextBtn">
+                            <span class="label" id="nextLabel">Next</span>
+                            <span class="circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h18M15 6l6 6-6 6"/></svg></span>
+                        </button>
+                    </div>
+                    <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
                 </form>
 
-                <h2>Follow us</h2>
-                <div class="follow">
-                    <a href="https://www.instagram.com/bestgurlies" target="_blank" rel="noopener"><span class="lbl">Instagram</span><span class="val">@bestgurlies</span></a>
-                    <a href="https://www.tiktok.com/@bestgurlies" target="_blank" rel="noopener"><span class="lbl">TikTok</span><span class="val">@bestgurlies</span></a>
-                    <a href="https://youtube.com/@eglistudios" target="_blank" rel="noopener"><span class="lbl">YouTube</span><span class="val">@eglistudios</span></a>
+                <div class="social">
+                    <a href="https://www.instagram.com/bestgurlies" target="_blank" rel="noopener">Instagram</a>
+                    <a href="https://www.tiktok.com/@bestgurlies" target="_blank" rel="noopener">TikTok</a>
+                    <a href="https://youtube.com/@eglistudios" target="_blank" rel="noopener">YouTube</a>
                 </div>
             </div>
-        </div>
-    </main>
-
-    <footer class="footer">
-        <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank" rel="noopener">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
-    </footer>
+        </main>
+    </div>
 
     <script>
 (function () {
     var ACCESS_KEY = '1b446358-75dc-4769-bb99-f1b0efcdad00'; // Web3Forms public key; emails go to contact@bestiesafrica.com
     var form = document.getElementById('contactForm');
     var note = document.getElementById('formNote');
-    function field(n) { return form.querySelector('[data-field="' + n + '"]'); }
-    function control(n) { return field(n).querySelector('input, textarea'); }
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+    var dots = Array.prototype.slice.call(document.querySelectorAll('#dots button'));
+    var nextBtn = document.getElementById('nextBtn');
+    var nextLabel = document.getElementById('nextLabel');
     var code = document.getElementById('cCode');
+    var order = ['name', 'email', 'phone', 'message'];
+    var cur = 0;
 
-    ['name', 'email', 'phone', 'message'].forEach(function (n) {
-        control(n).addEventListener('input', function () { field(n).classList.remove('invalid'); note.textContent = ''; });
+    function ctrl(n) { return form.querySelector('[data-field="' + n + '"]').querySelector('input, textarea'); }
+    function val(n) { return n === 'phone' ? ctrl(n).value.replace(/[^\d]/g, '').replace(/^0+/, '') : ctrl(n).value.trim(); }
+    function bad(n) {
+        var v = val(n);
+        if (n === 'name') return v.length < 2;
+        if (n === 'email') return !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+        if (n === 'phone') return v.length < 6 || v.length > 14;
+        return v.length < 5;
+    }
+    function show(i) {
+        cur = i;
+        steps.forEach(function (s, n) { s.classList.toggle('active', n === i); });
+        dots.forEach(function (d, n) { d.classList.toggle('active', n === i); d.classList.toggle('done', n < i); });
+        nextLabel.textContent = i === steps.length - 1 ? 'Send' : 'Next';
+        note.textContent = ''; note.classList.remove('bad');
+        var c = ctrl(order[i]); if (c) c.focus({ preventScroll: true });
+    }
+    function showErr(n, on) { var s = form.querySelector('[data-field="' + n + '"]'); s.querySelector('.err').style.visibility = on ? 'visible' : 'hidden'; }
+    order.forEach(function (n) {
+        showErr(n, false);
+        ctrl(n).addEventListener('input', function () { showErr(n, false); });
+    });
+    dots.forEach(function (d) {
+        d.addEventListener('click', function () {
+            var t = +d.dataset.go;
+            for (var k = 0; k < t; k++) { if (bad(order[k])) { show(k); showErr(order[k], true); return; } }
+            show(t);
+        });
+    });
+    form.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
     });
 
     form.addEventListener('submit', function (e) {
         e.preventDefault();
-        var v = { name: control('name').value.trim(), email: control('email').value.trim(), phone: control('phone').value.replace(/[^\d]/g, '').replace(/^0+/, ''), message: control('message').value.trim() };
-        var bad = { name: v.name.length < 2, email: !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.email), phone: v.phone.length < 6 || v.phone.length > 14, message: v.message.length < 5 };
-        Object.keys(bad).forEach(function (k) { field(k).classList.toggle('invalid', bad[k]); });
-        var first = Object.keys(bad).filter(function (k) { return bad[k]; })[0];
-        if (first) { control(first).focus(); return; }
-        var btn = form.querySelector('button.send');
-        btn.disabled = true;
+        var n = order[cur];
+        if (bad(n)) { showErr(n, true); ctrl(n).focus(); return; }
+        if (cur < steps.length - 1) { show(cur + 1); return; }
+        for (var k = 0; k < order.length; k++) { if (bad(order[k])) { show(k); showErr(order[k], true); return; } }
+        nextBtn.disabled = true;
+        note.classList.remove('bad');
         note.textContent = 'Sending...';
         fetch('https://api.web3forms.com/submit', {
             method: 'POST',
@@ -201,21 +262,24 @@ body {
                 access_key: ACCESS_KEY,
                 subject: 'New message from bestiesafrica.com',
                 from_name: 'Besties Website',
-                name: v.name,
-                email: v.email,
-                phone: code.value + ' ' + v.phone,
-                message: v.message
+                name: val('name'),
+                email: val('email'),
+                phone: code.value + ' ' + val('phone'),
+                message: val('message')
             })
         }).then(function (r) { return r.json(); }).then(function (d) {
             if (d.success) {
-                note.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
                 form.reset();
+                show(0);
+                note.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
             } else {
+                note.classList.add('bad');
                 note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
             }
         }).catch(function () {
+            note.classList.add('bad');
             note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
-        }).then(function () { btn.disabled = false; });
+        }).then(function () { nextBtn.disabled = false; });
     });
 })();
     </script>
