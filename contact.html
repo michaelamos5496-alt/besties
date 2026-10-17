@@ -267,8 +267,9 @@ body {
             headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
             body: JSON.stringify({
                 access_key: ACCESS_KEY,
-                subject: 'New message from bestiesafrica.com',
+                subject: 'Besties website message from ' + val('name'),
                 from_name: 'Besties Website',
+                replyto: val('email'),
                 name: val('name'),
                 email: val('email'),
                 phone: code.value + ' ' + val('phone'),
