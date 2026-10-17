@@ -246,6 +246,13 @@ body {
         if (e.key === 'Enter' && e.target.tagName === 'TEXTAREA' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); }
     });
 
+    function fallback() {
+        note.classList.add('bad');
+        note.textContent = 'We could not send that automatically, so your email app is opening with your message ready to send to contact@bestiesafrica.com.';
+        var body = 'Name: ' + val('name') + '\nEmail: ' + val('email') + '\nPhone: ' + code.value + ' ' + val('phone') + '\n\n' + val('message');
+        window.location.href = 'mailto:contact@bestiesafrica.com?subject=' + encodeURIComponent('Message from bestiesafrica.com') + '&body=' + encodeURIComponent(body);
+    }
+
     form.addEventListener('submit', function (e) {
         e.preventDefault();
         var n = order[cur];
@@ -273,12 +280,10 @@ body {
                 show(0);
                 note.textContent = 'Thank you! Your message has been sent. We will get back to you soon.';
             } else {
-                note.classList.add('bad');
-                note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
+                fallback();
             }
         }).catch(function () {
-            note.classList.add('bad');
-            note.textContent = 'Sorry, something went wrong. Please email contact@bestiesafrica.com directly.';
+            fallback();
         }).then(function () { nextBtn.disabled = false; });
     });
 })();
