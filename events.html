@@ -560,6 +560,7 @@ html {
 }
 
     </style>
+    <link rel="stylesheet" href="assets/swipe.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -583,7 +584,7 @@ html {
 
     <!-- Events -->
     <section class="events-section">
-        <div class="events-grid">
+        <div class="events-grid" data-swipe>
             <div class="event-card" id="art-date">
                 <img loading="lazy" decoding="async" src="assets/art-date-poster-700.webp" alt="Besties Art Date poster" class="event-image" style="height: auto;">
                 <div class="event-content">
@@ -856,5 +857,6 @@ eventRegistrationForm.addEventListener('submit', (e) => {
 })();
 </script>
     <script src="button-hover.js" defer></script>
+    <script src="assets/swipe.js" defer></script>
 </body>
 </html>

@@ -272,6 +272,7 @@ body {
     }
 }
     </style>
+    <link rel="stylesheet" href="assets/swipe.css">
 </head>
 <body>
     <nav class="nav-bar">
@@ -294,7 +295,7 @@ body {
     </div>
 
     <main class="news-section">
-        <div class="news-grid" id="newsGrid">
+        <div class="news-grid" id="newsGrid" data-swipe data-swipe-nodots>
             <a class="post-card" data-category="update" href="news-mentorship-class.html">
                 <img class="post-image" loading="lazy" decoding="async" src="assets/art-date-poster-700.webp" alt="Besties Art Date poster" style="aspect-ratio: auto; height: auto;">
                 <div class="post-label">Coming up</div>
@@ -387,5 +388,6 @@ body {
 })();
     </script>
     <script src="button-hover.js" defer></script>
+    <script src="assets/swipe.js" defer></script>
 </body>
 </html>

@@ -631,6 +631,7 @@ html {
 }
     </style>
     <script src="assets/video-loader.js" defer></script>
+    <link rel="stylesheet" href="assets/swipe.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -740,7 +741,7 @@ html {
         <div class="gallery-container">
             <h2>Photos From This Camp</h2>
             <p class="gallery-subtitle">A closer look at the welcome party, workshops, and friendships from our first camp.</p>
-            <div class="gallery-grid">
+            <div class="gallery-grid" data-swipe="tile">
                 <a href="gallery-images/camp-01.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-01.webp" loading="lazy" decoding="async" alt="Besties Summer Camp moment"></a>
                 <a href="gallery-images/camp-02.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-02.webp" loading="lazy" decoding="async" alt="Besties Summer Camp moment"></a>
                 <a href="gallery-images/camp-03.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-03.webp" loading="lazy" decoding="async" alt="Besties Summer Camp moment"></a>
@@ -951,5 +952,6 @@ html {
     </script>
 
     <script src="button-hover.js" defer></script>
+    <script src="assets/swipe.js" defer></script>
 </body>
 </html>

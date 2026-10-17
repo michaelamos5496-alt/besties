@@ -686,6 +686,7 @@ html {
 
     </style>
     <script src="assets/video-loader.js" defer></script>
+    <link rel="stylesheet" href="assets/swipe.css">
 </head>
 <body>
     <!-- Navigation -->
@@ -733,7 +734,7 @@ html {
                 <p>Besties Camp is an annual immersive residential experience where girls come together to make new friends, discover new interests, learn new skills and create unforgettable memories.</p>
                 <p>Each camp brings a new theme, adventure and experience, with every edition thoughtfully designed to blend friendship, creativity, learning, confidence and lots of fun in an environment where girls can be themselves, try new things and build meaningful connections within the Besties community.</p>
             </div>
-            <div class="about-camp-grid">
+            <div class="about-camp-grid" data-swipe="small">
                 <div class="about-camp-feature">
                     <div class="icon">🏕️</div>
                     <h4>Outdoor Adventure</h4>
@@ -778,7 +779,7 @@ html {
                     </svg>
                 </button>
             </div>
-            <div class="gallery-grid" id="campGalleryGrid">
+            <div class="gallery-grid" data-swipe="tile" id="campGalleryGrid">
                 <a href="gallery-images/camp-02.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-02.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-03.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-03.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
                 <a href="gallery-images/camp-04.webp" class="gallery-item"><img src="gallery-images/thumbs/camp-04.webp" loading="lazy" decoding="async" alt="Besties Camp moment"></a>
@@ -992,5 +993,6 @@ function toggleGalleryPhotos() {
     </script>
 
     <script src="button-hover.js" defer></script>
+    <script src="assets/swipe.js" defer></script>
 </body>
 </html>
