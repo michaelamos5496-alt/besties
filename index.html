@@ -34,8 +34,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Childlike&display=swap">
-    <link rel="preload" as="image" href="assets/hero-set-1600.webp" media="(min-width: 769px)" fetchpriority="high">
-    <link rel="preload" as="image" href="assets/hero-set-1280.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero-girls-2.webp" media="(max-width: 768px)" fetchpriority="high">
+    <link rel="preload" as="image" href="assets/hero-girls-wide.webp" media="(min-width: 769px)" fetchpriority="high">
     <script src="assets/config.js"></script>
     <style>
 /* Besties Website - Main Stylesheet */
@@ -1907,6 +1907,48 @@ html.splash-on, html.splash-on body { overflow: hidden; }
     font-size: 0.95rem;
 }
 
+/* moved from end of body so overrides apply on first paint */
+.cd { display: flex; gap: 10px; margin: 0.9rem 0 0.4rem; }
+.cd div { flex: 1; max-width: 72px; text-align: center; background: rgba(255,107,157,0.1); border-radius: 10px; padding: 8px 4px; }
+.cd b { display: block; font-size: 1.4rem; line-height: 1.1; color: var(--besties-pink); font-family: 'Fredoka', sans-serif; }
+.cd span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; }
+.cd-hero { margin: 0; gap: clamp(8px, 2vw, 16px); }
+.cd-hero div { max-width: none; min-width: clamp(58px, 15vw, 96px); background: rgba(255,255,255,0.92); box-shadow: 0 6px 18px rgba(0,0,0,0.18); padding: clamp(8px, 2vw, 14px) 4px; }
+.cd-hero b { font-size: clamp(1.7rem, 6vw, 3rem); }
+.cd-hero span { font-size: clamp(0.6rem, 1.6vw, 0.8rem); }
+.cd-done { font-weight: 700; color: var(--besties-pink); margin: 0.9rem 0 0.4rem; }
+
+/* Homepage hero: clean white layout, headline block on top, group photo full-bleed at the bottom */
+.hero { background: #fff; justify-content: flex-start; padding-top: clamp(90px, 13vh, 140px); padding-bottom: 0; }
+.hero::before, .hero::after { display: none; }
+.hero-logo { position: static; width: clamp(190px, 24vw, 320px); margin: 0 auto clamp(0.6rem, 1.5vw, 1rem); filter: none; }
+.hero-subtitle { color: #14142b; text-shadow: none; font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 600; letter-spacing: 0.12em; margin-bottom: clamp(0.8rem, 2vw, 1.4rem); }
+.hero-countdown-label { color: #14142b; text-shadow: none; }
+.hero-countdown-pill { margin-bottom: clamp(1rem, 2vw, 1.4rem); }
+.cd-hero div { background: #fff; border: 1px solid rgba(20, 20, 43, 0.08); box-shadow: 0 6px 18px rgba(20, 20, 43, 0.08); }
+.hero-cta-btn { background: #14142b; border-color: #14142b; color: #fff; text-shadow: none; padding: 12px 30px; font-size: 0.95rem; }
+.hero-cta-btn:hover { background: var(--besties-pink); border-color: var(--besties-pink); color: #fff; }
+.hero-cta-btn-whatsapp { background: #25D366; border-color: #25D366; }
+.hero-cta-btn-whatsapp:hover { background: #1ebc59; border-color: #1ebc59; }
+/* Playful-classy polish */
+.hero-subtitle { font-family: 'Fredoka', sans-serif; color: #5b3a78; letter-spacing: 0.18em; font-weight: 600; }
+.hero-countdown-label { font-family: 'Fredoka', sans-serif; color: #5b3a78; letter-spacing: 0.1em; font-weight: 600; }
+.cd-hero div { border: 1px solid rgba(255, 107, 157, 0.2); box-shadow: 0 8px 22px rgba(255, 107, 157, 0.14); }
+.hero-cta-btn { background: linear-gradient(135deg, var(--besties-pink) 0%, #e58bd0 100%); border-color: transparent; box-shadow: 0 8px 22px rgba(255, 107, 157, 0.35); font-weight: 700; }
+.hero-cta-btn:hover { background: linear-gradient(135deg, #ff5590 0%, #d97ec8 100%); border-color: transparent; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(255, 107, 157, 0.45); }
+.hero-cta-btn-whatsapp { background: #fff; border: 2px solid #25D366; color: #1a9e4a; box-shadow: 0 8px 22px rgba(37, 211, 102, 0.2); }
+.hero-cta-btn-whatsapp:hover { background: #25D366; border-color: #25D366; color: #fff; box-shadow: 0 12px 26px rgba(37, 211, 102, 0.35); }
+.hero-image-bottom { margin-top: auto; padding-top: clamp(1rem, 3vw, 2.5rem); }
+@media (min-width: 769px) {
+    .hero { min-height: 100vh; padding-top: clamp(76px, 10vh, 100px); }
+    .hero-logo { width: clamp(130px, 14vw, 180px); margin-bottom: 0.4rem; }
+    .hero-subtitle { margin-bottom: 0.6rem; }
+    .hero-countdown-pill { margin-bottom: 0.7rem; gap: 10px; }
+    .cd-hero div { min-width: clamp(58px, 5vw, 74px); padding: 8px 4px; }
+    .cd-hero b { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
+    .hero-cta-btn { padding: 9px 26px; font-size: 0.9rem; }
+    .hero-image-bottom { margin-top: auto; padding-top: clamp(0.5rem, 2vh, 1.5rem); }
+}
     </style>
 </head>
 <body>
@@ -2475,49 +2517,6 @@ if (navbar) {
     window.addEventListener('load', () => ScrollTrigger.refresh());
 })();
     </script>
-<style>
-.cd { display: flex; gap: 10px; margin: 0.9rem 0 0.4rem; }
-.cd div { flex: 1; max-width: 72px; text-align: center; background: rgba(255,107,157,0.1); border-radius: 10px; padding: 8px 4px; }
-.cd b { display: block; font-size: 1.4rem; line-height: 1.1; color: var(--besties-pink); font-family: 'Fredoka', sans-serif; }
-.cd span { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; color: #888; }
-.cd-hero { margin: 0; gap: clamp(8px, 2vw, 16px); }
-.cd-hero div { max-width: none; min-width: clamp(58px, 15vw, 96px); background: rgba(255,255,255,0.92); box-shadow: 0 6px 18px rgba(0,0,0,0.18); padding: clamp(8px, 2vw, 14px) 4px; }
-.cd-hero b { font-size: clamp(1.7rem, 6vw, 3rem); }
-.cd-hero span { font-size: clamp(0.6rem, 1.6vw, 0.8rem); }
-.cd-done { font-weight: 700; color: var(--besties-pink); margin: 0.9rem 0 0.4rem; }
-
-/* Homepage hero: clean white layout, headline block on top, group photo full-bleed at the bottom */
-.hero { background: #fff; justify-content: flex-start; padding-top: clamp(90px, 13vh, 140px); padding-bottom: 0; }
-.hero::before, .hero::after { display: none; }
-.hero-logo { position: static; width: clamp(190px, 24vw, 320px); margin: 0 auto clamp(0.6rem, 1.5vw, 1rem); filter: none; }
-.hero-subtitle { color: #14142b; text-shadow: none; font-size: clamp(0.85rem, 2vw, 1.15rem); font-weight: 600; letter-spacing: 0.12em; margin-bottom: clamp(0.8rem, 2vw, 1.4rem); }
-.hero-countdown-label { color: #14142b; text-shadow: none; }
-.hero-countdown-pill { margin-bottom: clamp(1rem, 2vw, 1.4rem); }
-.cd-hero div { background: #fff; border: 1px solid rgba(20, 20, 43, 0.08); box-shadow: 0 6px 18px rgba(20, 20, 43, 0.08); }
-.hero-cta-btn { background: #14142b; border-color: #14142b; color: #fff; text-shadow: none; padding: 12px 30px; font-size: 0.95rem; }
-.hero-cta-btn:hover { background: var(--besties-pink); border-color: var(--besties-pink); color: #fff; }
-.hero-cta-btn-whatsapp { background: #25D366; border-color: #25D366; }
-.hero-cta-btn-whatsapp:hover { background: #1ebc59; border-color: #1ebc59; }
-/* Playful-classy polish */
-.hero-subtitle { font-family: 'Fredoka', sans-serif; color: #5b3a78; letter-spacing: 0.18em; font-weight: 600; }
-.hero-countdown-label { font-family: 'Fredoka', sans-serif; color: #5b3a78; letter-spacing: 0.1em; font-weight: 600; }
-.cd-hero div { border: 1px solid rgba(255, 107, 157, 0.2); box-shadow: 0 8px 22px rgba(255, 107, 157, 0.14); }
-.hero-cta-btn { background: linear-gradient(135deg, var(--besties-pink) 0%, #e58bd0 100%); border-color: transparent; box-shadow: 0 8px 22px rgba(255, 107, 157, 0.35); font-weight: 700; }
-.hero-cta-btn:hover { background: linear-gradient(135deg, #ff5590 0%, #d97ec8 100%); border-color: transparent; transform: translateY(-2px); box-shadow: 0 12px 26px rgba(255, 107, 157, 0.45); }
-.hero-cta-btn-whatsapp { background: #fff; border: 2px solid #25D366; color: #1a9e4a; box-shadow: 0 8px 22px rgba(37, 211, 102, 0.2); }
-.hero-cta-btn-whatsapp:hover { background: #25D366; border-color: #25D366; color: #fff; box-shadow: 0 12px 26px rgba(37, 211, 102, 0.35); }
-.hero-image-bottom { margin-top: auto; padding-top: clamp(1rem, 3vw, 2.5rem); }
-@media (min-width: 769px) {
-    .hero { min-height: 100vh; padding-top: clamp(76px, 10vh, 100px); }
-    .hero-logo { width: clamp(130px, 14vw, 180px); margin-bottom: 0.4rem; }
-    .hero-subtitle { margin-bottom: 0.6rem; }
-    .hero-countdown-pill { margin-bottom: 0.7rem; gap: 10px; }
-    .cd-hero div { min-width: clamp(58px, 5vw, 74px); padding: 8px 4px; }
-    .cd-hero b { font-size: clamp(1.5rem, 2.4vw, 2.1rem); }
-    .hero-cta-btn { padding: 9px 26px; font-size: 0.9rem; }
-    .hero-image-bottom { margin-top: auto; padding-top: clamp(0.5rem, 2vh, 1.5rem); }
-}
-</style>
 <script>
 (function () {
     document.querySelectorAll('[data-countdown]').forEach(function (el) {
