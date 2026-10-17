@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2d3561">
+    <meta name="description" content="Watch the Besties podcast, produced by Egli Studios.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <title>Besties Podcast | Watch</title>
+    <link rel="canonical" href="https://www.bestiesafrica.com/podcast.html">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fredoka:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="news-article.css">
+    <style>
+.pod-wrap { max-width: 1100px; margin: 0 auto; padding: 56px 20px 70px; }
+.pod-story { max-width: 760px; margin: 0 auto 3.5rem; text-align: center; }
+.pod-story h2 { font-family: 'Fredoka', sans-serif; font-size: clamp(1.5rem, 4vw, 2rem); color: var(--besties-pink); margin-bottom: 1rem; }
+.pod-story p { color: #555; line-height: 1.85; margin-bottom: 1rem; font-size: 1.02rem; }
+.pod-story p strong { color: var(--dark-gray); }
+.pod-videos-title { text-align: center; font-family: 'Fredoka', sans-serif; font-size: clamp(1.4rem, 4vw, 1.8rem); color: var(--dark-gray); margin-bottom: 1.75rem; }
+.pod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.75rem; }
+.pod-card { display: block; width: 100%; padding: 0; border: 0; text-align: left; font: inherit; color: inherit; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.08); cursor: pointer; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.pod-card:hover { transform: translateY(-5px); box-shadow: 0 12px 28px rgba(0,0,0,0.14); }
+.pod-thumb { position: relative; aspect-ratio: 16 / 9; background-size: cover; background-position: center; }
+.pod-thumb::after { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.12); }
+.pod-play { position: absolute; z-index: 1; top: 50%; left: 50%; width: 60px; height: 60px; margin: -30px 0 0 -30px; border-radius: 50%; background: rgba(255,107,157,0.95); display: flex; align-items: center; justify-content: center; }
+.pod-play svg { width: 26px; height: 26px; margin-left: 3px; color: #fff; }
+.pod-info { padding: 1.1rem 1.25rem 1.3rem; }
+.pod-tag { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--besties-pink); margin-bottom: 0.35rem; }
+.pod-info h3 { font-size: 1.05rem; color: var(--dark-gray); }
+.pod-more { text-align: center; margin-top: 2.5rem; }
+.pod-modal { position: fixed; inset: 0; z-index: 1000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(15,18,40,0.88); }
+.pod-modal.open { display: flex; }
+.pod-modal-box { position: relative; width: 100%; max-width: 960px; }
+.pod-frame { aspect-ratio: 16 / 9; width: 100%; background: #000; border-radius: 12px; overflow: hidden; }
+.pod-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pod-close { position: absolute; top: -44px; right: 0; background: none; border: 0; color: #fff; font-size: 2.2rem; line-height: 1; cursor: pointer; }
+@media (max-width: 600px) { .pod-wrap { padding-top: 36px; } .pod-grid { gap: 1.25rem; } }
+    </style>
+</head>
+<body>
+    <nav class="nav-bar">
+        <a href="index.html" class="nav-logo"><img src="assets/besties-logo-480.webp" alt="Besties" class="nav-logo-img"></a>
+        <a href="index.html" class="nav-back">← Home</a>
+    </nav>
+
+    <header class="article-header">
+        <span class="article-label">Watch</span>
+        <h1>Besties Podcast</h1>
+        <p class="article-lead">Tap an episode to watch. Produced by Egli Studios.</p>
+    </header>
+
+    <main class="pod-wrap">
+        <section class="pod-story">
+            <h2>The Story Behind the Podcast</h2>
+            <p>It started with a phone call. While speaking with Ola, mum to one of the original Besties, our founder Aggor Yorm overheard a voice note playing in the background. It was Kelly and her friends, nine years old, chatting away in a WhatsApp group.</p>
+            <p>They were funny, expressive, curious and completely themselves. <strong>"There is a show here,"</strong> she thought.</p>
+            <p>That voice note became <strong>Best Girlfriends</strong>, a podcast with four girls, created to give young girls a space to talk, share, learn and be heard. The show moved from YouTube to traditional television, and the end of the first season was celebrated with a live party.</p>
+            <p>Along the way it became clear we were building something bigger than a podcast. The girls didn't just want to watch, they wanted to be part of it. That is how the Besties community was born.</p>
+            <p><a href="our-story.html" style="color: var(--besties-pink); font-weight: 700; text-decoration: none;">Read the full founder's story →</a></p>
+        </section>
+        <h2 class="pod-videos-title">Watch the Episodes</h2>
+        <div class="pod-grid">
+            <button type="button" class="pod-card" data-yt="CNwaKci8LUg" data-title="Besties on Marriage">
+                <div class="pod-thumb" style="background-image: url('assets/besties-on-marriage-thumb-640.webp');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
+                <div class="pod-info"><div class="pod-tag">Podcast</div><h3>Besties on Marriage</h3></div>
+            </button>
+        </div>
+        <div class="pod-more">
+            <a class="btn primary" href="https://youtube.com/@eglistudios?si=-eqMuwAPyjTCM5kq" target="_blank" rel="noopener">More on YouTube</a>
+        </div>
+    </main>
+
+    <div class="pod-modal" id="podModal" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="pod-modal-box">
+            <button type="button" class="pod-close" id="podClose" aria-label="Close video">&times;</button>
+            <div class="pod-frame" id="podFrame"></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Besties. <a href="https://wa.me/233248051774" target="_blank" rel="noopener">WhatsApp</a> · <a href="index.html">Back to Home</a></p>
+    </footer>
+    <script>
+(function () {
+    var modal = document.getElementById('podModal'), frame = document.getElementById('podFrame');
+    function open(id, title) {
+        frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="' + title.replace(/"/g, '') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function close() {
+        modal.classList.remove('open');
+        frame.innerHTML = '';
+        document.body.style.overflow = '';
+    }
+    document.querySelectorAll('.pod-card').forEach(function (c) {
+        c.addEventListener('click', function () { open(c.dataset.yt, c.dataset.title); });
+    });
+    document.getElementById('podClose').addEventListener('click', close);
+    modal.addEventListener('click', function (e) { if (e.target === modal) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();
+    </script>
+    <script src="button-hover.js" defer></script>
+</body>
+</html>
