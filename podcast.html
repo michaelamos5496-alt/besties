@@ -65,6 +65,22 @@
         </section>
         <h2 class="pod-videos-title">Watch the Episodes</h2>
         <div class="pod-grid">
+            <button type="button" class="pod-card" data-yt="hNUYNEKyci0" data-title="Our Biggest Pet Peeves | Best Girlfriends EP 12">
+                <div class="pod-thumb" style="background-image: url('https://i.ytimg.com/vi/hNUYNEKyci0/hqdefault.jpg');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
+                <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 12</div><h3>Our Biggest Pet Peeves</h3></div>
+            </button>
+            <button type="button" class="pod-card" data-yt="llM8LpY0ans" data-title="Fitness Wahala | Best Girlfriends EP 10">
+                <div class="pod-thumb" style="background-image: url('https://i.ytimg.com/vi/llM8LpY0ans/hqdefault.jpg');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
+                <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 10</div><h3>Fitness Wahala</h3></div>
+            </button>
+            <button type="button" class="pod-card" data-yt="7Q7dbQ2REug" data-title="Besties Got Talent: We Made A Hit Song in 20 Minutes | Best Girlfriends EP 7">
+                <div class="pod-thumb" style="background-image: url('https://i.ytimg.com/vi/7Q7dbQ2REug/hqdefault.jpg');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
+                <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 7</div><h3>Besties Got Talent: We Made A Hit Song in 20 Minutes</h3></div>
+            </button>
+            <button type="button" class="pod-card" data-yt="sZ2j6VmAUCc" data-title="Grown Ups Don't Get It | Best Girlfriends EP 2">
+                <div class="pod-thumb" style="background-image: url('https://i.ytimg.com/vi/sZ2j6VmAUCc/hqdefault.jpg');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
+                <div class="pod-info"><div class="pod-tag">Best Girlfriends · EP 2</div><h3>Grown Ups Don't Get It</h3></div>
+            </button>
             <button type="button" class="pod-card" data-yt="CNwaKci8LUg" data-title="Besties on Marriage">
                 <div class="pod-thumb" style="background-image: url('assets/besties-on-marriage-thumb-640.webp');"><span class="pod-play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4l14 8-14 8V4z" fill="currentColor"/></svg></span></div>
                 <div class="pod-info"><div class="pod-tag">Podcast</div><h3>Besties on Marriage</h3></div>
@@ -89,7 +105,7 @@
 (function () {
     var modal = document.getElementById('podModal'), frame = document.getElementById('podFrame');
     function open(id, title) {
-        frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0" title="' + title.replace(/"/g, '') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+        frame.innerHTML = '<iframe referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0" title="' + title.replace(/"/g, '') + '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
     }
