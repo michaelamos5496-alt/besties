@@ -10,6 +10,9 @@
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script>
+    try { if (/[?&]splash\b/.test(location.search) || !sessionStorage.getItem('bestiesSplash')) document.documentElement.classList.add('splash-on'); } catch (e) { document.documentElement.classList.add('splash-on'); }
+    </script>
     <title>Besties - Empowering Girls to Shine</title>
     <link rel="canonical" href="https://www.bestiesafrica.com/">
     <meta name="description" content="Besties is Africa's community for girls to build confidence, form lasting friendships, and discover who they are through learning, creativity, and mentorship.">
@@ -1724,6 +1727,21 @@ p {
 
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
+#splash { display: none; position: fixed; inset: 0; z-index: 99999; align-items: center; justify-content: center; flex-direction: column; background: linear-gradient(135deg, #ffeaf3 0%, #f3e4fa 100%); transition: opacity 0.9s ease, visibility 0.9s ease; }
+html.splash-on #splash { display: flex; }
+html.splash-on, html.splash-on body { overflow: hidden; }
+#splash.hide { display: flex; opacity: 0; visibility: hidden; pointer-events: none; }
+#splash.hide img { transform: scale(1.06); transition: transform 0.9s ease; }
+#splash img { width: clamp(150px, 38vw, 240px); height: auto; animation: splashBounce 1.4s ease-in-out infinite; }
+#splash p { margin-top: 1.2rem; font-family: 'Fredoka', sans-serif; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; font-size: clamp(0.8rem, 2.6vw, 1rem); color: #5b3a78; }
+.splash-dots { display: flex; gap: 10px; margin-top: 1.4rem; }
+.splash-dots span { width: 11px; height: 11px; border-radius: 50%; background: #FF6B9D; animation: splashDot 1.1s ease-in-out infinite; }
+.splash-dots span:nth-child(2) { background: #D5A6E0; animation-delay: 0.18s; }
+.splash-dots span:nth-child(3) { background: #FFD84D; animation-delay: 0.36s; }
+@keyframes splashBounce { 0%, 100% { transform: translateY(0) rotate(-2deg); } 50% { transform: translateY(-14px) rotate(2deg); } }
+@keyframes splashDot { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.5; } 40% { transform: scale(1.15); opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { #splash img, .splash-dots span { animation: none; } }
+
 .footer-contact-btn {
     display: inline-flex;
     align-items: center;
@@ -1892,6 +1910,11 @@ p {
     </style>
 </head>
 <body>
+    <div id="splash" role="status" aria-label="Loading Besties">
+        <img src="assets/besties-logo-480.webp" alt="Besties">
+        <p>Empowering Girls to Shine</p>
+        <div class="splash-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+    </div>
     <!-- Navigation -->
     <nav class="navbar">
         <button class="hamburger-menu" id="hamburgerMenu" aria-label="Toggle navigation menu">
@@ -2264,6 +2287,23 @@ p {
         var i = Math.round(el.scrollLeft / (el.firstElementChild.offsetWidth + 16));
         dots.forEach(function (d, n) { d.classList.toggle('active', n === i); });
     }, { passive: true });
+})();
+    </script>
+    <script>
+(function () {
+    var el = document.getElementById('splash');
+    if (!el || !document.documentElement.classList.contains('splash-on')) return;
+    var start = Date.now(), done = false;
+    function hide() {
+        if (done) return; done = true;
+        el.classList.add('hide');
+        document.documentElement.classList.remove('splash-on');
+        try { sessionStorage.setItem('bestiesSplash', '1'); } catch (e) {}
+        setTimeout(function () { el.style.display = 'none'; }, 1000);
+    }
+    function ready() { setTimeout(hide, Math.max(0, 1300 - (Date.now() - start))); }
+    if (document.readyState === 'complete') ready(); else window.addEventListener('load', ready);
+    setTimeout(hide, 4500);
 })();
     </script>
     <script>
