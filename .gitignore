@@ -4,6 +4,9 @@ backend/.env
 backend/.env.local
 backend/.env.*.local
 
+# Node modules
+node_modules/
+
 # System files
 .DS_Store
 .AppleDouble
