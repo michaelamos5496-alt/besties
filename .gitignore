@@ -17,3 +17,6 @@ images/BESTIES 26 camp/
 # Logs
 npm-debug.log
 *.log
+
+# Raw source media (not used by the site)
+_originals/
