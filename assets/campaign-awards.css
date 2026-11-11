@@ -25,12 +25,12 @@
 .ca-promo-text h2 { font: 600 clamp(1.5rem, 4vw, 2.4rem)/1.15 'Fredoka', sans-serif; margin: 0 0 .6rem; color: #fff; background: none; -webkit-text-fill-color: #fff; text-align: left; }
 .ca-promo-text p { margin: 0 0 1.4rem; color: rgba(255,255,255,.88); font-size: clamp(.9rem, 2vw, 1.02rem); }
 .ca-promo-btn { display: inline-block; background: var(--ca-pink); color: #fff; font: 700 .95rem 'Montserrat', sans-serif; padding: 12px 30px; border-radius: 50px; box-shadow: 0 8px 22px rgba(255,107,157,.45); }
-.ca-promo-art { align-self: center; width: 100%; aspect-ratio: 635 / 1022; background: var(--ca-cream) center / contain no-repeat; }
+.ca-promo-art { display: block; align-self: center; width: 100%; height: auto; object-fit: contain; background: var(--ca-cream); }
 @media (max-width: 720px) {
     .ca-promo { padding: 24px 16px; }
     .ca-promo-btn { display: block; text-align: center; }
     .ca-promo-card { grid-template-columns: 1fr; }
-    .ca-promo-art { order: -1; aspect-ratio: 635 / 520; background-size: cover; background-position: center top; }
+    .ca-promo-art { order: -1; width: min(100%, 300px); margin: 20px auto 0; border-radius: 14px; }
 }
 
 /* ---------- Homepage hero pill ---------- */
