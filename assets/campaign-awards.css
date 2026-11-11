@@ -1,51 +1,14 @@
-/* Creators Awards 2026 campaign: page styles + homepage promo banner.
+/* Creators Awards 2026 campaign: page styles.
    Self-contained; uses the Besties tokens (pink #FF6B9D, Fredoka/Montserrat) plus the
    purple from the nomination artwork. Safe to delete with the campaign. */
 
-.ca-page, .ca-promo {
+.ca-page {
     --ca-purple: #7b1fa2;
     --ca-deep: #2a0a45;
     --ca-pink: #FF6B9D;
     --ca-cream: #fff8ee;
     --ca-ink: #1d1230;
 }
-
-/* ---------- Homepage promo banner ---------- */
-.ca-promo { padding: clamp(28px, 5vw, 56px) 20px; background: #fff; }
-.ca-promo-card {
-    max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr minmax(240px, 300px); align-items: center;
-    background: linear-gradient(135deg, var(--ca-deep) 0%, var(--ca-purple) 100%);
-    border-radius: 20px; overflow: hidden; text-decoration: none; color: #fff;
-    box-shadow: 0 18px 40px rgba(123, 31, 162, 0.25);
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-.ca-promo-card:hover { transform: translateY(-3px); box-shadow: 0 24px 48px rgba(123, 31, 162, 0.35); }
-.ca-promo-text { padding: clamp(1.5rem, 4vw, 3rem); }
-.ca-promo-eyebrow { display: inline-block; font: 700 .72rem/1 'Montserrat', sans-serif; letter-spacing: .16em; text-transform: uppercase; background: rgba(255,255,255,.16); padding: 7px 14px; border-radius: 50px; margin-bottom: 1rem; }
-.ca-promo-text h2 { font: 600 clamp(1.5rem, 4vw, 2.4rem)/1.15 'Fredoka', sans-serif; margin: 0 0 .6rem; color: #fff; background: none; -webkit-text-fill-color: #fff; text-align: left; }
-.ca-promo-text p { margin: 0 0 1.4rem; color: rgba(255,255,255,.88); font-size: clamp(.9rem, 2vw, 1.02rem); }
-.ca-promo-btn { display: inline-block; background: var(--ca-pink); color: #fff; font: 700 .95rem 'Montserrat', sans-serif; padding: 12px 30px; border-radius: 50px; box-shadow: 0 8px 22px rgba(255,107,157,.45); }
-.ca-promo-art { display: block; align-self: center; width: 100%; height: auto; object-fit: contain; background: var(--ca-cream); }
-@media (max-width: 720px) {
-    .ca-promo { padding: 24px 16px; }
-    .ca-promo-btn { display: block; text-align: center; }
-    .ca-promo-card { grid-template-columns: 1fr; }
-    .ca-promo-art { order: -1; width: min(100%, 300px); margin: 20px auto 0; border-radius: 14px; }
-}
-
-/* ---------- Homepage hero pill ---------- */
-.ca-hero-pill {
-    display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px;
-    max-width: calc(100vw - 32px); margin: 0 auto clamp(.7rem, 1.6vw, 1rem); padding: 8px 18px;
-    background: linear-gradient(135deg, #2a0a45, #7b1fa2); color: #fff; text-decoration: none;
-    border-radius: 50px; font: 600 clamp(.72rem, 1.9vw, .88rem)/1.3 'Fredoka', sans-serif; letter-spacing: .03em;
-    box-shadow: 0 8px 22px rgba(123, 31, 162, .35); position: relative; z-index: 20;
-    transition: transform .25s ease, box-shadow .25s ease;
-}
-.ca-hero-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(123, 31, 162, .45); }
-.ca-hero-pill-tag { background: #FF6B9D; padding: 3px 10px; border-radius: 50px; font-size: .85em; }
-.ca-hero-pill b { color: #ffb3d0; }
-@media (max-width: 480px) { .ca-hero-pill { padding: 8px 14px; } }
 
 /* ---------- Campaign page ---------- */
 html { -webkit-text-size-adjust: 100%; }
@@ -137,6 +100,6 @@ html { -webkit-text-size-adjust: 100%; }
     .ca-sticky .ca-btn { padding: 12px 24px; white-space: nowrap; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .ca-btn, .ca-promo-card, .ca-sticky, .ca-hero-pill { transition: none; }
-    .ca-btn-vote:hover, .ca-promo-card:hover, .ca-hero-pill:hover { transform: none; }
+    .ca-btn, .ca-sticky { transition: none; }
+    .ca-btn-vote:hover { transform: none; }
 }
