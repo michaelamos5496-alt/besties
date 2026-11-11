@@ -1,5 +1,8 @@
 {
   "redirects": [
     { "source": "/mentorship", "destination": "/events.html#mentorship-class", "permanent": false }
+  ],
+  "rewrites": [
+    { "source": "/creators-awards-2026", "destination": "/creators-awards-2026.html" }
   ]
 }

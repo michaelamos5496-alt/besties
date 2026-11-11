@@ -1,0 +1,142 @@
+/* Creators Awards 2026 campaign: page styles + homepage promo banner.
+   Self-contained; uses the Besties tokens (pink #FF6B9D, Fredoka/Montserrat) plus the
+   purple from the nomination artwork. Safe to delete with the campaign. */
+
+.ca-page, .ca-promo {
+    --ca-purple: #7b1fa2;
+    --ca-deep: #2a0a45;
+    --ca-pink: #FF6B9D;
+    --ca-cream: #fff8ee;
+    --ca-ink: #1d1230;
+}
+
+/* ---------- Homepage promo banner ---------- */
+.ca-promo { padding: clamp(28px, 5vw, 56px) 20px; background: #fff; }
+.ca-promo-card {
+    max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.3fr 1fr; align-items: center;
+    background: linear-gradient(135deg, var(--ca-deep) 0%, var(--ca-purple) 100%);
+    border-radius: 20px; overflow: hidden; text-decoration: none; color: #fff;
+    box-shadow: 0 18px 40px rgba(123, 31, 162, 0.25);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.ca-promo-card:hover { transform: translateY(-3px); box-shadow: 0 24px 48px rgba(123, 31, 162, 0.35); }
+.ca-promo-text { padding: clamp(1.5rem, 4vw, 3rem); }
+.ca-promo-eyebrow { display: inline-block; font: 700 .72rem/1 'Montserrat', sans-serif; letter-spacing: .16em; text-transform: uppercase; background: rgba(255,255,255,.16); padding: 7px 14px; border-radius: 50px; margin-bottom: 1rem; }
+.ca-promo-text h2 { font: 600 clamp(1.5rem, 4vw, 2.4rem)/1.15 'Fredoka', sans-serif; margin: 0 0 .6rem; color: #fff; background: none; -webkit-text-fill-color: #fff; text-align: left; }
+.ca-promo-text p { margin: 0 0 1.4rem; color: rgba(255,255,255,.88); font-size: clamp(.9rem, 2vw, 1.02rem); }
+.ca-promo-btn { display: inline-block; background: var(--ca-pink); color: #fff; font: 700 .95rem 'Montserrat', sans-serif; padding: 12px 30px; border-radius: 50px; box-shadow: 0 8px 22px rgba(255,107,157,.45); }
+.ca-promo-art { align-self: stretch; min-height: 240px; background: var(--ca-cream) center top / cover no-repeat; }
+@media (max-width: 720px) {
+    .ca-promo { padding: 24px 16px; }
+    .ca-promo-btn { display: block; text-align: center; }
+    .ca-promo-card { grid-template-columns: 1fr; }
+    .ca-promo-art { order: -1; min-height: 0; aspect-ratio: 790 / 700; background-position: center top; }
+}
+
+/* ---------- Homepage hero pill ---------- */
+.ca-hero-pill {
+    display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px;
+    max-width: calc(100vw - 32px); margin: 0 auto clamp(.7rem, 1.6vw, 1rem); padding: 8px 18px;
+    background: linear-gradient(135deg, #2a0a45, #7b1fa2); color: #fff; text-decoration: none;
+    border-radius: 50px; font: 600 clamp(.72rem, 1.9vw, .88rem)/1.3 'Fredoka', sans-serif; letter-spacing: .03em;
+    box-shadow: 0 8px 22px rgba(123, 31, 162, .35); position: relative; z-index: 20;
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+.ca-hero-pill:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(123, 31, 162, .45); }
+.ca-hero-pill-tag { background: #FF6B9D; padding: 3px 10px; border-radius: 50px; font-size: .85em; }
+.ca-hero-pill b { color: #ffb3d0; }
+@media (max-width: 480px) { .ca-hero-pill { padding: 8px 14px; } }
+
+/* ---------- Campaign page ---------- */
+html { -webkit-text-size-adjust: 100%; }
+.ca-page { margin: 0; font-family: 'Montserrat', sans-serif; color: var(--ca-ink); background: #fff; line-height: 1.65; padding-bottom: 0; }
+.ca-page * { box-sizing: border-box; }
+.ca-wrap { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+.ca-nav { display: flex; justify-content: space-between; align-items: center; padding: 16px clamp(20px, 4vw, 40px); background: var(--ca-deep); }
+.ca-nav img { height: 36px; width: auto; display: block; }
+.ca-nav a.ca-back { color: #fff; text-decoration: none; font-weight: 500; }
+.ca-nav a.ca-back:hover { color: var(--ca-pink); }
+
+.ca-btn { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; border: 2px solid transparent; border-radius: 50px; padding: 14px 32px; font: 700 1rem 'Montserrat', sans-serif; text-decoration: none; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease, background .2s ease; }
+.ca-btn:focus-visible, .ca-copy:focus-visible { outline: 3px solid #ffd54f; outline-offset: 3px; }
+.ca-btn-vote { background: linear-gradient(135deg, var(--ca-pink), #e58bd0); color: #fff; box-shadow: 0 10px 26px rgba(255,107,157,.45); }
+.ca-btn-vote:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(255,107,157,.55); }
+.ca-btn-wa { background: #fff; color: #1a9e4a; border-color: #25D366; }
+.ca-btn-wa:hover { background: #25D366; color: #fff; }
+.ca-btn-ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
+.ca-btn-ghost:hover { background: rgba(255,255,255,.12); }
+
+/* Hero */
+.ca-hero { background: radial-gradient(circle at 85% 10%, rgba(255,107,157,.35), transparent 45%), linear-gradient(160deg, var(--ca-deep) 0%, var(--ca-purple) 100%); color: #fff; padding: clamp(36px, 7vw, 80px) 0; }
+.ca-hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.ca-eyebrow { display: inline-block; font: 700 .75rem/1 'Montserrat', sans-serif; letter-spacing: .16em; text-transform: uppercase; background: rgba(255,255,255,.16); padding: 8px 16px; border-radius: 50px; margin-bottom: 1.2rem; }
+.ca-hero h1 { font: 600 clamp(2.1rem, 6vw, 3.8rem)/1.08 'Fredoka', sans-serif; margin: 0 0 .5rem; letter-spacing: -.5px; }
+.ca-hero h1 span { color: #ffb3d0; }
+.ca-category { display: inline-block; background: linear-gradient(90deg, #b3125f, var(--ca-purple)); font: 600 clamp(1rem, 2.6vw, 1.3rem) 'Fredoka', sans-serif; letter-spacing: .04em; text-transform: uppercase; padding: 8px 20px; margin: .4rem 0 1.2rem; border-radius: 6px; }
+.ca-lead { font-size: clamp(1rem, 2.2vw, 1.15rem); color: rgba(255,255,255,.9); max-width: 34rem; margin: 0 0 1.8rem; }
+.ca-cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+.ca-hero-art { margin: 0; }
+.ca-hero-art img { display: block; width: 100%; max-width: 440px; height: auto; margin: 0 auto; border-radius: 22px; box-shadow: 0 24px 60px rgba(0,0,0,.4); transform: rotate(1.5deg); background: var(--ca-cream); }
+
+/* Sections */
+.ca-section { padding: clamp(44px, 7vw, 80px) 0; }
+.ca-section.alt { background: var(--ca-cream); }
+.ca-h2 { font: 600 clamp(1.6rem, 4.2vw, 2.4rem)/1.2 'Fredoka', sans-serif; text-align: center; margin: 0 0 .5rem; color: var(--ca-purple); }
+.ca-sub { text-align: center; color: #5a4d6b; max-width: 40rem; margin: 0 auto clamp(1.8rem, 4vw, 2.8rem); }
+
+.ca-ways { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.ca-way { background: #fff; border-radius: 18px; padding: clamp(1.4rem, 3vw, 2rem); box-shadow: 0 8px 28px rgba(123,31,162,.1); border-top: 5px solid var(--ca-pink); }
+.ca-way h3 { font: 600 1.35rem 'Fredoka', sans-serif; margin: 0 0 1rem; color: var(--ca-deep); }
+.ca-steps { list-style: none; counter-reset: s; margin: 0 0 1.2rem; padding: 0; }
+.ca-steps li { counter-increment: s; position: relative; padding: 0 0 .9rem 2.8rem; }
+.ca-steps li::before { content: counter(s); position: absolute; left: 0; top: -2px; width: 2rem; height: 2rem; border-radius: 50%; background: var(--ca-purple); color: #fff; font: 600 .95rem/2rem 'Fredoka', sans-serif; text-align: center; }
+.ca-way .ca-btn { width: 100%; }
+.ca-note { font-size: .86rem; color: #5a4d6b; margin: 1rem 0 0; }
+
+/* Copy cards */
+.ca-codes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 820px; margin: 0 auto; }
+.ca-code { background: #fff; border: 2px dashed var(--ca-purple); border-radius: 18px; padding: 1.4rem; text-align: center; }
+.ca-code-label { font: 700 .75rem 'Montserrat', sans-serif; letter-spacing: .14em; text-transform: uppercase; color: #5a4d6b; }
+.ca-code-value { font: 600 clamp(2rem, 6vw, 2.8rem)/1.2 'Fredoka', sans-serif; color: var(--ca-purple); margin: .3rem 0 1rem; letter-spacing: .04em; word-break: break-all; }
+.ca-copy { background: var(--ca-purple); color: #fff; border: 0; border-radius: 50px; padding: 11px 26px; font: 700 .92rem 'Montserrat', sans-serif; cursor: pointer; min-width: 9.5rem; min-height: 44px; transition: background .2s ease; }
+.ca-copy:hover { background: var(--ca-deep); }
+.ca-copy.is-copied { background: #1a9e4a; }
+.ca-dial { display: none; margin-top: .7rem; font-weight: 600; color: var(--ca-purple); }
+@media (hover: none) and (pointer: coarse) { .ca-dial { display: inline-block; } }
+
+/* Share */
+.ca-share { background: linear-gradient(160deg, var(--ca-deep), var(--ca-purple)); color: #fff; text-align: center; }
+.ca-share .ca-h2 { color: #fff; }
+.ca-share .ca-sub { color: rgba(255,255,255,.85); }
+.ca-disclaimer { text-align: center; font-size: .86rem; color: #5a4d6b; max-width: 40rem; margin: 0 auto; padding: 0 20px; }
+
+.ca-footer { text-align: center; padding: 28px 20px 36px; font-size: .9rem; color: #5a4d6b; }
+.ca-footer a { color: var(--ca-ink); text-decoration: none; }
+.ca-footer a:hover { color: var(--ca-pink); }
+
+/* Sticky mobile vote bar */
+.ca-sticky { display: none; }
+@media (max-width: 768px) {
+    .ca-hero-grid, .ca-ways, .ca-codes { grid-template-columns: 1fr; }
+    .ca-hero { padding: 28px 0 40px; }
+    .ca-hero-art img { max-width: 340px; transform: none; }
+    .ca-cta-row .ca-btn { width: 100%; }
+    .ca-copy { width: 100%; }
+    .ca-nav { padding: 12px 16px; }
+    .ca-wrap { padding: 0 16px; }
+    .ca-page { padding-bottom: 84px; }
+    .ca-sticky {
+        display: flex; align-items: center; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+        padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(42,10,69,.96);
+        box-shadow: 0 -6px 20px rgba(0,0,0,.25); transform: translateY(0); transition: transform .3s ease;
+    }
+    .ca-sticky.is-hidden { transform: translateY(110%); }
+    .ca-sticky-text { flex: 1; color: #fff; font: 600 .85rem/1.25 'Montserrat', sans-serif; }
+    .ca-sticky-text small { display: block; font-weight: 500; opacity: .8; }
+    .ca-sticky .ca-btn { padding: 12px 24px; white-space: nowrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ca-btn, .ca-promo-card, .ca-sticky, .ca-hero-pill { transition: none; }
+    .ca-btn-vote:hover, .ca-promo-card:hover, .ca-hero-pill:hover { transform: none; }
+}
