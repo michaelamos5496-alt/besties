@@ -1640,6 +1640,34 @@ p {
     gap: 1.25rem;
 }
 
+
+/* What's Happening slider: swipe on phones, snap-scroll + arrows + dots on desktop */
+.happening-arrow { display: none; }
+@media (min-width: 769px) {
+    .happening-slider { position: relative; max-width: 900px; margin: 0 auto; }
+    .happening-wrap {
+        display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+        -webkit-overflow-scrolling: touch; padding: 16px 0 34px;
+    }
+    .happening-wrap::-webkit-scrollbar { display: none; }
+    .happening-wrap > .happening-card { flex: 0 0 100%; width: 100%; box-sizing: border-box; scroll-snap-align: center; scroll-snap-stop: always; margin: 0 !important; }
+    .happening-arrow {
+        display: flex; align-items: center; justify-content: center; position: absolute; top: 50%; transform: translateY(-50%);
+        width: 44px; height: 44px; border-radius: 50%; border: 0; background: #fff; color: var(--besties-pink);
+        font-size: 1.9rem; line-height: 1; padding: 0 0 4px; cursor: pointer; z-index: 5;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.16); transition: background .2s ease, color .2s ease, opacity .2s ease;
+    }
+    .happening-arrow:hover { background: var(--besties-pink); color: #fff; }
+    .happening-arrow:focus-visible { outline: 3px solid var(--besties-pink); outline-offset: 3px; }
+    .happening-arrow[disabled] { opacity: .35; cursor: default; pointer-events: none; }
+    .happening-prev { left: -22px; }
+    .happening-next { right: -22px; }
+    .happening-wrap + .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: .2rem; }
+    .happening-wrap + .swipe-dots span { width: 8px; height: 8px; border-radius: 50%; background: #f5c2d6; transition: all .2s; }
+    .happening-wrap + .swipe-dots span.active { background: #FF6B9D; width: 22px; border-radius: 8px; }
+}
+@media (max-width: 768px) { .happening-slider { position: static; } .happening-wrap { display: grid; gap: 1.75rem; } }
+
 .pillars-dots { display: none; }
 @media (max-width: 768px) {
     .pillars {
@@ -2090,7 +2118,10 @@ html.splash-on, html.splash-on body { overflow: hidden; }
 
     <!-- What's Happening Section -->
     <section style="background: var(--light-gray); padding: 60px 20px;">
-        <div class="happening-wrap" data-swipe style="display: grid; gap: 1.75rem;">
+        <div class="happening-slider">
+        <button type="button" class="happening-arrow happening-prev" aria-label="Previous update">&#8249;</button>
+        <button type="button" class="happening-arrow happening-next" aria-label="Next update">&#8250;</button>
+        <div class="happening-wrap" id="happeningWrap" data-swipe>
             <div class="happening-card" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: clamp(1.75rem, 5vw, 2.75rem); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); display: flex; flex-wrap: wrap; align-items: center; gap: 2rem;">
                 <img loading="lazy" decoding="async" src="assets/sikababy-thumb-700.jpg" alt="SikaBaby with her TikTok 1 million followers cake" width="700" height="980" style="flex: 1 1 220px; width: 100%; max-width: 280px; height: auto; border-radius: 14px; margin: 0 auto;">
                 <div class="happening-text" style="flex: 2 1 320px;">
@@ -2109,6 +2140,7 @@ html.splash-on, html.splash-on body { overflow: hidden; }
                         <a href="news-creators-awards-nomination.html" style="display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); color: white; border-radius: 6px; font-weight: 700; text-decoration: none;">Read the Story</a>
                 </div>
             </div>
+        </div>
         </div>
     </section>
 
@@ -2555,6 +2587,24 @@ if (navbar) {
         }
         var t = setInterval(tick, 1000); tick();
     });
+})();
+</script>
+<script>
+(function () {
+    var wrap = document.getElementById('happeningWrap');
+    if (!wrap) return;
+    var prev = document.querySelector('.happening-prev'), next = document.querySelector('.happening-next');
+    function step(dir) { wrap.scrollBy({ left: dir * (wrap.clientWidth + 24), behavior: "smooth" }); }
+    function sync() {
+        var max = wrap.scrollWidth - wrap.clientWidth - 2;
+        prev.disabled = wrap.scrollLeft <= 2;
+        next.disabled = wrap.scrollLeft >= max;
+    }
+    prev.addEventListener('click', function () { step(-1); });
+    next.addEventListener('click', function () { step(1); });
+    wrap.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
 })();
 </script>
     <script src="assets/swipe.js" defer></script>
