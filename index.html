@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Fredoka:wght@400;500;600;700&family=Childlike&display=swap">
     <link rel="preload" as="image" href="assets/hero-girls-2.webp" media="(max-width: 768px)" fetchpriority="high">
     <link rel="preload" as="image" href="assets/hero-girls-wide.webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="stylesheet" href="assets/swipe.css">
     <script src="assets/config.js"></script>
     <style>
 /* Besties Website - Main Stylesheet */
@@ -2089,21 +2090,24 @@ html.splash-on, html.splash-on body { overflow: hidden; }
 
     <!-- What's Happening Section -->
     <section style="background: var(--light-gray); padding: 60px 20px;">
-        <div class="happening-card" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: clamp(1.75rem, 5vw, 2.75rem); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); display: flex; flex-wrap: wrap; align-items: center; gap: 2rem;">
-            <img loading="lazy" decoding="async" src="assets/creators-awards-2026-card.jpg" alt="Best Gurlies, nominated at Creators Awards 2026" width="635" height="1022" style="flex: 1 1 220px; width: 100%; max-width: 280px; height: auto; border-radius: 14px; margin: 0 auto;">
-            <div class="happening-text" style="flex: 2 1 320px;">
-                <div style="display: inline-block; background: rgba(255,107,157,0.12); color: var(--besties-pink); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.75rem;">What's Happening</div>
-                <h2 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: var(--dark-gray); margin-bottom: 0.5rem; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">We're Nominated! Best Gurlies 🏆</h2>
-                <p style="font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.25rem;">Best Gurlies has been nominated for <span style="font-weight: 800; color: var(--besties-pink); font-size: 1.15em;">Kid Creator of the Year</span> at the 6th Ghana Creators Festival &amp; Awards. We're so proud of our girls!</p>
-                <a href="news-sikababy-one-million.html" style="text-decoration: none; color: inherit; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.06); display: block;">
-                    <img loading="lazy" decoding="async" src="assets/sikababy-thumb-700.jpg" alt="SikaBaby with her TikTok 1 million followers cake" style="width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block;">
-                    <div style="padding: 1.25rem;">
-                        <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--besties-pink); margin-bottom: 0.5rem;">Milestone</div>
-                        <h3 style="font-size: 1.05rem; color: var(--dark-gray); margin-bottom: 0.5rem;">Our Bestie SikaBaby hit one million followers! 🎉</h3>
-                        <p style="font-size: 0.85rem; color: #777; line-height: 1.6; margin: 0;">SikaBaby has officially reached 1 million followers on TikTok.</p>
-                    </div>
-                </a>
-                <a href="news-creators-awards-nomination.html" style="display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); color: white; border-radius: 6px; font-weight: 700; text-decoration: none;">Read the Story</a>
+        <div class="happening-wrap" data-swipe style="display: grid; gap: 1.75rem;">
+            <div class="happening-card" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: clamp(1.75rem, 5vw, 2.75rem); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); display: flex; flex-wrap: wrap; align-items: center; gap: 2rem;">
+                <img loading="lazy" decoding="async" src="assets/sikababy-thumb-700.jpg" alt="SikaBaby with her TikTok 1 million followers cake" width="700" height="980" style="flex: 1 1 220px; width: 100%; max-width: 280px; height: auto; border-radius: 14px; margin: 0 auto;">
+                <div class="happening-text" style="flex: 2 1 320px;">
+                    <div style="display: inline-block; background: rgba(255,107,157,0.12); color: var(--besties-pink); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.75rem;">What's Happening</div>
+                    <h2 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: var(--dark-gray); margin-bottom: 0.5rem; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">One Million Followers! SikaBaby 🎉</h2>
+                    <p style="font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.25rem;">Our Bestie <span style="font-weight: 800; color: var(--besties-pink); font-size: 1.15em;">SikaBaby</span> has officially hit 1 million followers on TikTok! The 11-year-old reached the milestone on 8th November 2026. Let's celebrate her!</p>
+                    <a href="news-sikababy-one-million.html" style="display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); color: white; border-radius: 6px; font-weight: 700; text-decoration: none;">Read the Story</a>
+                </div>
+            </div>
+            <div class="happening-card" style="max-width: 900px; margin: 0 auto; background: white; border-radius: 20px; padding: clamp(1.75rem, 5vw, 2.75rem); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); display: flex; flex-wrap: wrap; align-items: center; gap: 2rem;">
+                <img loading="lazy" decoding="async" src="assets/creators-awards-2026-card.jpg" alt="Best Gurlies, nominated at Creators Awards 2026" width="635" height="1022" style="flex: 1 1 220px; width: 100%; max-width: 280px; height: auto; border-radius: 14px; margin: 0 auto;">
+                <div class="happening-text" style="flex: 2 1 320px;">
+                    <div style="display: inline-block; background: rgba(255,107,157,0.12); color: var(--besties-pink); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; padding: 0.3rem 0.75rem; border-radius: 999px; margin-bottom: 0.75rem;">What's Happening</div>
+                    <h2 style="font-size: clamp(1.4rem, 4vw, 1.8rem); color: var(--dark-gray); margin-bottom: 0.5rem; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">We're Nominated! Best Gurlies 🏆</h2>
+                    <p style="font-size: 0.95rem; color: #666; line-height: 1.7; margin-bottom: 1.25rem;">Best Gurlies has been nominated for <span style="font-weight: 800; color: var(--besties-pink); font-size: 1.15em;">Kid Creator of the Year</span> at the 6th Ghana Creators Festival &amp; Awards. We're so proud of our girls!</p>
+                        <a href="news-creators-awards-nomination.html" style="display: inline-block; padding: 12px 28px; background: linear-gradient(135deg, var(--besties-pink) 0%, var(--besties-purple) 100%); color: white; border-radius: 6px; font-weight: 700; text-decoration: none;">Read the Story</a>
+                </div>
             </div>
         </div>
     </section>
@@ -2166,6 +2170,14 @@ html.splash-on, html.splash-on body { overflow: hidden; }
         <div style="max-width: 1100px; margin: 0 auto;">
             <h2 style="text-align: center; font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--dark-gray); margin-bottom: 2.5rem; background: none; -webkit-text-fill-color: unset; -webkit-background-clip: unset; background-clip: unset;">Latest from the Community</h2>
             <div class="news-slider" id="newsSlider" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.75rem;">
+                <a href="news-sikababy-one-million.html" style="text-decoration: none; color: inherit; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.06); display: block;">
+                        <img loading="lazy" decoding="async" src="assets/sikababy-thumb-700.jpg" alt="SikaBaby with her TikTok 1 million followers cake" style="width: 100%; height: 280px; object-fit: cover; object-position: center 30%; display: block;">
+                        <div style="padding: 1.25rem;">
+                            <div style="font-size: 0.7rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--besties-pink); margin-bottom: 0.5rem;">Milestone</div>
+                            <h3 style="font-size: 1.05rem; color: var(--dark-gray); margin-bottom: 0.5rem;">Our Bestie SikaBaby hit one million followers! 🎉</h3>
+                            <p style="font-size: 0.85rem; color: #777; line-height: 1.6; margin: 0;">SikaBaby has officially reached 1 million followers on TikTok.</p>
+                        </div>
+                    </a>
                 <a href="news-creators-awards-nomination.html" style="text-decoration: none; color: inherit; background: white; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.06); display: block;">
                     <img loading="lazy" decoding="async" src="assets/creators-awards-2026-card.jpg" alt="Best Gurlies, nominated at Creators Awards 2026" style="width: 100%; height: 280px; object-fit: contain; background: #fbf6e6; display: block;">
                     <div style="padding: 1.25rem;">
@@ -2545,6 +2557,7 @@ if (navbar) {
     });
 })();
 </script>
+    <script src="assets/swipe.js" defer></script>
     <script src="button-hover.js" defer></script>
 </body>
 </html>
