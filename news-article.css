@@ -272,5 +272,7 @@ body {
     .article-header h1, .article-lead { max-width: none; margin-left: 0; margin-right: 0; }
     .article-body, .article-actions { max-width: none; padding-left: 64px; padding-right: 64px; }
     .article-body p, .article-body li { text-align: justify; }
-    .article-image { width: calc(100% - 128px); }
+    .article-image { width: min(760px, calc(100% - 128px)); aspect-ratio: 16 / 10; margin-left: 64px; margin-right: auto; }
+    .article-body .nominee-grid, .article-body .sika-photos { max-width: 760px; }
+    .article-body .nominee-grid img, .article-body .sika-photos img { max-height: 420px; width: auto !important; max-width: 100%; object-fit: contain; }
 }
