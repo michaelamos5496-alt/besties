@@ -1644,7 +1644,7 @@ p {
 /* What's Happening slider: swipe on phones, snap-scroll + arrows + dots on desktop */
 .happening-arrow { display: none; }
 @media (min-width: 769px) {
-    .happening-slider { position: relative; max-width: 900px; margin: 0 auto; }
+    .happening-slider { position: relative; max-width: none; margin: 0; }
     .happening-wrap {
         display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
         -webkit-overflow-scrolling: touch; padding: 16px 0 34px;
@@ -1660,8 +1660,8 @@ p {
     .happening-arrow:hover { background: var(--besties-pink); color: #fff; }
     .happening-arrow:focus-visible { outline: 3px solid var(--besties-pink); outline-offset: 3px; }
     .happening-arrow[disabled] { opacity: .35; cursor: default; pointer-events: none; }
-    .happening-prev { left: -22px; }
-    .happening-next { right: -22px; }
+    .happening-prev { left: 12px; }
+    .happening-next { right: 12px; }
     .happening-wrap + .swipe-dots { display: flex; justify-content: center; gap: 8px; margin-top: .2rem; }
     .happening-wrap + .swipe-dots span { width: 8px; height: 8px; border-radius: 50%; background: #f5c2d6; transition: all .2s; }
     .happening-wrap + .swipe-dots span.active { background: #FF6B9D; width: 22px; border-radius: 8px; }
@@ -1748,8 +1748,9 @@ p {
 @media (max-width: 600px) { .footer-links { gap: 0.6rem 1.4rem; } .footer-wordmark { font-size: 1.9rem; } }
 
 @media (min-width: 769px) {
-    .happening-card { text-align: center; padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
-    .happening-card > img { max-height: 320px; width: auto !important; max-width: 240px !important; flex: 0 0 auto !important; object-fit: contain; }
+    .happening-card { max-width: none !important; text-align: center; flex-wrap: nowrap !important; justify-content: center; gap: 4rem !important; padding: 1.5rem 6rem !important; }
+    .happening-card > img { max-height: 340px; width: auto !important; max-width: 260px !important; flex: 0 0 auto !important; object-fit: contain; margin: 0 !important; }
+    .happening-text { flex: 1 1 auto !important; max-width: 640px; }
     .happening-text { text-align: center; }
     .happening-text .cd { justify-content: center; }
 }

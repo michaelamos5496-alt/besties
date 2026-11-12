@@ -265,3 +265,12 @@ body {
     .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
     .gallery-item { border-radius: 8px; }
 }
+
+/* Desktop: full-width, justified article layout (not a narrow centered column) */
+@media (min-width: 900px) {
+    .article-header { text-align: left; padding-left: 64px; padding-right: 64px; }
+    .article-header h1, .article-lead { max-width: none; margin-left: 0; margin-right: 0; }
+    .article-body, .article-actions { max-width: none; padding-left: 64px; padding-right: 64px; }
+    .article-body p, .article-body li { text-align: justify; }
+    .article-image { width: calc(100% - 128px); }
+}
