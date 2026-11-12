@@ -276,3 +276,9 @@ body {
     .article-body .nominee-grid, .article-body .sika-photos { max-width: 760px; margin-left: auto !important; margin-right: auto !important; justify-items: center; }
     .article-body .nominee-grid img, .article-body .sika-photos img { max-height: 420px; width: auto !important; max-width: 100%; object-fit: contain; }
 }
+
+/* Image floated left with text wrapping beside it and continuing underneath */
+.article-float { display: block; width: min(360px, 100%); height: auto; margin: 0 auto 1.5rem; border-radius: 16px; box-shadow: 0 12px 30px rgba(45, 53, 97, 0.2); }
+@media (min-width: 900px) {
+    .article-float { float: left; width: 400px; margin: 0.4rem 2.5rem 1.5rem 0; }
+}
